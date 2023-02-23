@@ -1,0 +1,32 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Project_overview
+    chapters: 
+    - file: Background
+    - file: Processing_overview
+  - caption: Computer setup
+    chapters:
+    - file: Connecting_to_cluster
+    - file: environment_setup
+    - file: TransferingFiles
+  - caption: Processing
+    chapters:
+    - file: Processing
+    - file: Downloading
+    - file: Pre_Pipeline
+    - file: Pipeline
+    - file: Jupyter_Notebook
+  - caption: New project configuration
+    chapters:
+    - file: Setting_up_new_project
+  - caption: Computing resources
+    chapters:
+    - file: intro_to_git
+    - file: commandLine_bash
+    - file: vim
+    - file: slurm
+    - file: editing_this_guide

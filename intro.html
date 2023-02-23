@@ -408,22 +408,21 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="land-use-change-in-latin-america-lucinla-computing-guide">
 <h1>Land-Use Change in Latin America (LUCinLA) Computing Guide<a class="headerlink" href="#land-use-change-in-latin-america-lucinla-computing-guide" title="Permalink to this headline">#</a></h1>
 <p>================================================================================================================================
-Guide to computer setup and processing for remote-sensing projects on Land-Use Change in Latin America in Robert Heilmayr’s lab
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|<br />
-|</p>
+Guide to computer setup and processing for remote-sensing projects on Land-Use Change in Latin America in Robert Heilmayr’s lab</p>
+<p>| :————————————: | :————————————: |
+|   <img alt="" src="_images/3977_L8_2014_forest.jpg" />              |  <img alt="" src="_images/3977_L8_2014_soy.jpg" />               |</p>
+<p><img alt="" src="_images/Forest_to_Soy_KNDVI.jpg" /></p>
+<p>This guide focuses on setup details specific to the computing environment available to us at UC Santa Barbara and is mostly geared toward students with little to no experience with High-Performance Computing who need to quickly jump into data processing. While the computing environment is quite specific, the more general framework for ingesting, processing, and checking large quantities of imagery using primarily open-source resources could be of interest to others with similar computing resources.</p>
+<p>The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over large study areas (country to multi-country regions) at 10m resolution.</p>
+<p>Characteristics of our processing include:</p>
+<ul class="simple">
+<li><p>Use of standardized SpatioTemporal Asset Catalog (STAC) methods to search for and store satellite imagery</p></li>
+<li><p>array-based processing methods and a gridded structure to maximize parallel computations on a modest HPC computing environment</p></li>
+<li><p>The opensource repo <a class="reference external" href="https://geowombat.readthedocs.io/en/latest/">Geowombat,</a> as our primary toolkit for processing raster data at scale.</p></li>
+<li><p>Multi-sensor image standardization including BRDF correction and coregistration</p></li>
+<li><p>Time-series smoothing</p></li>
+<li><p>Optional segmentation for polygon-based classification</p></li>
+</ul>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">

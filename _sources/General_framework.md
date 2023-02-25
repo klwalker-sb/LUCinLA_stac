@@ -1,5 +1,5 @@
-(Overview)=
-# Overview
+(General_framework)=
+# General framework
 ================================================================================================================================
 
 The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over large study areas (country to multi-country regions) at 10m resolution. 

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Project background &#8212; LUCinLA_v2</title>
+    <title>Project background &#8212; LUCinLA_stac</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
       <img src="_static/cover.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">LUCinLA_v2</h1>
+      <h1 class="site-logo" id="site-title">LUCinLA_stac</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -115,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Project_overview
+  Overview
  </span>
 </p>
 <ul class="current nav bd-sidenav">
@@ -300,7 +300,7 @@ title="Fullscreen mode"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_v2/"
+        <a href="https://klwalker-sb.github.io/LUCinLA_stac/"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -317,7 +317,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_v2//issues/new?title=Issue%20on%20page%20%2FBackground.html&body=Your%20issue%20content%20here."
+        <a href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FBackground.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -409,14 +409,14 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="project-background">
 <h1>Project background<a class="headerlink" href="#project-background" title="Permalink to this headline">#</a></h1>
 <p>================================================================================================================================</p>
-<p>LUCinLA employs a framework developed by Jordan Graesser to synthesize large quantities of satellite imagery from multiple sensors to generate high-resolution (sub-10m) landcover maps focused on agriculture/vegetation.</p>
+<p>LUCinLA provides a framework and tools to synthesize large quantities of satellite imagery from multiple sensors to generate modereate- to high-resolution (~10m) landcover maps focused on agriculture/vegetation.
+Our projects involve large study areas but small units-of-analysis (field sizes are often &lt;2ha). We are often interested in changes across decades of annualy dynamic landcover classes such as crops (often with different rotations between and within years), thus requiring both a long and dense time-series stack.</p>
 <p>Current LUCinLA projects in Robert Heilmayr’s Conservation Economics Lab (CEL) include:</p>
 <ul class="simple">
 <li><p>A NASA-funded grant on property values and land-use change in Paraguay and Uruguay:  The supporting map, produced by the procedure outlined in this guide, will be a high-resolution maps of fields, identified to crop-type, across a large region spanning Paraguay and Uruguay (focusing on the Pampas, Chaco, and Alto Parana Atlantic Forest regions).</p></li>
-<li><p>Forest mapping in Chile, to assess affect of payments to private landowners on forest cover (and forest type in terms of natural vs. plantation) and ultimately carbon stocks.</p></li>
+<li><p>Forest mapping in Chile, to assess the effect of payments to private landowners on forest cover (and forest type in terms of natural vs. plantation) and ultimately carbon stocks.</p></li>
 </ul>
-<p>These projects involve large study areas but small units-of-analysis (field sizes are often &lt;2ha). The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over the entire study region at 10m resolution. A previous version of our processing protocol <a class="reference external" href="https://klwalker-sb.github.io/LUCinSA/intro.html">here</a> ingested imagery from Google Earth Engine. New methods using STAC-based sources and methods now allow for faster ingestion and processing. The SpatioTemporal Asset Catalog (STAC) provides a standardized method to search for and store satellite imagery (see <a class="reference external" href="https://stacspec.org/en/about/">this site</a> for much more information about STAC). We combine STAC inputs with array-based processing methods and a gridded structure to maximize parallel computations on a modest HPC computing environment. The workhorse for most of our processing is <a class="reference external" href="https://geowombat.readthedocs.io/en/latest/">Geowombat,</a> a powerful open-source toolkit for processing raster data at scale.</p>
-<p>On top of Geowombat, we have developed pipelines specific to our areas/periods of interest and data needs. Data is ingested, processed into clean data cubes, and then converted to high-resolution vegetation maps via spectral analysis and pattern recognition methods including boundary identification (segmentation) and sequential learning to identify seasonal cycles.</p>
+<p>The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over the entire study region at 10m resolution.</p>
 </section>
 
     <script type="text/x-thebe-config">

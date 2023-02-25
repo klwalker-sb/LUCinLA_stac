@@ -6,8 +6,8 @@ root: intro
 parts:
   - caption: Overview
     chapters:
-    - file: Project_overview
-    - file: Background
+    - file: General_framework
+    - file: Project_background
     - file: Processing_overview
   - caption: Computer setup
     chapters:

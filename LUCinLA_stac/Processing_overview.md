@@ -1,4 +1,4 @@
 (processing_overview)=
 # Processing overview
 ================================================================================================================================
-![](/Images/Processing.png)
+![alt](/Images/Processing.png)

@@ -5,7 +5,7 @@
 
 #######################################################################################
 # Book settings
-title                       : LUCinLA_v2  # The title of the book. Will be placed in the left navbar.
+title                       : LUCinLA_stac  # The title of the book. Will be placed in the left navbar.
 author                      : Kendra Walker  # The author of the book
 copyright                   : "2023"  # Copyright year to be placed in the footer
 logo                        : Images/cover.png
@@ -26,7 +26,7 @@ bibtex_bibfiles:
 
 # Information about where the book exists on the web
 repository:
-  url: https://klwalker-sb.github.io/LUCinLA_v2/  # Online location of your book
+  url: https://klwalker-sb.github.io/LUCinLA_stac/  # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book

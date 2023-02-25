@@ -4,8 +4,9 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Project_overview
-    chapters: 
+  - caption: Overview
+    chapters:
+    - file: Project_overview
     - file: Background
     - file: Processing_overview
   - caption: Computer setup

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Project background &#8212; LUCinLA_stac</title>
+    <title>Overview &#8212; LUCinLA_stac</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Processing overview" href="Processing_overview.html" />
-    <link rel="prev" title="Land-Use Change in Latin America (LUCinLA) Computing Guide" href="intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -118,9 +116,9 @@ const thebe_selector_output = ".output, .cell_output"
   Overview
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Background.html">
    Project background
   </a>
  </li>
@@ -317,7 +315,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FBackground.html&body=Your%20issue%20content%20here."
+        <a href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FOverview.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -345,7 +343,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="_sources/Background.md"
+        <a href="_sources/Overview.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -394,7 +392,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Project background</h1>
+                <h1>Overview</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -406,17 +404,25 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="project-background">
-<h1>Project background<a class="headerlink" href="#project-background" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">#</a></h1>
 <p>================================================================================================================================</p>
-<p>LUCinLA provides a framework and tools to synthesize large quantities of satellite imagery from multiple sensors to generate modereate- to high-resolution (~10m) landcover maps focused on agriculture/vegetation.
-Our projects involve large study areas but small units-of-analysis (field sizes are often &lt;2ha). We are often interested in changes across decades of annualy dynamic landcover classes such as crops (often with different rotations between and within years), thus requiring both a long and dense time-series stack.</p>
-<p>Current LUCinLA projects in Robert Heilmayr’s Conservation Economics Lab (CEL) include:</p>
+<p>The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over large study areas (country to multi-country regions) at 10m resolution.</p>
+<p>Characteristics of our processing include:</p>
 <ul class="simple">
-<li><p>A NASA-funded grant on property values and land-use change in Paraguay and Uruguay:  The supporting map, produced by the procedure outlined in this guide, will be a high-resolution maps of fields, identified to crop-type, across a large region spanning Paraguay and Uruguay (focusing on the Pampas, Chaco, and Alto Parana Atlantic Forest regions).</p></li>
-<li><p>Forest mapping in Chile, to assess the effect of payments to private landowners on forest cover (and forest type in terms of natural vs. plantation) and ultimately carbon stocks.</p></li>
+<li><p>Use of standardized SpatioTemporal Asset Catalog <strong>(STAC) methods</strong> to search for and store satellite imagery
+A previous version of our processing protocol <a class="reference external" href="https://klwalker-sb.github.io/LUCinSA/intro.html">here</a> ingested imagery from
+Google Earth Engine. New methods using STAC-based sources now allow for faster ingestion and processing as well as better
+standardization. (see <a class="reference external" href="https://stacspec.org/en/about/">this site</a> for much more information about STAC)</p></li>
+<li><p>array-based processing methods using <strong>Xarray and Dask</strong> along with physical gridding to maximize parallel computations on a modest
+HPC computing environment</p></li>
+<li><p>The opensource repo <strong><a class="reference external" href="https://geowombat.readthedocs.io/en/latest/">Geowombat,</a></strong> as our primary toolkit
+for processing raster data at scale (Read more about Geowombat <a class="reference external" href="https://geowombat.readthedocs.io/en/latest/">here</a>)</p></li>
+<li><p>Multi-sensor image standardization including BRDF correction and coregistration</p></li>
+<li><p>Time-series smoothing</p></li>
+<li><p>Optional object-based classification using segmentation output of a convolutional neural network trainied with time-series data</p></li>
+<li><p>User-friendly <strong>quality checks</strong> at various points in the processing</p></li>
 </ul>
-<p>The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over the entire study region at 10m resolution.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -446,20 +452,6 @@ Our projects involve large study areas but small units-of-analysis (field sizes 
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Land-Use Change in Latin America (LUCinLA) Computing Guide</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="Processing_overview.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Processing overview</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>

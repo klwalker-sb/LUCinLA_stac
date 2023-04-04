@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Connecting to the ERI cluster &#8212; LUCinLA_stac</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,62 +18,46 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setting up your remote environment" href="environment_setup.html" />
+    <link rel="next" title="Setting up a virtual environment" href="environment_setup.html" />
     <link rel="prev" title="Processing overview" href="Processing_overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
+    <meta name="docsearch:language" content="en" />
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -84,15 +66,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/cover.png" class="logo" alt="logo">
       
@@ -103,24 +80,28 @@ const thebe_selector_output = ".output, .cell_output"
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Land-Use Change in Latin America (LUCinLA) Computing Guide
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Land-Use Change in Latin America (LUCinLA) Computing Guide
+  </a>
+ </li>
+</ul>
+<p class="caption">
  <span class="caption-text">
   Overview
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Background.html">
+  <a class="reference internal" href="General_framework.html">
+   General framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project_background.html">
    Project background
   </a>
  </li>
@@ -130,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Computer setup
  </span>
@@ -143,7 +124,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="environment_setup.html">
-   Setting up your remote environment
+   Setting up a virtual environment
   </a>
  </li>
  <li class="toctree-l1">
@@ -152,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Processing
  </span>
@@ -184,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   New project configuration
  </span>
@@ -196,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Computing resources
  </span>
@@ -230,292 +211,195 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Connecting_to_cluster.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FConnecting_to_cluster.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#account-setup">
+   Account setup
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-ssh-keys">
+   generating ssh keys
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#connect-to-vpn">
+   Connect to VPN
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ssh-into-the-bellows-server-on-the-eri-cluster">
+   ssh into the bellows server on the ERI cluster
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
-    <div id="rtd-footer-container"></div>
 </div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FConnecting_to_cluster.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Connecting_to_cluster.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#account-setup">
-   Account setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connect-to-vpn">
-   Connect to VPN
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ssh-into-the-bellows-server-on-the-eri-cluster">
-   ssh into the bellows server on the ERI cluster
-  </a>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Connecting to the ERI cluster</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#account-setup">
-   Account setup
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#connect-to-vpn">
-   Connect to VPN
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ssh-into-the-bellows-server-on-the-eri-cluster">
-   ssh into the bellows server on the ERI cluster
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="connecting-to-the-eri-cluster">
-<h1>Connecting to the ERI cluster<a class="headerlink" href="#connecting-to-the-eri-cluster" title="Permalink to this headline">#</a></h1>
+  <!-- #region -->
+<div class="section" id="connecting-to-the-eri-cluster">
+<h1>Connecting to the ERI cluster<a class="headerlink" href="#connecting-to-the-eri-cluster" title="Permalink to this headline">¶</a></h1>
 <p>================================================================================================================================</p>
 <p>The Earth Research Institute hosts a series of “fat-node” linux systems to facilitate large-scale computing.
-To learn more about the computing resources at ERI, see the <a class="reference external" href="https://www.eri.ucsb.edu/it-resources">ERI IT Page</a>.
+To learn more about the computing resources at ERI, see the <a class="reference external" href="https://grit.ucsb.edu/">GRIT IT Page</a>.
 For a more comprehensive overview of cluster computing, see these <a class="reference external" href="http://www.hpc-carpentry.org/hpc-shell">hpc carpentry lessons</a>.</p>
-<section id="account-setup">
-<h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">#</a></h2>
-<p>To join this computing environment, you will first need to <strong>request an ERI account</strong> This can be done through Kendra Walker to make sure you are added to the appropriate spaces. Once you receive your credentials from ERI, make sure to store your password in a secure manner where you will remember it (you do not get to choose or change your password).</p>
-<p>You will also need a <strong>github account</strong> so that you can be invited to the necessary code repositories. Send your github username to Jordan Graesser so that he can invite you to the repositories (make sure to accept the invitations). If you do not already have a github account, you can create one here: <a class="reference external" href="https://github.com/">GitHub home</a>. If you use your UCSB email, you will then qualify for a free student account, which means you can invite more than three people to collaborate in any repositories you create. You can request <a class="reference external" href="https://education.github.com/">student benefits here</a>. Click on “Get Benefits” in the upper right corner, then click the blue “get student benefits” box. Fill out the form and press “continue”.</p>
-</section>
-<section id="connect-to-vpn">
-<h2>Connect to VPN<a class="headerlink" href="#connect-to-vpn" title="Permalink to this headline">#</a></h2>
+<div class="section" id="account-setup">
+<h2>Account setup<a class="headerlink" href="#account-setup" title="Permalink to this headline">¶</a></h2>
+<p>You will first need a <strong>github account</strong> so that you can be invited to the necessary code repositories. Send your github username to Jordan Graesser so that he can invite you to the repositories (make sure to accept the invitations). If you do not already have a github account, you can create one here: <a class="reference external" href="https://github.com/">GitHub home</a>. If you use your UCSB email, you will then qualify for a free student account, which means you can invite more than three people to collaborate in any repositories you create. You can request <a class="reference external" href="https://education.github.com/">student benefits here</a>. Click on “Get Benefits” in the upper right corner, then click the blue “get student benefits” box. Fill out the form and press “continue”.</p>
+<p>To join the ERI computing cluster, you will first need to <strong>request an ERI account</strong> This can be done through Kendra Walker to make sure you are added to the appropriate spaces. You will be directed to a cite to create your credentials.
+You will need to create a password and also an ssh key.</p>
+</div>
+<div class="section" id="generating-ssh-keys">
+<h2>generating ssh keys<a class="headerlink" href="#generating-ssh-keys" title="Permalink to this headline">¶</a></h2>
+<p><strong>To generate an ssh key:</strong>
+On a mac / linux system:
+* type <code class="docutils literal notranslate"><span class="pre">ssh-keygen</span> <span class="pre">-t</span> <span class="pre">ecdsa</span></code> in the terminal.
+* copy the contents of <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_ecdsa.pub</span></code> (This is your public key) into the appropriate box <a class="reference external" href="https://dc1.grit.ucsb.edu/?action=changesshkey">here</a>.
+* your private key can be found at <code class="docutils literal notranslate"><span class="pre">~/.ssh/id_ecdsa</span></code>. Do not share its contents with anyone.</p>
+<p>On Windows: You will need an interface software like PuTTY to connect to the cluster. See <span class="xref myst">here</span> for more on Putty.
+When you download PuTTY, you will also have the option of downloading PuTTYgen (if not automatically packaged). Open PuTTYgen and generate your key as bellow:</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>(<strong>To create an ssh key pair with PuTTYgen:</strong></p></th>
+<th class="text-align:center head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="alt" src="_images/Putty_keyGen1.jpg" /></p></td>
+<td class="text-align:center"><p><img alt="alt" src="_images/Putty_keyGen2.jpg" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p><strong>1)</strong> Select ECDSA as type and click <code class="docutils literal notranslate"><span class="pre">Generate</span></code></p></td>
+<td class="text-align:center"><p><strong>2)</strong> Create a Passphase and Save Private Key. Copy contents of box for public key and paste that [here].</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="connect-to-vpn">
+<h2>Connect to VPN<a class="headerlink" href="#connect-to-vpn" title="Permalink to this headline">¶</a></h2>
 <p>If you are not on campus, you will need to connect to the UCSB network through a VPN (Pulse Secure).
 If you are not already set up with a VPN, see <a class="reference external" href="https://www.it.ucsb.edu/pulse-secure-campus-vpn/get-connected-vpn">ucsb’s it page for vpn setup</a>.</p>
-</section>
-<section id="ssh-into-the-bellows-server-on-the-eri-cluster">
-<h2>ssh into the bellows server on the ERI cluster<a class="headerlink" href="#ssh-into-the-bellows-server-on-the-eri-cluster" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="ssh-into-the-bellows-server-on-the-eri-cluster">
+<h2>ssh into the bellows server on the ERI cluster<a class="headerlink" href="#ssh-into-the-bellows-server-on-the-eri-cluster" title="Permalink to this headline">¶</a></h2>
 <p>The CEL project space resides on the bellows server, which is first reached through a general ERI gateway.<br />
 This means you will need to ssh twice into the system to reach our space:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">eri</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">grit</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span>  <span class="c1">##(pre 2023 account holders use ssh.eri.ucsb.edu)</span>
 <span class="c1">#enter password at prompt</span>
 <span class="n">ssh</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span><span class="nd">@bellows</span><span class="o">.</span><span class="n">eri</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span>
 <span class="c1">#enter password at prompt</span>
 </pre></div>
 </div>
-<p><strong>If using windows,</strong> it is easiest to connect to the cluster via an ssh (Secure SHell) client such as <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a>, <a class="reference external" href="http://sourceforge.net/projects/xming/">Xming</a>, or <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>. A Putty conneciton simulates the remote terminal view, and thus requires fully command-line based interfacing. MobaXterm, on the hand, offers ssh/ftp hybrid that allows for both command-line and graphical interfacing; this may be preferable to those who are more confortable manipulating files visually. Note, <a class="reference external" href="https://wiki.x2go.org/doku.php/download:start">X2go</a> is also an option that provides a graphics viewer. See the CSC instructions <a class="reference external" href="http://csc.cnsi.ucsb.edu/docs/using-x2go-gui-login-knot-or-pod">here</a> (you will need to modify these for the ERI login).</p>
+<p><strong>If using windows,</strong> it is easiest to connect to the cluster via an ssh (Secure SHell) client such as (Putty)=<a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a>, <a class="reference external" href="http://sourceforge.net/projects/xming/">Xming</a>, or <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>. A Putty conneciton simulates the remote terminal view, and thus requires fully command-line based interfacing. MobaXterm, on the hand, offers ssh/ftp hybrid that allows for both command-line and graphical interfacing; this may be preferable to those who are more confortable manipulating files visually. Note, <a class="reference external" href="https://wiki.x2go.org/doku.php/download:start">X2go</a> is also an option that provides a graphics viewer. See the CSC instructions <a class="reference external" href="http://csc.cnsi.ucsb.edu/docs/using-x2go-gui-login-knot-or-pod">here</a> (you will need to modify these for the ERI login).</p>
 <table class="colwidths-auto table">
 <thead>
-<tr class="row-odd"><th class="text-align:center head"><p><strong>To configure Putty:</strong></p></th>
+<tr class="row-odd"><th class="text-align:center head"><p>(<strong>To configure Putty:</strong></p></th>
 <th class="text-align:center head"><p></p></th>
 <th class="text-align:center head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><img alt="" src="Images/Putty1.jpg" /></p></td>
-<td class="text-align:center"><p><img alt="" src="Images/Putty2.jpg" /></p></td>
-<td class="text-align:center"><p><img alt="" src="Images/Putty3.jpg" /></p></td>
+<tr class="row-even"><td class="text-align:center"><p><img alt="alt" src="_images/Putty1.jpg" /></p></td>
+<td class="text-align:center"><p><img alt="alt" src="_images/Putty2.jpg" /></p></td>
+<td class="text-align:center"><p><img alt="alt" src="_images/Putty3.jpg" /></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p><strong>1)</strong> Host name=ssh1. Give configuration a name and save</p></td>
 <td class="text-align:center"><p><strong>2)</strong> Click “SSH” on left. Remote Command=ssh2</p></td>
 <td class="text-align:center"><p><strong>3)</strong> Click “Session” on left, “Save”, then “Open”</p></td>
 </tr>
-<tr class="row-even"><td class="text-align:center"><p>You will be prompted for your password twice.</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:center"><p>Next time you log in via Putty, just load your configuration by its name and “Open”.</p></td>
-<td class="text-align:center"><p></p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
 </tbody>
 </table>
+<p>You will be prompted for your password twice.
+Next time you log in via Putty, just load your configuration by its name and “Open”.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p><strong>To configure MobaXterm:</strong></p></th>
@@ -523,22 +407,19 @@ This means you will need to ssh twice into the system to reach our space:</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><img alt="" src="Images/Moba1.png" /></p></td>
-<td class="text-align:center"><p><img alt="" src="Images/Moba2.png" /></p></td>
+<tr class="row-even"><td class="text-align:center"><p><img alt="alt" src="_images/Moba1.png" /></p></td>
+<td class="text-align:center"><p><img alt="alt" src="_images/Moba2.png" /></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p>Click new session icon in top left corner</p></td>
-<td class="text-align:center"><p><strong>1)</strong> Click “SSH” in top left corner. <strong>2)</strong> In “Remote Host” enter [username]&#64;ssh.eri.ucsb.edu <strong>3)</strong> Open “Advanced SSH Settings” <strong>4)</strong> In “Execute Command” enter ssh [username]&#64;bellows.eri.ucsb.edu <strong>5)</strong> Click Ok.</p></td>
-</tr>
-<tr class="row-even"><td class="text-align:center"><p>You will be prompted to enter your password twice.</p></td>
-<td class="text-align:center"><p></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:center"><p>Next time you log in via MobaXterm, just double click your session name.</p></td>
-<td class="text-align:center"><p></p></td>
+<td class="text-align:center"><p><strong>1)</strong> Click “SSH” in top left corner. <strong>2)</strong> In “Remote Host” enter <username>&#64;ssh.eri.ucsb.edu <strong>3)</strong> Open “Advanced SSH Settings” <strong>4)</strong> In “Execute Command” enter ssh <username>&#64;bellows.eri.ucsb.edu <strong>5)</strong> Click Ok.</p></td>
 </tr>
 </tbody>
 </table>
-</section>
-</section>
+<p>You will be prompted to enter your password twice.
+Next time you log in via MobaXterm, just double click your session name.</p>
+<!-- #endregion -->
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -552,7 +433,7 @@ This means you will need to ssh twice into the system to reach our space:</p>
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -562,48 +443,34 @@ This means you will need to ssh twice into the system to reach our space:</p>
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Processing_overview.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Processing overview</p>
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Processing_overview.html" title="previous page">Processing overview</a>
+    <a class='right-next' id="next-link" href="environment_setup.html" title="next page">Setting up a virtual environment</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="environment_setup.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Setting up your remote environment</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
+        
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Kendra Walker<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kendra Walker<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
     </div>
-    
-</div>
+  </footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
+  
   </body>
 </html>

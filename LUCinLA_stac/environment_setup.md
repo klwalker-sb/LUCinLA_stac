@@ -1,20 +1,37 @@
+---
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .md
+      format_name: pandoc
+      format_version: 2.12
+      jupytext_version: 1.11.4
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+  nbformat: 4
+  nbformat_minor: 5
+---
+
+::: {.cell .markdown}
 (Environment)=
-# Setting up your remote environment
+\# Setting up your remote environment
 ======================================================================
 
 ## The general cluster environment
 
 As with most cluster computers, the ERI system uses a UNIX-based shell called "BASH". This is a very simplified system that interprets code via command-line interface. To interact with the system, you need to use Shell scripting, which is based on UNIX/Linux command language. For a quick review of basic UNIX commands, [see here](Unix). For a more comprehensive coverage of working with BASH scripting, see these hpc-carpentry lessons on [navigating in bash](http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html) and [file manipulation in bash](http://www.hpc-carpentry.org/hpc-shell/03-files/index.html).
 
-The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command `sbatch`. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter). 
-:::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
+The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command `sbatch`. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter).
+:::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
 :::
 
 ## Setting up a virtual environment
 
-Virtual environments allow us to customize our coding toolkit and preferences for each project within its own container so that it does not risk interfering with those of other projects or users. Within a virtual environment, you can define the version of Python that will be used, install packages specific to the project, and customize settings to facilitate your interactions, including aliases, which are shortcuts to replace frequently used or cumbersome commands. 
+Virtual environments allow us to customize our coding toolkit and preferences for each project within its own container so that it does not risk interfering with those of other projects or users. Within a virtual environment, you can define the version of Python that will be used, install packages specific to the project, and customize settings to facilitate your interactions, including aliases, which are shortcuts to replace frequently used or cumbersome commands.
 
-For this project, we need Python 3.8 and the system we are using only has Python 3.7 installed. It is common for an HPC system to not have the exact version of Python desired for a project. There are various environmental managers that can be installed to solve this problem. [see here](managers) for a discussion of various environmental managers (Anaconda, Miniconda, Pyenv, Mamba) and the advantages and disadvantages of each. For the specific environment we are going to set up on this specific system, we have done the hard work of testing out all options for you and recommend using Miniconda. 
+For this project, we need Python 3.8 and the system we are using only has Python 3.7 installed. It is common for an HPC system to not have the exact version of Python desired for a project. There are various environmental managers that can be installed to solve this problem. [see here](managers) for a discussion of various environmental managers (Anaconda, Miniconda, Pyenv, Mamba) and the advantages and disadvantages of each. For the specific environment we are going to set up on this specific system, we have done the hard work of testing out all options for you and recommend using Miniconda.
 
 After connecting to bellows via ssh for the first time, you will need to set up your environment.
 :::{admonition}Make sure you are in your home directory when creating/changing environment settings!
@@ -27,18 +44,18 @@ For this project, we will us Miniconda to create a virtual environment in Python
 
 ### To install Miniconda:
 
-On your own computer, go to https://docs.conda.io/en/latest/miniconda.html and download `Miniconda3 Linux 64-bit` 
-Transfer this file into your home directory ([see here](Transfering) for ways to transfer files onto the cluster) 
+On your own computer, go to <https://docs.conda.io/en/latest/miniconda.html> and download `Miniconda3 Linux 64-bit`
+Transfer this file into your home directory ([see here](Transfering) for ways to transfer files onto the cluster)
 In your home dierctory on the cluster, type: `bash Miniconda3-py38_4.12.0-Linux-x86_64.sh`
 
-Conda's base environment can be activated on startup by setting the activate_base parameter to true: 
-    `conda config --set auto_activate_base true` (this may be the default)
+Conda's base environment can be activated on startup by setting the activate_base parameter to true:
+`conda config --set auto_activate_base true` (this may be the default)
 If you prefer to not have it do this (i.e, if you use other environment managers as well), you can set this to false:
-    `conda config --set auto_activate_base false`
-    you will then need to type `conda activate` each time before you activate your specific environment
+`conda config --set auto_activate_base false`
+you will then need to type `conda activate` each time before you activate your specific environment
 
 ### To create your conda environment with specific version of python:
-    
+
     conda create --name venv.lucinsa38 python=3.8
 
 ***Activate your virtual environment:*** every time you run code that isn't BASH/SLURM from within the cluster:
@@ -187,3 +204,4 @@ But better to make the adjustment permanant by adding a`.bash_profile` to your h
 
     #export USERNAME BASH_ENV PATH
     export TMOUT=0
+:::

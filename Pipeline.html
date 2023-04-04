@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pipeline process &#8212; LUCinLA_stac</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,62 +18,46 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Using Jupyter Notebook to interact with data on cluster" href="Jupyter_Notebook.html" />
     <link rel="prev" title="Post-download processing" href="Pre_Pipeline.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
+    <meta name="docsearch:language" content="en" />
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -84,15 +66,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/cover.png" class="logo" alt="logo">
       
@@ -103,24 +80,28 @@ const thebe_selector_output = ".output, .cell_output"
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Land-Use Change in Latin America (LUCinLA) Computing Guide
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Land-Use Change in Latin America (LUCinLA) Computing Guide
+  </a>
+ </li>
+</ul>
+<p class="caption">
  <span class="caption-text">
   Overview
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Background.html">
+  <a class="reference internal" href="General_framework.html">
+   General framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project_background.html">
    Project background
   </a>
  </li>
@@ -130,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Computer setup
  </span>
@@ -143,7 +124,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="environment_setup.html">
-   Setting up your remote environment
+   Setting up a virtual environment
   </a>
  </li>
  <li class="toctree-l1">
@@ -152,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Processing
  </span>
@@ -184,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   New project configuration
  </span>
@@ -196,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Computing resources
  </span>
@@ -230,245 +211,123 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Pipeline.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FPipeline.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choices-for-vegetation-indices">
+   Choices for vegetation indices:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#run-the-process">
+   Run the process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#get-grid-pipeline-status">
+   Get grid pipeline status
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
-    <div id="rtd-footer-container"></div>
 </div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FPipeline.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/Pipeline.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#choices-for-vegetation-indices">
-   Choices for vegetation indices:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-process">
-   Run the process
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-grid-pipeline-status">
-   Get grid pipeline status
-  </a>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Pipeline process</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#choices-for-vegetation-indices">
-   Choices for vegetation indices:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#run-the-process">
-   Run the process
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#get-grid-pipeline-status">
-   Get grid pipeline status
-  </a>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="pipeline-process">
-<span id="pipeline"></span><h1>Pipeline process<a class="headerlink" href="#pipeline-process" title="Permalink to this headline">#</a></h1>
+  <div class="section" id="pipeline-process">
+<span id="pipeline"></span><h1>Pipeline process<a class="headerlink" href="#pipeline-process" title="Permalink to this headline">¶</a></h1>
 <p>======================================================================</p>
 <p>Jordan Graesser’s <code class="docutils literal notranslate"><span class="pre">pytuyau</span></code> script drives the pipeline process, <a class="reference external" href="https://github.com/jgrss/pytuyau#readme">see here</a> for more information on the script process.</p>
-<div class="highlight-{note}The notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The CEL drive space on the cluster is setup such that all products through step #1 of Pipeline are saved on the sandbox space (<code class="docutils literal notranslate"><span class="pre">raid-cel/sandbox/sandbox-cel</span></code> or just <code class="docutils literal notranslate"><span class="pre">/home/sandbox-cel</span></code>). These files are not backed up for more than 10 days (if you lose important files, you can probably get them recovered within 10 days, but not after). Products from step#5 of Pipeline and above are saved to the downspout space (<code class="docutils literal notranslate"><span class="pre">raid-cel/r/downspout-cel</span></code> or just <code class="docutils literal notranslate"><span class="pre">/home/downspout-cel</span></code>), which has a separate long term backup.</p>
 </div>
 <p>Pipeline template (with line numbers added for reference below):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1-   #!/bin/bash -l
@@ -657,16 +516,17 @@ title="Print to PDF"
 <li><p><strong>Grid info:</strong> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--array=</span></code> (line 10 here). This is where you enter the gridcells you are processing.<br />
 You can enter a range (e.g. 898-908), But be mindful that you are not hogging all the computer bandwidth.</p></li>
 </ul>
-<div class="highlight-{admonition}You notranslate"><div class="highlight"><pre><span></span>For example, 898-908%4 would process 4 cells at a time. When the first 4 finish, the next will start.
-</pre></div>
+<div class="admonition-you-can-limit-the-number-of-cells-that-are-processed-at-one-time-by-adding-n admonition">
+<p class="admonition-title">You can limit the number of cells that are processed at one time by adding %n</p>
+<p>For example, 898-908%4 would process 4 cells at a time. When the first 4 finish, the next will start.</p>
 </div>
 <ul class="simple">
 <li><p><strong>Step:</strong> (line 36 here). Run script for one step, then change to other.
 For initial processing, should be ‘preprocess’ or ‘reconstruct’</p></li>
 <li><p><strong>Rec_VI</strong> (If running <strong>Reconstruct</strong>), set vegetation index here (see options in next section). To get multiple vegetation indices for a cell, run reconstruct multiple times.</p></li>
 </ul>
-<section id="choices-for-vegetation-indices">
-<h2>Choices for vegetation indices:<a class="headerlink" href="#choices-for-vegetation-indices" title="Permalink to this headline">#</a></h2>
+<div class="section" id="choices-for-vegetation-indices">
+<h2>Choices for vegetation indices:<a class="headerlink" href="#choices-for-vegetation-indices" title="Permalink to this headline">¶</a></h2>
 <p>Current options for vegetation indices are:</p>
 <ul class="simple">
 <li><p>avi = ?? (removed?)</p></li>
@@ -692,42 +552,43 @@ For initial processing, should be ‘preprocess’ or ‘reconstruct’</p></li>
 </li>
 <li><p>wi = 0 if (red + SWIR1) &gt; 0.5, else 1.0 - ((red + SWIR1) / 0.5))</p></li>
 </ul>
-<div class="highlight-{note}To notranslate"><div class="highlight"><pre><span></span>ie, to add NDVI:
-   in `check_reconstruction.py` around line 169, add:
-   ```
-   elif params[&#39;reconstruct&#39;][&#39;vi&#39;] == &#39;ndvi&#39;:
-       band_names = [&#39;nir&#39;, &#39;red&#39;] 
-   ```
-   in `vis.py` around line 6, add name or your index to the list:
-   ```
-   AVAIL_VIS = [&#39;avi&#39;, &#39;evi2&#39;, &#39;gcvi&#39;, &#39;kndvi&#39;, &#39;nbr&#39;, &#39;wi&#39;,&#39;ndvi&#39;]
-   ```
-   in `vis.py` around line 27 add:
-   ```
-   elif params[&#39;reconstruct&#39;][&#39;vi&#39;] == &#39;ndvi&#39;:
-       vi_data = data_src.gw.ndvi(nodata=0, scale_factor=1)
-   ```
-   in `vis.py` under other index methods (around line 75) add:
-   ```
-   def ndvi(self, data):
-        return self._norm(data[1], data[0])
-   ```
-   (note that `_norm` is defined above that as `(b2 - b1) / ((b2 + b1) + 1e-9)` there are currently another option of  
-   ` _scale_min_max: ((((max_out - min_out) * (xv - min_in)) / (max_in - min_in)) + min_out)\ .clip(min_out, max_out)`, or can 
-   create a different equation without self argument (use `@staticmethod` on line above index definition)
-   
-   After modifying script, reinstall:
-   ```
-   cd ~
-   source .nasaenv/bin/activate
-   cd tmp/pytuyau
-   python setup.py build &amp;&amp; pip install .
-   ```
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To add a new vegetation index to the code, edits need to be made to both the <code class="docutils literal notranslate"><span class="pre">vis.py</span></code> and <code class="docutils literal notranslate"><span class="pre">check_reconstruction.py</span></code> scripts in <code class="docutils literal notranslate"><span class="pre">~/tmp/pytuyau/pytuyau/steps</span></code>.
+ie, to add NDVI:
+in <code class="docutils literal notranslate"><span class="pre">check_reconstruction.py</span></code> around line 169, add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;reconstruct&#39;</span><span class="p">][</span><span class="s1">&#39;vi&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">:</span>
+    <span class="n">band_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nir&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">]</span> 
 </pre></div>
 </div>
-</section>
-<section id="run-the-process">
-<h2>Run the process<a class="headerlink" href="#run-the-process" title="Permalink to this headline">#</a></h2>
+<p>in <code class="docutils literal notranslate"><span class="pre">vis.py</span></code> around line 6, add name or your index to the list:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AVAIL_VIS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;avi&#39;</span><span class="p">,</span> <span class="s1">&#39;evi2&#39;</span><span class="p">,</span> <span class="s1">&#39;gcvi&#39;</span><span class="p">,</span> <span class="s1">&#39;kndvi&#39;</span><span class="p">,</span> <span class="s1">&#39;nbr&#39;</span><span class="p">,</span> <span class="s1">&#39;wi&#39;</span><span class="p">,</span><span class="s1">&#39;ndvi&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>in <code class="docutils literal notranslate"><span class="pre">vis.py</span></code> around line 27 add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">elif</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;reconstruct&#39;</span><span class="p">][</span><span class="s1">&#39;vi&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ndvi&#39;</span><span class="p">:</span>
+    <span class="n">vi_data</span> <span class="o">=</span> <span class="n">data_src</span><span class="o">.</span><span class="n">gw</span><span class="o">.</span><span class="n">ndvi</span><span class="p">(</span><span class="n">nodata</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale_factor</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>in <code class="docutils literal notranslate"><span class="pre">vis.py</span></code> under other index methods (around line 75) add:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">ndvi</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_norm</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>(note that <code class="docutils literal notranslate"><span class="pre">_norm</span></code> is defined above that as <code class="docutils literal notranslate"><span class="pre">(b2</span> <span class="pre">-</span> <span class="pre">b1)</span> <span class="pre">/</span> <span class="pre">((b2</span> <span class="pre">+</span> <span class="pre">b1)</span> <span class="pre">+</span> <span class="pre">1e-9)</span></code> there are currently another option of<br />
+<code class="docutils literal notranslate"> <span class="pre">_scale_min_max:</span> <span class="pre">((((max_out</span> <span class="pre">-</span> <span class="pre">min_out)</span> <span class="pre">*</span> <span class="pre">(xv</span> <span class="pre">-</span> <span class="pre">min_in))</span> <span class="pre">/</span> <span class="pre">(max_in</span> <span class="pre">-</span> <span class="pre">min_in))</span> <span class="pre">+</span> <span class="pre">min_out)\</span> <span class="pre">.clip(min_out,</span> <span class="pre">max_out)</span></code>, or can
+create a different equation without self argument (use <code class="docutils literal notranslate"><span class="pre">&#64;staticmethod</span></code> on line above index definition)</p>
+<p>After modifying script, reinstall:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~</span>
+<span class="n">source</span> <span class="o">.</span><span class="n">nasaenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">cd</span> <span class="n">tmp</span><span class="o">/</span><span class="n">pytuyau</span>
+<span class="n">python</span> <span class="n">setup</span><span class="o">.</span><span class="n">py</span> <span class="n">build</span> <span class="o">&amp;&amp;</span> <span class="n">pip</span> <span class="n">install</span> <span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="run-the-process">
+<h2>Run the process<a class="headerlink" href="#run-the-process" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#if not already in bash directory, navigate there:
 cd ~/code/bash/
 #submit the command:
@@ -741,9 +602,9 @@ sbatch pipeline_eri.sh
 * Classify
 * Assess
 * Clean</p>
-</section>
-<section id="get-grid-pipeline-status">
-<h2>Get grid pipeline status<a class="headerlink" href="#get-grid-pipeline-status" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="get-grid-pipeline-status">
+<h2>Get grid pipeline status<a class="headerlink" href="#get-grid-pipeline-status" title="Permalink to this headline">¶</a></h2>
 <p>To generate the Pipeline Progress figure:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#Activate virtual environment:
 source .nasaenv/bin/activate
@@ -759,8 +620,8 @@ Download file to view on local computer:</p>
 </pre></div>
 </div>
 <p>Alternatively, you can view the file though an FPT such as WinSCP.</p>
-</section>
-</section>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -774,7 +635,7 @@ Download file to view on local computer:</p>
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -784,48 +645,34 @@ Download file to view on local computer:</p>
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Pre_Pipeline.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Post-download processing</p>
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Pre_Pipeline.html" title="previous page">Post-download processing</a>
+    <a class='right-next' id="next-link" href="Jupyter_Notebook.html" title="next page">Using Jupyter Notebook to interact with data on cluster</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="Jupyter_Notebook.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using Jupyter Notebook to interact with data on cluster</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
+        
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Kendra Walker<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kendra Walker<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
     </div>
-    
-</div>
+  </footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
+  
   </body>
 </html>

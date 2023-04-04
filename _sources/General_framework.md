@@ -6,18 +6,14 @@ The framework outlined in this guide enables large quantities of satellite data 
 
 Characteristics of our processing include:
 
-* Use of standardized SpatioTemporal Asset Catalog **(STAC) methods** to search for and store satellite imagery
-        A previous version of our processing protocol [here](https://klwalker-sb.github.io/LUCinSA/intro.html) ingested imagery from 
-        Google Earth Engine. New methods using STAC-based sources now allow for faster ingestion and processing as well as better 
-        standardization. (see [this site](https://stacspec.org/en/about/) for much more information about STAC)
+* Use of standardized SpatioTemporal Asset Catalog **(STAC) methods** to search for and store satellite imagery (with alternative option [here](https://klwalker-sb.github.io/LUCinSA/intro.html) to ingest imagery from Google Earth Engine.) New methods using STAC-based sources now allow for faster ingestion and processing as well as better standardization. (see [this site](https://stacspec.org/en/about/) for much more information about STAC)
 
-* array-based processing methods using **Xarray and Dask** along with physical gridding to maximize parallel computations on a modest 
-        HPC computing environment
+* array-based processing methods using **rasterio, Xarray, and Dask** along with physical gridding to maximize parallel computations on a modest HPC computing environment
         
-* The opensource repo **[Geowombat,](https://geowombat.readthedocs.io/en/latest/)** as our primary toolkit 
+* The opensource repo **[Geowombat](https://geowombat.readthedocs.io/en/latest/)** as our primary toolkit 
     for processing raster data at scale (Read more about Geowombat [here](https://geowombat.readthedocs.io/en/latest/))
     
-* Multi-sensor image standardization including BRDF correction and coregistration
+* Multi-sensor image standardization including BRDF correction and coregistration in following with the methods used to produce the harmonized Landsat and Sentinel data set (Claverie et al 2018)
 
 * Time-series smoothing
 

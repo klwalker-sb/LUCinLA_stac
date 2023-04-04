@@ -1,7 +1,7 @@
 (Unix)=
 # command line
 ================================================================================================================================
-Here are some basic Unix commands used in Bash. For more detailed instructions on working with bash-based systems, see the hpc-carpentry lessons for [navigating in bash](http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html) and [file manipulation in bash](http://www.hpc-carpentry.org/hpc-shell/03-files/index.html).
+Here are some basic Unix commands used in Bash. For more detailed instructions on working with bash-based systems, see the hpc-carpentry lessons for [navigating in bash](http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html) and [file manipulation in bash](http://www.hpc-carpentry.org/hpc-shell/03-files/index.html). See [here](BashScripting) for info on writing scripts in Bash.
 
 ## Basic Unix commands:
 

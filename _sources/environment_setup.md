@@ -17,14 +17,16 @@ jupyter:
 ::: {.cell .markdown}
 (Environment)=
 
-# \# Setting up your remote environment {#-setting-up-your-remote-environment}
+# Setting up your remote environment
 
 ## The general cluster environment
 
 As with most cluster computers, the ERI system uses a UNIX-based shell called "BASH". This is a very simplified system that interprets code via command-line interface. To interact with the system, you need to use Shell scripting, which is based on UNIX/Linux command language. For a quick review of basic UNIX commands, [see here](Unix). For a more comprehensive coverage of working with BASH scripting, see these hpc-carpentry lessons on [navigating in bash](http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html) and [file manipulation in bash](http://www.hpc-carpentry.org/hpc-shell/03-files/index.html).
 
 The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command `sbatch`. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter).
+
 :::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
+:::
 :::
 
 ::: {.cell .markdown}
@@ -40,13 +42,14 @@ You should see your username \@bellows in the command prompt.
 (there may be numbers in front; this is fine for now and can be taken care of later [here](profileIssue)).\
 If you are unsure whether you are in your home directory, type `cd ~`
 :::
+:::
 
 ::: {.cell .markdown}
 For this project, we will us Miniconda to create a virtual environment in Python 3.8 called venv.lucinsa38
 
 ### To install Miniconda:
 
-On your own computer, go to <https://docs.conda.io/en/latest/miniconda.html> and download `Miniconda3 Linux 64-bit`
+On your own computer, go [here](https://docs.conda.io/en/latest/miniconda.html) and download `Miniconda3 Linux 64-bit`
 Transfer this file into your home directory ([see here](Transfering) for ways to transfer files onto the cluster)
 In your home dierctory on the cluster, type: `bash Miniconda3-py38_4.12.0-Linux-x86_64.sh`
 
@@ -76,77 +79,79 @@ Or in git for Windows enter: `git config --global credential.helper wincred`
 
 **While in your home directory,** enter the following commands to setup your Python environment:
 
-    # Activate the virtual environment
-    conda activate venv.lucinsa38_dl
+        # Activate the virtual environment
+        conda activate venv.lucinsa38_dl
 
-    #Add conda-forge to your channels and make it a priority (this is key for this environment):
-    (venv.lucinsa38_dl)...$ conda config --env --add channels conda-forge
-    (venv.lucinsa38_dl)...$ conda config --env --set channel_priority strict
+        #Add conda-forge to your channels and make it a priority (this is key for this environment):
+        (venv.lucinsa38_dl) conda config --env --add channels conda-forge
+        (venv.lucinsa38_dl) conda config --env --set channel_priority strict
 
-    #  install pre-reqs for geowombat (our main processing code)
-    (venv.lucinsa38_dl) conda install cython numpy=1.23.1 rasterio=1.3.0
-    # install numpy AFTER installing gdal and make sure that both packages do not get altered
-     (venv.lucinsa38_dl) conda install gdal 3.5.0
+        #  install pre-reqs for geowombat (our main processing code)
+        (venv.lucinsa38_dl) conda install cython numpy=1.23.1 rasterio=1.3.0
+        # install numpy AFTER installing gdal and make sure that both packages do not get altered
+         (venv.lucinsa38_dl) conda install gdal 3.5.0
 
-    # install the main geowombat via Conda to let it solve the bulk of the environment (have patience, this can take up to 1hr)
-    (venv.lucinsa38_dl) conda install geowombat gdal=3.5.0 numpy=1.23.1 rasterio=1.3.0
+        # install the main geowombat via Conda to let it solve the bulk of the environment (have patience, this can take up to 1hr)
+        (venv.lucinsa38_dl) conda install geowombat gdal=3.5.0 numpy=1.23.1 rasterio=1.3.0
 
-    # Install eostac from github (this will also install the latest version of geowombat)
-    (venv.lucinsa38_dl) mkdir repos
-    (venv.lucinsa38_dl) cd repos
-    (venv.lucinsa38_dl) git clone git clone https://github.com/jgrss/eostac
-    (venv.lucinsa38_dl) cd eostac/
-    (venv.lucinsa38_dl) python setup.py build && pip install . gdal==3.5.0 numpy==1.23.1 rasterio==1.3.0
+        # Install eostac from github (this will also install the latest version of geowombat)
+        (venv.lucinsa38_dl) mkdir repos
+        (venv.lucinsa38_dl) cd repos
+        (venv.lucinsa38_dl) git clone git clone https://github.com/jgrss/eostac
+        (venv.lucinsa38_dl) cd eostac/
+        (venv.lucinsa38_dl) python setup.py build && pip install . gdal==3.5.0 numpy==1.23.1 rasterio==1.3.0
 
-    # Install other packages needed in new stac code:
-    (venv.lucinsa38_dl) conda install seaborn, h5netcdf
+        # Install other packages needed in new stac code:
+        (venv.lucinsa38_dl) conda install seaborn, h5netcdf
 
 **to uninstall and reinstall a package from a github repo:** (i.e. if changes are made to the package that need to be incorporated)
 
-    conda activate venv.lucinsa38_dl
-    (venv.lucinsa38_dl) pip uninstall <package> -y
-    (venv.lucinsa38_dl) cd ~/repos/<package directory>
-    #(look up the name of the main branch in the GitHub repo). Here it is 'main', but it could be 'master'/'dev'/etc. 
-    (venv.lucinsa38_dl) git pull origin main
-    #Install new repo. If nothing else has changed it is safest to do this with --no-deps flag to avoid corrupting environment
-    (venv.lucinsa38_dl) python setup.py build && pip install --no-deps .
-    #If the updated repo has new dependents that you need, install them individually (trying conda before pip), or if needed use:
-    (venv.lucinsa38_dl) python setup.py build && pip install . gdal==3.5.2 numpy==1.23.1 rasterio==1.3.0
-    (venv.lucinsa38_dl) conda deactivate
+        conda activate venv.lucinsa38_dl
+        (venv.lucinsa38_dl) pip uninstall <package> -y
+        (venv.lucinsa38_dl) cd ~/repos/<package directory>
+        #(look up the name of the main branch in the GitHub repo). Here it is 'main', but it could be 'master'/'dev'/etc. 
+        (venv.lucinsa38_dl) git pull origin main
+        #Install new repo. If nothing else has changed it is safest to do this with --no-deps flag to avoid corrupting environment
+        (venv.lucinsa38_dl) python setup.py build && pip install --no-deps .
+        #If the updated repo has new dependents that you need, install them individually (trying conda before pip), or if needed use:
+        (venv.lucinsa38_dl) python setup.py build && pip install . gdal==3.5.2 numpy==1.23.1 rasterio==1.3.0
+        (venv.lucinsa38_dl) conda deactivate
 
 (configVim)=
-\#\#\# Configure vim (optional)
+
+### Configure vim (optional)
+
 Text documents are edited in vim, which is not the most intuitive tool to those unfamiliar with it. Here you can find commands and tips for [working with vim](vimCommands). You can improve your experience with vim by creating a personalized
 `.vimrc` file in your HOME directory ((output -\> \~/.vimrc) to configure vim.
 
 Here is an example of a `.vimrc` doc (you can clone this from /jad-cel/cel-sandbox/templates/home_vimrc.sh):
 
-    # Add line numbers
-    set number
+        # Add line numbers
+        set number
 
-    au BufNewFile,BufRead *.py
-        \ set tabstop=4 |
-        \ set softtabstop=4 |
-        \ set shiftwidth=4 |
-        \ set textwidth=79 |
-        \ set expandtab |
-        \ set autoindent |
-        \ set fileformat=unix
-    	
-    highlight BadWhitespace ctermbg=red guibg=darkred
-    au BufRead,BufNewFile *.py,*.pyw,*.pyx,*.pxd,*.c,*.h match BadWhitespace /\s\+$/
+        au BufNewFile,BufRead *.py
+            \ set tabstop=4 |
+            \ set softtabstop=4 |
+            \ set shiftwidth=4 |
+            \ set textwidth=79 |
+            \ set expandtab |
+            \ set autoindent |
+            \ set fileformat=unix
+        	
+        highlight BadWhitespace ctermbg=red guibg=darkred
+        au BufRead,BufNewFile *.py,*.pyw,*.pyx,*.pxd,*.c,*.h match BadWhitespace /\s\+&dollar;/
 
-    set encoding=utf-8
+        set encoding=utf-8
 
-    let python_highlight_all=1
-    syntax on
+        let python_highlight_all=1
+        syntax on
 
-    set cursorline
+        set cursorline
 
-    set foldmethod=indent
-    set foldlevel=99
+        set foldmethod=indent
+        set foldlevel=99
 
-    set ic
+        set ic
 
 ### Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}
 
@@ -155,34 +160,38 @@ This is useful if you want to create keyboard shortcuts (alias) or ensure global
 
 Here is an example of things you might want in a `.profile` doc (you can clone this from /jad-cel/cel-sandbox/templates/home_profile.sh):
 
-    # color enhancement for the terminal window
-    export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
-    export CLICOLOR=1
-    export LSCOLORS=ExFxBxDxCxegedabagacad
+        # color enhancement for the terminal window
+        export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\&dollar; "
+        export CLICOLOR=1
+        export LSCOLORS=ExFxBxDxCxegedabagacad
 
-    #simpler file navigation:
-    alias .1='cd ../'
-    alias .2='cd ../..'
-    alias .3='cd ../../..'
+        #simpler file navigation:
+        alias .1='cd ../'
+        alias .2='cd ../..'
+        alias .3='cd ../../..'
 
-    # shortcut to list SLURM job status ([username] = your username)
-    alias qs="squeue -u [username]"
+        # shortcut to list SLURM job status ([username] = your username)
+        alias qs="squeue -u [username]"
 
-    if [ -n "$BASH_VERSION" ]; then
-      if [ -f "$HOME/.bashrc" ]; then
-        . "$HOME/.bashrc"
-      fi
-    fi
+        if [ -n "&dollar;BASH_VERSION" ]; then
+          if [ -f "&dollar;HOME/.bashrc" ]; then
+            . "&dollar;HOME/.bashrc"
+          fi
+        fi
 
-    if [ -d "$HOME/bin" ] ; then
-      PATH="$HOME/bin:$PATH"
-    fi
+        if [ -d "&dollar;HOME/bin" ] ; then
+          PATH="&dollar;HOME/bin:&dollar;PATH"
+        fi
 
 (profileIssue)=
-\#\#\# Sourcing the profile (optional; only do if you created a .profile above)
+
+### Sourcing the profile (optional; only do if you created a .profile above) {#sourcing-the-profile-optional-only-do-if-you-created-a-profile-above}
+
 :::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.
 :::
+:::
 
+::: {.cell .markdown}
 You could fix this everytime you log in by sourcing the profile:
 
     source .profile
@@ -201,12 +210,9 @@ But better to make the adjustment permanant by adding a`.bash_profile` to your h
 
     # User specific environment and startup programs
 
-    PATH=$PATH:$HOME/bin
-    BASH_ENV=$HOME/.bashrc
+    PATH=&dollar;PATH:&dollar;HOME/bin
+    BASH_ENV=&dollar;HOME/.bashrc
 
     #export USERNAME BASH_ENV PATH
     export TMOUT=0
-
-:::
-:::
 :::

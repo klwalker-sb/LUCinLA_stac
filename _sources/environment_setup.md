@@ -7,9 +7,9 @@ jupyter:
       format_version: 2.12
       jupytext_version: 1.11.4
   kernelspec:
-    display_name: Python 3 (ipykernel)
+    display_name: "Python \\[conda env:LUCenvWin\\]"
     language: python
-    name: python3
+    name: conda-env-LUCenvWin-py
   nbformat: 4
   nbformat_minor: 5
 ---
@@ -24,8 +24,11 @@ jupyter:
 As with most cluster computers, the ERI system uses a UNIX-based shell called "BASH". This is a very simplified system that interprets code via command-line interface. To interact with the system, you need to use Shell scripting, which is based on UNIX/Linux command language. For a quick review of basic UNIX commands, [see here](Unix). For a more comprehensive coverage of working with BASH scripting, see these hpc-carpentry lessons on [navigating in bash](http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html) and [file manipulation in bash](http://www.hpc-carpentry.org/hpc-shell/03-files/index.html).
 
 The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command `sbatch`. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter).
+:::
 
-:::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
+::: {.cell .markdown}
+:::{warning}
+Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
 :::
 :::
 
@@ -37,7 +40,11 @@ Virtual environments allow us to customize our coding toolkit and preferences fo
 For this project, we need Python 3.8 and the system we are using only has Python 3.7 installed. It is common for an HPC system to not have the exact version of Python desired for a project. There are various environmental managers that can be installed to solve this problem. [see here](managers) for a discussion of various environmental managers (Anaconda, Miniconda, Pyenv, Mamba) and the advantages and disadvantages of each. For the specific environment we are going to set up on this specific system, we have done the hard work of testing out all options for you and recommend using Miniconda.
 
 After connecting to bellows via ssh for the first time, you will need to set up your environment.
-:::{admonition}Make sure you are in your home directory when creating/changing environment settings!
+:::
+
+::: {.cell .markdown}
+:::{admonition}
+Make sure you are in your home directory when creating/changing environment settings!
 You should see your username \@bellows in the command prompt.
 (there may be numbers in front; this is fine for now and can be taken care of later [here](profileIssue)).\
 If you are unsure whether you are in your home directory, type `cd ~`
@@ -182,13 +189,16 @@ Here is an example of things you might want in a `.profile` doc (you can clone t
         if [ -d "&dollar;HOME/bin" ] ; then
           PATH="&dollar;HOME/bin:&dollar;PATH"
         fi
+:::
 
+::: {.cell .markdown}
 (profileIssue)=
 
 ### Sourcing the profile (optional; only do if you created a .profile above) {#sourcing-the-profile-optional-only-do-if-you-created-a-profile-above}
-
-:::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.
 :::
+
+::: {.cell .markdown}
+:::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.:::
 :::
 
 ::: {.cell .markdown}

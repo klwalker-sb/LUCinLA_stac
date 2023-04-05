@@ -134,7 +134,7 @@ Here is an example of a `.vimrc` doc (you can clone this from /jad-cel/cel-sandb
 
         set ic
 
-### Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}
+### Add a personalized .profile file (optional)
 
 You can add a personalized `.profile` file in your HOME directory (output -\> \~/.profile).
 This is useful if you want to create keyboard shortcuts (alias) or ensure global variables are properly set.

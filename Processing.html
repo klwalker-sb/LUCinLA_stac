@@ -123,11 +123,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="environment_setup.html">
-   Setting up a virtual environment
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="TransferingFiles.html">
    Transfering Files to/from cluster
   </a>
@@ -201,11 +196,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="slurm.html">
    Slurm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="editing_this_guide.html">
-   To edit this guide
   </a>
  </li>
 </ul>
@@ -305,32 +295,17 @@
 <p><strong>Processing workflow</strong></p>
 <ol class="simple">
 <li><p>Get grid cells to process. (<a class="reference internal" href="Downloading.html#getcells"><span class="std std-ref">see here</span></a>)</p></li>
-<li><p>Run downloading process (<a class="reference internal" href="Downloading.html#downloading"><span class="std std-ref">see here</span></a>) to download all images for each cell from Google Earth Engine.</p>
-<ul class="simple">
-<li><p>Sentinel 2, Surface reflectance</p></li>
-<li><p>Sentinel 2, Cloud Masks</p></li>
-<li><p>Landsat 5</p></li>
-<li><p>Landsat 7</p></li>
-<li><p>Landsat 8</p></li>
-</ul>
-</li>
+<li><p>Run downloading process (<a class="reference internal" href="Downloading.html#downloading"><span class="std std-ref">see here</span></a>) to download all images for each cell from Google Earth Engine.</p></li>
 <li><p>Check download status (<a class="reference internal" href="Downloading.html#checkdownload"><span class="std std-ref">see here</span></a>) to make sure all images downloaded correctly</p>
 <ul class="simple">
-<li><p>If incomplete, rerun step 2 for incomplete product, with IGNORE_INCOMPLETE = “YES”. (<a class="reference internal" href="Downloading.html#incomplete"><span class="std std-ref">see here</span></a>)</p></li>
+<li><p>If incomplete, rerun step 2.</p></li>
 </ul>
 </li>
-<li><p>Run post downloading process. (<a class="reference internal" href="Pre_Pipeline.html#post"><span class="std std-ref">see here</span></a>)</p>
-<ul class="simple">
-<li><p>Sentinel 2, Surface reflectance</p></li>
-<li><p>Landsat 5</p></li>
-<li><p>Landsat 7</p></li>
-<li><p>Landsat 8</p></li>
-</ul>
-</li>
+<li><p>Run BRDF script</p></li>
 <li><p>Run Pipeline process (<a class="reference internal" href="Pipeline.html#pipeline"><span class="std std-ref">see here</span></a>)</p>
 <ul class="simple">
-<li><p>Preprocess</p></li>
-<li><p>Reconstruct</p></li>
+<li><p>Coregistration</p></li>
+<li><p>Time Series construction</p></li>
 <li><p>Segment – (do after Preprocess and Reconstruct are done for a large chunk of grids)</p></li>
 <li><p>Classify – (do after Segment is done for a large chunk of grids)</p></li>
 <li><p>Assess  – (do after validation data are available)</p></li>
@@ -339,23 +314,34 @@
 </li>
 </ol>
 <p>Processing products, at various stages, are housed under the following file structure:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">paraguay_lc</span><span class="o">/</span><span class="n">raster</span><span class="o">/</span><span class="n">grids</span><span class="o">/</span>
-    <span class="o">/</span><span class="n">grids</span>  
-    <span class="o">--</span><span class="mi">000001</span>  
-    <span class="o">--</span><span class="mi">000002</span>  
-    <span class="o">--</span><span class="mi">000003</span>  
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>sandbox-cel holds bulk of preprocessing data and is minimally backed up.
+downspout-cel hold final time series data and derived products and has dual backup in different locations.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">paraguay_lc</span><span class="o">/</span><span class="n">stac</span>
+    <span class="o">/</span><span class="n">grids</span><span class="o">/</span>
+    <span class="o">--</span><span class="mi">003001</span>  
+    <span class="o">--</span><span class="mi">003002</span>  
+    <span class="o">--</span><span class="mi">003003</span>  
     <span class="o">...</span><span class="n">etc</span>
-<span class="c1">#And within each grid directory:</span>
-   <span class="o">/</span><span class="n">grids</span><span class="o">/</span><span class="mi">000001</span>  
+   <span class="n">within</span> <span class="n">each</span> <span class="n">grid</span> <span class="n">directory</span><span class="p">:</span>
+   <span class="o">/</span><span class="n">grids</span><span class="o">/</span><span class="mi">003001</span><span class="o">/</span>  
    <span class="o">--</span><span class="n">brdf</span>         <span class="c1"># BRDF-adjusted NetCDF archive of NetCDF files  </span>
    <span class="o">--</span><span class="n">brdf_masks</span>   <span class="c1"># 8-bit cloud/shadow masks  </span>
    <span class="o">--</span><span class="n">brdf_nodata</span>  
    <span class="o">--</span><span class="n">brdf_ref</span>     <span class="c1"># reference file for auto-geo-referencing S-2 images  </span>
    <span class="o">--</span><span class="n">brdf_s2_nocoreg</span>  <span class="c1"># copies of un-adjusted S-2 images  </span>
    <span class="o">--</span><span class="n">brdf_ts</span>      <span class="c1"># weekly time series of bands or spectral indices  </span>
-   <span class="o">--</span><span class="bp">cls</span>          <span class="c1"># land cover classification  </span>
-   <span class="o">--</span><span class="n">gee</span>          <span class="c1"># raw data stream from Earth Engine  </span>
-   <span class="o">--</span><span class="n">seg</span>          <span class="c1"># segmentation outputs</span>
+   <span class="o">--</span><span class="n">landsat</span>      <span class="c1"># original downloaded Landsat images</span>
+   <span class="o">--</span><span class="n">sentinel2</span>    <span class="c1"># original downloaded Sentinel2 images</span>
+<span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">r</span><span class="o">/</span><span class="n">downspout</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">paraguay_lc</span><span class="o">/</span><span class="n">stac</span><span class="o">/</span>
+   <span class="o">/</span><span class="n">grids</span><span class="o">/</span><span class="mi">003001</span><span class="o">/</span>
+   <span class="o">--</span> <span class="n">brdf_ts</span><span class="o">/</span><span class="n">ms</span>  <span class="c1"># each time series index that has been produced for this cell is in this folder</span>
+      <span class="o">--</span><span class="n">evi2</span>      
+      <span class="o">--</span><span class="n">wi</span>
+      <span class="o">...</span>
+   <span class="o">--</span> <span class="n">comp</span>        <span class="c1"># folder containing composite outputs</span>
 </pre></div>
 </div>
 </div>

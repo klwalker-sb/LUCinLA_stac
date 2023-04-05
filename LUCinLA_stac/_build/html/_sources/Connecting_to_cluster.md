@@ -48,10 +48,8 @@ ssh [username]@bellows.eri.ucsb.edu
 
 | (**To configure Putty:**  |                       |                                          |
 | :------------------------------------: | :------------------------------------: | :-----------------------------------: |
-|   ![alt](/Images/Putty1.jpg)             |  ![alt](/Images/Putty2.jpg)          |   **1)** Host name = <username>@ssh.grit.ucsb.edu. Name configuration and save "Session" on left, "Save", then "Open" 
-    **2)** Click "SSH" on left. Remote Command = <username>@bellows.eri.ucsb.edu |
-|   ![alt](/Images/Putty3.jpg)             |  ![alt](/Images/Putty4.jpg)          |   **3)** Click "Auth" on the left and browse to your private ssh key. Correctly configured keys will have an icon with a hat. 
-    **4)** Click “Session” on left, “Save”, then “Open” |
+|   ![alt](/Images/Putty1.jpg)             |  ![alt](/Images/Putty2.jpg)          |   **1)** Host name = username@ssh.grit.ucsb.edu. Name configuration and save "Session" on left, "Save", then "Open" **2)** Click "SSH" on left. Remote Command = username@bellows.eri.ucsb.edu |
+|   ![alt](/Images/Putty3.jpg)             |  ![alt](/Images/Putty4.jpg)          |   **3)** Click "Auth" on the left and browse to your private ssh key. Correctly configured keys will have an icon with a hat. **4)** Click “Session” on left, “Save”, then “Open” |
       
 You will be prompted for your password twice.
 Next time you log in via Putty, just load your configuration by its name and "Open".
@@ -59,7 +57,7 @@ Next time you log in via Putty, just load your configuration by its name and "Op
 |**To configure MobaXterm:** |                                 |
 | :---------------------------------------: | :---------------------: |
 |   ![alt](/Images/Moba1.png)                  | ![alt](/Images/Moba2.png) |
-| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter <username>@ssh.eri.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh <username>@bellows.eri.ucsb.edu **5)** Click Ok. |
+| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter username@ssh.grit.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh username@bellows.eri.ucsb.edu **5)** Click Ok. |
 You will be prompted to enter your password twice.
 Next time you log in via MobaXterm, just double click your session name.
 <!-- #endregion -->

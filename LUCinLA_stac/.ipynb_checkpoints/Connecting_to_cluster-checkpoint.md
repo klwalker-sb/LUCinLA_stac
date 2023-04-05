@@ -19,7 +19,7 @@ You will need to create a password and also an ssh key.
 * copy the contents of "~/.ssh/id_ecdsa.pub" (This is your public key) into the appropriate box [here](https://dc1.grit.ucsb.edu/?action=changesshkey). 
 * your private key can be found at "~/.ssh/id_ecdsa". Do not share its contents with anyone.
 
-**On Windows** You will need an interface software like PuTTY to connect to the cluster. See [here](Putty) for more on Putty.
+**On Windows** You will need an interface software like PuTTY to connect to the cluster. See [here](PuttyL) for more on Putty.
 When you download PuTTY, you will also have the option of downloading PuTTYgen for key generation (if not automatically packaged). Open PuTTYgen and generate your key as follows:
 | (**To create an ssh key pair with PuTTYgen:**  |                              |                                          
 | :------------------------------------: | :------------------------------------: |
@@ -44,15 +44,12 @@ ssh [username]@bellows.eri.ucsb.edu
 #enter password at prompt
 ```
 
-**If using windows,** it is easiest to connect to the cluster via an ssh (Secure SHell) client such as (Putty)=\#[Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/), [Xming](http://sourceforge.net/projects/xming/), or [MobaXterm](https://mobaxterm.mobatek.net/). A Putty conneciton simulates the remote terminal view, and thus requires fully command-line based interfacing. MobaXterm, on the hand, offers ssh/ftp hybrid that allows for both command-line and graphical interfacing; this may be preferable to those who are more confortable manipulating files visually. Note, [X2go](https://wiki.x2go.org/doku.php/download:start) is also an option that provides a graphics viewer. See the CSC instructions [here](http://csc.cnsi.ucsb.edu/docs/using-x2go-gui-login-knot-or-pod) (you will need to modify these for the ERI login).
+**If using windows,** it is easiest to connect to the cluster via an ssh (Secure SHell) client such as (PuttyL)= [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/), [Xming](http://sourceforge.net/projects/xming/), or [MobaXterm](https://mobaxterm.mobatek.net/). A Putty conneciton simulates the remote terminal view, and thus requires fully command-line based interfacing. MobaXterm, on the hand, offers ssh/ftp hybrid that allows for both command-line and graphical interfacing; this may be preferable to those who are more confortable manipulating files visually. Note, [X2go](https://wiki.x2go.org/doku.php/download:start) is also an option that provides a graphics viewer. See the CSC instructions [here](http://csc.cnsi.ucsb.edu/docs/using-x2go-gui-login-knot-or-pod) (you will need to modify these for the ERI login).
 
 | (**To configure Putty:**  |                       |                                          |
 | :------------------------------------: | :------------------------------------: | :-----------------------------------: |
-|   ![alt](/Images/Putty1.jpg)             |  ![alt](/Images/Putty2.jpg)          |   **1)** Host name=ssh1. Give configuration a name and save "Session" on left, "Save", then "Open" 
-**2)** Click "SSH" on left. Remote Command=ssh2|
-| :------------------------------------: | :------------------------------------: |
-|   ![alt](/Images/Putty3.jpg)             |  ![alt](/Images/Putty4.jpg)          |   **3)** Click "Auth" on the left and browse to your private ssh key. Correctly configured keys will have an icon with a hat. 
-**4)** Click “Session” on left, “Save”, then “Open”|
+|   ![alt](/Images/Putty1.jpg)             |  ![alt](/Images/Putty2.jpg)          |   **1)** Host name = username@ssh.grit.ucsb.edu. Name configuration and save "Session" on left, "Save", then "Open" **2)** Click "SSH" on left. Remote Command = username@bellows.eri.ucsb.edu |
+|   ![alt](/Images/Putty3.jpg)             |  ![alt](/Images/Putty4.jpg)          |   **3)** Click "Auth" on the left and browse to your private ssh key. Correctly configured keys will have an icon with a hat. **4)** Click “Session” on left, “Save”, then “Open” |
       
 You will be prompted for your password twice.
 Next time you log in via Putty, just load your configuration by its name and "Open".
@@ -60,7 +57,7 @@ Next time you log in via Putty, just load your configuration by its name and "Op
 |**To configure MobaXterm:** |                                 |
 | :---------------------------------------: | :---------------------: |
 |   ![alt](/Images/Moba1.png)                  | ![alt](/Images/Moba2.png) |
-| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter <username>@ssh.eri.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh <username>@bellows.eri.ucsb.edu **5)** Click Ok. |
+| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter username@ssh.grit.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh username@bellows.eri.ucsb.edu **5)** Click Ok. |
 You will be prompted to enter your password twice.
 Next time you log in via MobaXterm, just double click your session name.
 <!-- #endregion -->

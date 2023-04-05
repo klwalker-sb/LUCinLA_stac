@@ -239,7 +239,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/environment_setup.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Environment_setup.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -259,7 +259,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fenvironment_setup.html&body=Your%20issue%20content%20here."><button
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FEnvironment_setup.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -305,20 +305,27 @@
 As with most cluster computers, the ERI system uses a UNIX-based shell called &quot;BASH&quot;. This is a very simplified system that interprets code via command-line interface. To interact with the system, you need to use Shell scripting, which is based on UNIX/Linux command language. For a quick review of basic UNIX commands, [see here](Unix). For a more comprehensive coverage of working with BASH scripting, see these hpc-carpentry lessons on [navigating in bash](http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html) and [file manipulation in bash](http://www.hpc-carpentry.org/hpc-shell/03-files/index.html).
 
 The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command `sbatch`. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter).
-
-:::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
+</pre></div>
+</div>
+<div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span>
+:::{warning}
+Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-::: {.cell .markdown}
-## Setting up a virtual environment
+<span class="p">:::</span> <span class="p">{</span><span class="o">.</span><span class="n">cell</span> <span class="o">.</span><span class="n">markdown</span><span class="p">}</span>
+<span class="c1">## Setting up a virtual environment</span>
 
-Virtual environments allow us to customize our coding toolkit and preferences for each project within its own container so that it does not risk interfering with those of other projects or users. Within a virtual environment, you can define the version of Python that will be used, install packages specific to the project, and customize settings to facilitate your interactions, including aliases, which are shortcuts to replace frequently used or cumbersome commands.
+<span class="n">Virtual</span> <span class="n">environments</span> <span class="n">allow</span> <span class="n">us</span> <span class="n">to</span> <span class="n">customize</span> <span class="n">our</span> <span class="n">coding</span> <span class="n">toolkit</span> <span class="ow">and</span> <span class="n">preferences</span> <span class="k">for</span> <span class="n">each</span> <span class="n">project</span> <span class="n">within</span> <span class="n">its</span> <span class="n">own</span> <span class="n">container</span> <span class="n">so</span> <span class="n">that</span> <span class="n">it</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">risk</span> <span class="n">interfering</span> <span class="k">with</span> <span class="n">those</span> <span class="n">of</span> <span class="n">other</span> <span class="n">projects</span> <span class="ow">or</span> <span class="n">users</span><span class="o">.</span> <span class="n">Within</span> <span class="n">a</span> <span class="n">virtual</span> <span class="n">environment</span><span class="p">,</span> <span class="n">you</span> <span class="n">can</span> <span class="n">define</span> <span class="n">the</span> <span class="n">version</span> <span class="n">of</span> <span class="n">Python</span> <span class="n">that</span> <span class="n">will</span> <span class="n">be</span> <span class="n">used</span><span class="p">,</span> <span class="n">install</span> <span class="n">packages</span> <span class="n">specific</span> <span class="n">to</span> <span class="n">the</span> <span class="n">project</span><span class="p">,</span> <span class="ow">and</span> <span class="n">customize</span> <span class="n">settings</span> <span class="n">to</span> <span class="n">facilitate</span> <span class="n">your</span> <span class="n">interactions</span><span class="p">,</span> <span class="n">including</span> <span class="n">aliases</span><span class="p">,</span> <span class="n">which</span> <span class="n">are</span> <span class="n">shortcuts</span> <span class="n">to</span> <span class="n">replace</span> <span class="n">frequently</span> <span class="n">used</span> <span class="ow">or</span> <span class="n">cumbersome</span> <span class="n">commands</span><span class="o">.</span>
 
-For this project, we need Python 3.8 and the system we are using only has Python 3.7 installed. It is common for an HPC system to not have the exact version of Python desired for a project. There are various environmental managers that can be installed to solve this problem. [see here](managers) for a discussion of various environmental managers (Anaconda, Miniconda, Pyenv, Mamba) and the advantages and disadvantages of each. For the specific environment we are going to set up on this specific system, we have done the hard work of testing out all options for you and recommend using Miniconda.
+<span class="n">For</span> <span class="n">this</span> <span class="n">project</span><span class="p">,</span> <span class="n">we</span> <span class="n">need</span> <span class="n">Python</span> <span class="mf">3.8</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">system</span> <span class="n">we</span> <span class="n">are</span> <span class="n">using</span> <span class="n">only</span> <span class="n">has</span> <span class="n">Python</span> <span class="mf">3.7</span> <span class="n">installed</span><span class="o">.</span> <span class="n">It</span> <span class="ow">is</span> <span class="n">common</span> <span class="k">for</span> <span class="n">an</span> <span class="n">HPC</span> <span class="n">system</span> <span class="n">to</span> <span class="ow">not</span> <span class="n">have</span> <span class="n">the</span> <span class="n">exact</span> <span class="n">version</span> <span class="n">of</span> <span class="n">Python</span> <span class="n">desired</span> <span class="k">for</span> <span class="n">a</span> <span class="n">project</span><span class="o">.</span> <span class="n">There</span> <span class="n">are</span> <span class="n">various</span> <span class="n">environmental</span> <span class="n">managers</span> <span class="n">that</span> <span class="n">can</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">to</span> <span class="n">solve</span> <span class="n">this</span> <span class="n">problem</span><span class="o">.</span> <span class="p">[</span><span class="n">see</span> <span class="n">here</span><span class="p">](</span><span class="n">managers</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="n">discussion</span> <span class="n">of</span> <span class="n">various</span> <span class="n">environmental</span> <span class="n">managers</span> <span class="p">(</span><span class="n">Anaconda</span><span class="p">,</span> <span class="n">Miniconda</span><span class="p">,</span> <span class="n">Pyenv</span><span class="p">,</span> <span class="n">Mamba</span><span class="p">)</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">advantages</span> <span class="ow">and</span> <span class="n">disadvantages</span> <span class="n">of</span> <span class="n">each</span><span class="o">.</span> <span class="n">For</span> <span class="n">the</span> <span class="n">specific</span> <span class="n">environment</span> <span class="n">we</span> <span class="n">are</span> <span class="n">going</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">on</span> <span class="n">this</span> <span class="n">specific</span> <span class="n">system</span><span class="p">,</span> <span class="n">we</span> <span class="n">have</span> <span class="n">done</span> <span class="n">the</span> <span class="n">hard</span> <span class="n">work</span> <span class="n">of</span> <span class="n">testing</span> <span class="n">out</span> <span class="nb">all</span> <span class="n">options</span> <span class="k">for</span> <span class="n">you</span> <span class="ow">and</span> <span class="n">recommend</span> <span class="n">using</span> <span class="n">Miniconda</span><span class="o">.</span>
 
-After connecting to bellows via ssh for the first time, you will need to set up your environment.
-:::{admonition}Make sure you are in your home directory when creating/changing environment settings!
+<span class="n">After</span> <span class="n">connecting</span> <span class="n">to</span> <span class="n">bellows</span> <span class="n">via</span> <span class="n">ssh</span> <span class="k">for</span> <span class="n">the</span> <span class="n">first</span> <span class="n">time</span><span class="p">,</span> <span class="n">you</span> <span class="n">will</span> <span class="n">need</span> <span class="n">to</span> <span class="nb">set</span> <span class="n">up</span> <span class="n">your</span> <span class="n">environment</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span>
+:::{admonition}
+Make sure you are in your home directory when creating/changing environment settings!
 You should see your username \@bellows in the command prompt.
 (there may be numbers in front; this is fine for now and can be taken care of later [here](profileIssue)).\
 If you are unsure whether you are in your home directory, type `cd ~`
@@ -463,17 +470,18 @@ Here is an example of things you might want in a `.profile` doc (you can clone t
         if [ -d &quot;&amp;dollar;HOME/bin&quot; ] ; then
           PATH=&quot;&amp;dollar;HOME/bin:&amp;dollar;PATH&quot;
         fi
-
-(profileIssue)=
-
-### Sourcing the profile (optional; only do if you created a .profile above) {#sourcing-the-profile-optional-only-do-if-you-created-a-profile-above}
-
-:::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-::: {.cell .markdown}
-You could fix this everytime you log in by sourcing the profile:
+<div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span>(profileIssue)=
+
+### Sourcing the profile (optional; only do if you created a .profile above) {#sourcing-the-profile-optional-only-do-if-you-created-a-profile-above}
+</pre></div>
+</div>
+<div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span>
+:::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.:::
+</pre></div>
+</div>
+<div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span>You could fix this everytime you log in by sourcing the profile:
 
     source .profile
 

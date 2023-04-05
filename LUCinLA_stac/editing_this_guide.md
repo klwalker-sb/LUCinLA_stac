@@ -15,7 +15,7 @@ jupyter:
 ---
 
 ::: {.cell .markdown}
-# \# To edit this guide {#-to-edit-this-guide}
+# \# To edit this guide {\#-to-edit-this-guide} {#-to-edit-this-guide--to-edit-this-guide}
 
 `{figure} /Images/logo.png :scale: 50% :name: logo.png Note this is a Jupyter Book.`
 For more information, see the [Jupyter Book guide](https://jupyterbook.org/intro.html).
@@ -49,5 +49,8 @@ After any edits, the book needs to be rebuilt:
 **Jupyter Book is not compatible with Python 3.8** in Windows. Set up environment using Python 3.7.
 A Conda Environment .yml (LUCenvWin) is provided with settings for Windows. After creating and activating virtual environment,
 need to install Jupyter Book: pip install jupyter-book
+:::
+
+::: {.cell .markdown}
 :::
 :::

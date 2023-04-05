@@ -9,11 +9,11 @@
 :::
 #To Download a file from ERI to local:
 ```
-rsync -raz --progress <username>@ssh.eri.ucsb.edu:<ERI path/fileName.ext> <local path/fileName.ext>
+rsync -raz --progress <username>@ssh.grit.ucsb.edu:<ERI path/fileName.ext> <local path/fileName.ext>
 ```
 #To Upload a file from local to ERI
 ```
-rsync <local path/fileName.ext> -raz --progress <username>@ssh.eri.ucsb.edu:<ERI path/fileName.ext>
+rsync <local path/fileName.ext> -raz --progress <username>@ssh.grit.ucsb.edu:<ERI path/fileName.ext>
 ```
 **On Windows**, rsync or a similar file sync tool can be set up on a bash command interface such as git bash or cygwin, but the setup is a bit dodgy and unstable. A more robust option for Windows is to use an all-in-one SSH/FTP client like MobaXterm, or to add an FTP client to the mix.
 
@@ -37,7 +37,6 @@ Now you have a visual directory map from which you can transfer files between yo
 For large file transfers, globus-online is recommended, as it will pick up where it left off if your connection gets interrupted. CSC has a good description of globus-online and getting set up [on their website here](http://csc.cnsi.ucsb.edu/docs/globus-online)
 
 
-
 #  Copy processing scripts
 Copy the four primary processing scripts to the folder from which you will be submitting commands(home/<username>/code/bash).
     Replace <country> and <cntry> with text that corresponds to the country you are working in:
@@ -53,5 +52,7 @@ cp /raid-cel/sandbox/sandbox-cel/<country>_lc/templates/eostac_brdf_<cntry>.sh ~
 cp /raid-cel/sandbox/sandbox-cel/<country>_lc/templates/eostac_pipe_<cntry>.sh ~/code/bash/eostac_pipe_<cntry>.sh
 cp /raid-cel/sandbox/sandbox-cel/<country>_lc/templates/eostac_pipe_ts_<cntry>.sh ~/code/bash/eostac_pipe_ts_<cntry>.sh
 ```   
-    
+:::{note} If you get an error that 'raid-cel/sandbox/sandbox_cel....' does not exist:
+    try `/home/sandbox-cel` in the place of `raid-cel/sandbox/sandbox-cel`
+:::
 

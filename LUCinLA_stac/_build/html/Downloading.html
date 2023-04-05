@@ -123,6 +123,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="environment_setup.html">
+   Setting up your remote environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="TransferingFiles.html">
    Transfering Files to/from cluster
   </a>
@@ -291,8 +296,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#edit-the-eostac-dl-sh-document-for-targeted-grid-cells-and-sensor-product">
-   2. Edit the eostac_dl.sh document for targeted grid cells and sensor product
+  <a class="reference internal nav-link" href="#edit-the-downloading-script-for-targeted-grid-cells">
+   2. Edit the downloading script for targeted grid cells
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -333,7 +338,7 @@
 <p>To run the script:</p>
 <div class="section" id="get-gridcells-to-download">
 <span id="getcells"></span><h2>1. Get gridcells to download<a class="headerlink" href="#get-gridcells-to-download" title="Permalink to this headline">¶</a></h2>
-<p>Use the shared Google Sheet to find cells to process. Mark a / in the square for the cell/step for anything you are currently processing and and X if the step has been completed and verified as successful.</p>
+<p>Use the <a class="reference external" href="https://docs.google.com/spreadsheets/d/1J2WRKW5qUcrvJCeXlSy4zFaJ5I4dqCRd/edit?usp=sharing&amp;ouid=106313920977371808954&amp;rtpof=true&amp;sd=true">shared Google Sheet</a> to find cells to process. Mark a / in the square for the cell/step for anything you are currently processing and and X if the step has been completed and verified as successful.</p>
 <p>====================== alternative method (we aren’t using this currently)
 Find a block of cells in need of processing in the <code class="docutils literal notranslate"><span class="pre">cell_blocks.txt</span></code> file in <code class="docutils literal notranslate"><span class="pre">raid-cel/sandbox/sandbox-cel/paraguay_lc</span></code> (anything without an X next to it is free)
 (if working ion another country, replace ‘paraguay’ with your country name)</p>
@@ -348,13 +353,16 @@ Find a block of cells in need of processing in the <code class="docutils literal
 </div>
 <p>===========================================================================================================</p>
 </div>
-<div class="section" id="edit-the-eostac-dl-sh-document-for-targeted-grid-cells-and-sensor-product">
-<span id="downloading"></span><h2>2. Edit the eostac_dl.sh document for targeted grid cells and sensor product<a class="headerlink" href="#edit-the-eostac-dl-sh-document-for-targeted-grid-cells-and-sensor-product" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edit-the-downloading-script-for-targeted-grid-cells">
+<span id="downloading"></span><h2>2. Edit the downloading script for targeted grid cells<a class="headerlink" href="#edit-the-downloading-script-for-targeted-grid-cells" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
 <span class="n">vim</span> <span class="n">eostac_dl_py</span><span class="o">.</span><span class="n">sh</span>
+<span class="c1"># edit gridcell lines (lines 9 &amp; 10)</span>
 </pre></div>
 </div>
-<p>To edit a line, type <code class="docutils literal notranslate"><span class="pre">i</span></code>, edit as desired, then hit <code class="docutils literal notranslate"><span class="pre">Esc</span></code> key and type <code class="docutils literal notranslate"><span class="pre">:wq</span></code>. Hit <code class="docutils literal notranslate"><span class="pre">Enter</span></code> key
+<p>To edit a line, type <code class="docutils literal notranslate"><span class="pre">i</span></code>, edit as desired,
+When done editing, save and quit:
+hit <code class="docutils literal notranslate"><span class="pre">Esc</span></code> key and type <code class="docutils literal notranslate"><span class="pre">:wq</span></code>, followed by <code class="docutils literal notranslate"><span class="pre">Enter</span></code> key
 Go here for <a class="reference internal" href="vim.html#vimcommands"><span class="std std-ref">more info on editing in vim</span></a></p>
 <p>This is the default script (with line numbering added for reference below):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1-  #!/bin/bash -l
@@ -457,7 +465,7 @@ If your grid id is &gt;999, modify the number GRID_ID line (line 10 here) to sum
 <p class="admonition-title">Warning</p>
 <p>servers throttle downloading loads, so more downloads will fail if too many are processed at once.</p>
 </div>
-<p>After making these edits, save your script and exit:</p>
+<p>After making any edits, save your script and exit:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#(If in insert mode), use [Esc] to exit insert mode </span>
 <span class="p">:</span><span class="n">wq</span>
 </pre></div>
@@ -505,7 +513,7 @@ the dates are from 1-Jan-1985 to 31-Dec-2022)
 </div></blockquote>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>For GRID IDs &gt;1000</strong>: SLURM processors usually do not allow array numbers &gt;1000. To get around this, modify the GRID_ID on line 29 to: <code class="docutils literal notranslate"><span class="pre">GRID_ID=$(($SLURM_ARRAY_TASK_ID</span> <span class="pre">+</span> <span class="pre">1000))</span></code> Then subtract 1000 from the array number on line 10.</p>
+<p><strong>For GRID IDs &gt;999</strong>: SLURM processors usually do not allow array numbers &gt;999. To get around this, modify the GRID_ID on line 10 to: <code class="docutils literal notranslate"><span class="pre">GRID_ID=$(($SLURM_ARRAY_TASK_ID</span> <span class="pre">+</span> <span class="pre">X))</span></code> where  $SLURM_ARRAY_TASK_ID is your array number on line 9 and X is a number added to that to total the actual cell number</p>
 </div>
 </div>
 <div class="section" id="run-the-process">
@@ -578,22 +586,18 @@ The key indicates which cells loaded completely for each product. Those not list
 <p>For cells that did not load completely, check the .err and .out files:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#i.e for grid cell 909, if 78 is job number for an incomplete process:</span>
 <span class="n">cat</span> <span class="n">sldown</span><span class="o">.</span><span class="n">bellows</span><span class="mf">.909.78</span><span class="o">.</span><span class="n">err</span>
-<span class="n">cat</span> <span class="n">sldown</span><span class="o">.</span><span class="n">bellows</span><span class="mf">.909.78</span><span class="o">.</span><span class="n">out</span> 
 </pre></div>
 </div>
-<p>If the .out file does not indicate any big problems and the slider at the bottom of the .err file is near 100% with only a few files missing in the fraction next to it (e.g. 124/127), you probably do not need to worry about larger issues. These cells do need to be rerun, however, to register correctly in the database for further processing.
-<strong>Repeat steps 2 and 3 above</strong>. In adition to editing the grid cells to correspond to those that you are rerunning, in the
-By setting “Ignore Incomplete” to “yes”, the database will populate correctly even if all of the images do not download. If they do not load the second time, they probably aren’t going to, so you can move on as long as only a few images are missing. Check the .err and .out files to make sure there are no major errors, though.</p>
-<p>Check .err and .out files as before.</p>
+<p>If the .err file indicates that the downloading process timed out for any period, you need to rerun the same download script. Repeat the run/check process until no error messages are given (note: yellow warnings about deleted files at the beginning of the script are fine. Errors for the very last period of the script may also need to be ignored, but should be noted in the downloading column of the cell spreadsheet.</p>
 </div>
 <div class="section" id="move-err-and-out-files-to-new-directory-to-facilitate-tracking-of-new-downloads">
 <h2>6. Move .err and .out files to new directory to facilitate tracking of new downloads<a class="headerlink" href="#move-err-and-out-files-to-new-directory-to-facilitate-tracking-of-new-downloads" title="Permalink to this headline">¶</a></h2>
 <p>All these files will soon make it difficult to find the new ones to monitor. Move them to an archive directory after checking to clean up the clutter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Make the directory (first time only)</span>
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span>
+<span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">downloads</span>
 <span class="c1">#Move .err and .out files from /bash to /archive</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
-<span class="n">mv</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/*.</span><span class="p">{</span><span class="n">err</span><span class="p">,</span><span class="n">out</span><span class="p">}</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">stacdl2_py</span><span class="o">.*.</span><span class="p">{</span><span class="n">err</span><span class="p">,</span><span class="n">out</span><span class="p">}</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">downloads</span>
 </pre></div>
 </div>
 </div>

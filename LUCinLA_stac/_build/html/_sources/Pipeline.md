@@ -13,9 +13,10 @@ Then run the time-series script (eostac_pipe_ts_py.sh)  for each index you need 
 :::
 
 **To run the coregistration step:**
+```
 cd code/bash
 vim eostac_pipe_py.sh
-
+```
 ```
 1-  #!/bin/bash -l
 
@@ -71,9 +72,10 @@ For example, 898-908%4 would process 4 cells at a time. When the first 4 finish,
 :::
 
 **To run the time series step:**
+```
 cd code/bash
 vim eostac_pipe_ts_py.sh
-
+```
 ```
 1- #!/bin/bash -l
 
@@ -159,8 +161,12 @@ vim eostac_pipe_ts_py.sh
 44- done
 14- conda deactivate
 ```
+## index options (lines 11-15):
+ * To run a preliminary check, start with evi2
+ * For segmention inputs, we are using evi2, gcvi and wi
+ * For final classification, we are using evi2, gcvi, wi, kndvi, nbr & ndmi
 
-## Choices for vegetation indices:
+### other options for vegetation indices:
 Current options for vegetation indices are:
  * avi = ?? (removed?)
  * evi2 = 2.5 * ( NIR - RED) / ( NIR + 2.4 * RED + 1.0 )
@@ -215,15 +221,23 @@ ie, to add NDVI:
     sbatch pipeline_eri.sh
 
 Current run-time estimates for single grid cells:
-\* Preprocess
-\* Reconstruct
+\* Preprocess : 1-2hrs @2cores
+\* Reconstruct: 1-2hrs @8cores per index
 \* Segment
 \* Classify
 \* Assess
 \* Clean
 
+## Check result
+You can make a composite image with `MakeTSComposite.sh`
+TODO: add instructions regarding LUCinSA_helpers
+
+![alt](/Images/Composite.jpg)
+
 
 ## Get grid pipeline status
+
+XXX ---Currently not using ----------------------------------------------
 
 To generate the Pipeline Progress figure:
 

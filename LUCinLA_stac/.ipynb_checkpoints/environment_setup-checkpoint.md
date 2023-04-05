@@ -27,7 +27,8 @@ The point of high-performance computing is to manage and process large work load
 :::
 
 ::: {.cell .markdown}
-:::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
+:::{warning}
+Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
 :::
 :::
 
@@ -42,7 +43,8 @@ After connecting to bellows via ssh for the first time, you will need to set up 
 :::
 
 ::: {.cell .markdown}
-:::{admonition}Make sure you are in your home directory when creating/changing environment settings!
+:::{admonition}
+Make sure you are in your home directory when creating/changing environment settings!
 You should see your username \@bellows in the command prompt.
 (there may be numbers in front; this is fine for now and can be taken care of later [here](profileIssue)).\
 If you are unsure whether you are in your home directory, type `cd ~`
@@ -196,8 +198,7 @@ Here is an example of things you might want in a `.profile` doc (you can clone t
 :::
 
 ::: {.cell .markdown}
-:::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.
-:::
+:::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.:::
 :::
 
 ::: {.cell .markdown}

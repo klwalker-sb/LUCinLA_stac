@@ -123,6 +123,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="environment_setup.html">
+   Setting up your remote environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="TransferingFiles.html">
    Transfering Files to/from cluster
   </a>
@@ -286,13 +291,25 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#choices-for-vegetation-indices">
-   Choices for vegetation indices:
+  <a class="reference internal nav-link" href="#index-options-lines-11-15">
+   index options (lines 11-15):
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-options-for-vegetation-indices">
+     other options for vegetation indices:
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#run-the-process">
    Run the process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#check-result">
+   Check result
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -322,9 +339,11 @@ Then run the time-series script (eostac_pipe_ts_py.sh)  for each index you need 
 <p class="admonition-title">Note</p>
 <p>The CEL drive space on the cluster is setup such that all products through co-registration saved on the sandbox space (<code class="docutils literal notranslate"><span class="pre">raid-cel/sandbox/sandbox-cel</span></code> or just <code class="docutils literal notranslate"><span class="pre">/home/sandbox-cel</span></code>). These files are not backed up for more than 10 days (if you lose important files, you can probably get them recovered within 10 days, but not after). Time series outputs and beyond are saved to the downspout space (<code class="docutils literal notranslate"><span class="pre">raid-cel/r/downspout-cel</span></code> or just <code class="docutils literal notranslate"><span class="pre">/home/downspout-cel</span></code>), which has a separate long term backup.</p>
 </div>
-<p><strong>To run the coregistration step:</strong>
-cd code/bash
-vim eostac_pipe_py.sh</p>
+<p><strong>To run the coregistration step:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">code</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">vim</span> <span class="n">eostac_pipe_py</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1-  #!/bin/bash -l
 
 2-  #SBATCH -N 1 # number of nodes
@@ -381,9 +400,11 @@ You can enter a range (e.g. 898-908), But be mindful that you are not hogging a
 <p class="admonition-title">You can limit the number of cells that are processed at one time by adding %n</p>
 <p>For example, 898-908%4 would process 4 cells at a time. When the first 4 finish, the next will start.</p>
 </div>
-<p><strong>To run the time series step:</strong>
-cd code/bash
-vim eostac_pipe_ts_py.sh</p>
+<p><strong>To run the time series step:</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">code</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">vim</span> <span class="n">eostac_pipe_ts_py</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1- #!/bin/bash -l
 
 2- #SBATCH -N 1 # number of nodes
@@ -469,8 +490,15 @@ vim eostac_pipe_ts_py.sh</p>
 14- conda deactivate
 </pre></div>
 </div>
-<div class="section" id="choices-for-vegetation-indices">
-<h2>Choices for vegetation indices:<a class="headerlink" href="#choices-for-vegetation-indices" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="index-options-lines-11-15">
+<h2>index options (lines 11-15):<a class="headerlink" href="#index-options-lines-11-15" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>To run a preliminary check, start with evi2</p></li>
+<li><p>For segmention inputs, we are using evi2, gcvi and wi</p></li>
+<li><p>For final classification, we are using evi2, gcvi, wi, kndvi, nbr &amp; ndmi</p></li>
+</ul>
+<div class="section" id="other-options-for-vegetation-indices">
+<h3>other options for vegetation indices:<a class="headerlink" href="#other-options-for-vegetation-indices" title="Permalink to this headline">¶</a></h3>
 <p>Current options for vegetation indices are:</p>
 <ul class="simple">
 <li><p>avi = ?? (removed?)</p></li>
@@ -531,6 +559,7 @@ create a different equation without self argument (use <code class="docutils lit
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="run-the-process">
 <h2>Run the process<a class="headerlink" href="#run-the-process" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#if not already in bash directory, navigate there:
@@ -540,15 +569,22 @@ sbatch pipeline_eri.sh
 </pre></div>
 </div>
 <p>Current run-time estimates for single grid cells:
-* Preprocess
-* Reconstruct
+* Preprocess : 1-2hrs &#64;2cores
+* Reconstruct: 1-2hrs &#64;8cores per index
 * Segment
 * Classify
 * Assess
 * Clean</p>
 </div>
+<div class="section" id="check-result">
+<h2>Check result<a class="headerlink" href="#check-result" title="Permalink to this headline">¶</a></h2>
+<p>You can make a composite image with <code class="docutils literal notranslate"><span class="pre">MakeTSComposite.sh</span></code>
+TODO: add instructions regarding LUCinSA_helpers</p>
+<p><img alt="alt" src="_images/Composite.jpg" /></p>
+</div>
 <div class="section" id="get-grid-pipeline-status">
 <h2>Get grid pipeline status<a class="headerlink" href="#get-grid-pipeline-status" title="Permalink to this headline">¶</a></h2>
+<p>XXX —Currently not using ———————————————-</p>
 <p>To generate the Pipeline Progress figure:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#Activate virtual environment:
 source .nasaenv/bin/activate

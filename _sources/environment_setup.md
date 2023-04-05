@@ -105,7 +105,7 @@ Or in git for Windows enter: `git config --global credential.helper wincred`
 Text documents are edited in vim, which is not the most intuitive tool to those unfamiliar with it. Here you can find commands and tips for [working with vim](vimCommands). You can improve your experience with vim by creating a personalized
 `.vimrc` file in your HOME directory ((output -\> \~/.vimrc) to configure vim.
 
-Here is an example of a `.vimrc` doc (you can clone this from /jad-cel/cel-sandbox/templates/home_vimrc.sh):
+Here is an example of a `.vimrc` doc (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_vimrc.sh):
 
         # Add line numbers
         set number
@@ -139,7 +139,7 @@ Here is an example of a `.vimrc` doc (you can clone this from /jad-cel/cel-sandb
 You can add a personalized `.profile` file in your HOME directory (output -\> \~/.profile).
 This is useful if you want to create keyboard shortcuts (alias) or ensure global variables are properly set.
 
-Here is an example of things you might want in a `.profile` doc (you can clone this from /jad-cel/cel-sandbox/templates/home_profile.sh):
+Here is an example of things you might want in a `.profile` doc (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_profile.sh):
 
         # color enhancement for the terminal window
         export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ "
@@ -174,7 +174,7 @@ You could fix this everytime you log in by sourcing the profile:
 
     source .profile
 
-But better to make the adjustment permanant by adding a`.bash_profile` to your home directory (output -\> \~/.bash_profile) with the following language (you can clone this from /jad-cel/cel-sandbox/templates/home_bash_profile.sh):
+But better to make the adjustment permanant by adding a`.bash_profile` to your home directory (output -\> \~/.bash_profile) with the following language (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_bash_profile.sh):
 
     # .bash_profile
     # Get the aliases and functions

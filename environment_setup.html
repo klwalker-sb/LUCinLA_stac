@@ -51,6 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transfering Files to/from cluster" href="TransferingFiles.html" />
+    <link rel="prev" title="Connecting to the ERI cluster" href="Connecting_to_cluster.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -114,10 +116,15 @@
   Computer setup
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Connecting_to_cluster.html">
    Connecting to the ERI cluster
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Setting up your remote environment
   </a>
  </li>
  <li class="toctree-l1">
@@ -428,7 +435,7 @@ Or in git for Windows enter: <code class="docutils literal notranslate"><span cl
 <span id="configvim"></span><h3>Configure vim (optional)<a class="headerlink" href="#configure-vim-optional" title="Permalink to this headline">¶</a></h3>
 <p>Text documents are edited in vim, which is not the most intuitive tool to those unfamiliar with it. Here you can find commands and tips for <a class="reference internal" href="vim.html#vimcommands"><span class="std std-ref">working with vim</span></a>. You can improve your experience with vim by creating a personalized
 <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> file in your HOME directory ((output -&gt; ~/.vimrc) to configure vim.</p>
-<p>Here is an example of a <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> doc (you can clone this from /jad-cel/cel-sandbox/templates/home_vimrc.sh):</p>
+<p>Here is an example of a <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> doc (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_vimrc.sh):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # Add line numbers
     set number
 
@@ -462,7 +469,7 @@ Or in git for Windows enter: <code class="docutils literal notranslate"><span cl
 <h3>Add a personalized .profile file (optional)<a class="headerlink" href="#add-a-personalized-profile-file-optional" title="Permalink to this headline">¶</a></h3>
 <p>You can add a personalized <code class="docutils literal notranslate"><span class="pre">.profile</span></code> file in your HOME directory (output -&gt; ~/.profile).
 This is useful if you want to create keyboard shortcuts (alias) or ensure global variables are properly set.</p>
-<p>Here is an example of things you might want in a <code class="docutils literal notranslate"><span class="pre">.profile</span></code> doc (you can clone this from /jad-cel/cel-sandbox/templates/home_profile.sh):</p>
+<p>Here is an example of things you might want in a <code class="docutils literal notranslate"><span class="pre">.profile</span></code> doc (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_profile.sh):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # color enhancement for the terminal window
     export PS1=&quot;\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\$ &quot;
     export CLICOLOR=1
@@ -498,7 +505,7 @@ This is useful if you want to create keyboard shortcuts (alias) or ensure global
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source .profile
 </pre></div>
 </div>
-<p>But better to make the adjustment permanant by adding a<code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> to your home directory (output -&gt; ~/.bash_profile) with the following language (you can clone this from /jad-cel/cel-sandbox/templates/home_bash_profile.sh):</p>
+<p>But better to make the adjustment permanant by adding a<code class="docutils literal notranslate"><span class="pre">.bash_profile</span></code> to your home directory (output -&gt; ~/.bash_profile) with the following language (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_bash_profile.sh):</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span># .bash_profile
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
@@ -547,6 +554,8 @@ export TMOUT=0
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="Connecting_to_cluster.html" title="previous page">Connecting to the ERI cluster</a>
+    <a class='right-next' id="next-link" href="TransferingFiles.html" title="next page">Transfering Files to/from cluster</a>
 
         </div>
         

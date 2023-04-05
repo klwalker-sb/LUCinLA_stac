@@ -123,6 +123,11 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="environment_setup.html">
+   Setting up your remote environment
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="TransferingFiles.html">
    Transfering Files to/from cluster
   </a>
@@ -301,18 +306,21 @@
 <li><p>If incomplete, rerun step 2.</p></li>
 </ul>
 </li>
-<li><p>Run BRDF script</p></li>
+<li><p>Run BRDF script (<a class="reference internal" href="Pre_Pipeline.html#post"><span class="std std-ref">see here</span></a>)</p></li>
 <li><p>Run Pipeline process (<a class="reference internal" href="Pipeline.html#pipeline"><span class="std std-ref">see here</span></a>)</p>
 <ul class="simple">
 <li><p>Coregistration</p></li>
 <li><p>Time Series construction</p></li>
-<li><p>Segment – (do after Preprocess and Reconstruct are done for a large chunk of grids)</p></li>
-<li><p>Classify – (do after Segment is done for a large chunk of grids)</p></li>
-<li><p>Assess  – (do after validation data are available)</p></li>
-<li><p>Clean</p></li>
 </ul>
 </li>
 </ol>
+<hr class="docutils" />
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* Segment -- (do after Preprocess and Reconstruct are done for a large chunk of grids)
+* Classify -- (do after Segment is done for a large chunk of grids)
+* Assess  -- (do after validation data are available)
+* Clean
+</pre></div>
+</div>
 <p>Processing products, at various stages, are housed under the following file structure:</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

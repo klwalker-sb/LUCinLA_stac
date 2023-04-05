@@ -27,6 +27,7 @@ The point of high-performance computing is to manage and process large work load
 :::{warning} Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
 :::
 
+::: {.cell .markdown}
 ## Setting up a virtual environment
 
 Virtual environments allow us to customize our coding toolkit and preferences for each project within its own container so that it does not risk interfering with those of other projects or users. Within a virtual environment, you can define the version of Python that will be used, install packages specific to the project, and customize settings to facilitate your interactions, including aliases, which are shortcuts to replace frequently used or cumbersome commands.
@@ -204,4 +205,6 @@ But better to make the adjustment permanant by adding a`.bash_profile` to your h
 
     #export USERNAME BASH_ENV PATH
     export TMOUT=0
+
+:::
 :::

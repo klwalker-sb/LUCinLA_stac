@@ -8,10 +8,11 @@ Revisit the [Processing overview](processing_overview) for the conceptual workfl
 2. Run downloading process ([see here](downloading)) to download all images for each cell from Google Earth Engine.
 3. Check download status ([see here](checkDownload)) to make sure all images downloaded correctly
     * If incomplete, rerun step 2.
-4. Run BRDF script
+4. Run BRDF script ([see here](post))
 5. Run Pipeline process ([see here](pipeline))
     * Coregistration
     * Time Series construction
+--------------------------------------------------------------------------------------------------------------------------------    
     * Segment -- (do after Preprocess and Reconstruct are done for a large chunk of grids)
     * Classify -- (do after Segment is done for a large chunk of grids)
     * Assess  -- (do after validation data are available)

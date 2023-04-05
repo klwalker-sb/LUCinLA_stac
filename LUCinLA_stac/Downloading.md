@@ -6,7 +6,7 @@ The `Eostac` script drives the download process, [see here](https://github.com/j
 To run the script:
 (GetCells)=
 ## 1. Get gridcells to download
-Use the shared Google Sheet to find cells to process. Mark a / in the square for the cell/step for anything you are currently processing and and X if the step has been completed and verified as successful.
+Use the [shared Google Sheet](https://docs.google.com/spreadsheets/d/1J2WRKW5qUcrvJCeXlSy4zFaJ5I4dqCRd/edit?usp=sharing&ouid=106313920977371808954&rtpof=true&sd=true) to find cells to process. Mark a / in the square for the cell/step for anything you are currently processing and and X if the step has been completed and verified as successful.
 
 ====================== alternative method (we aren't using this currently)
 Find a block of cells in need of processing in the `cell_blocks.txt` file in `raid-cel/sandbox/sandbox-cel/paraguay_lc` (anything without an X next to it is free)
@@ -22,12 +22,15 @@ vim cell_blocks.txt
 ```
 ===========================================================================================================
 (Downloading)=
-## 2. Edit the eostac_dl.sh document for targeted grid cells and sensor product
+## 2. Edit the downloading script for targeted grid cells
 ```
 cd ~/code/bash/
 vim eostac_dl_py.sh
+# edit gridcell lines (lines 9 & 10)
 ```
-To edit a line, type `i`, edit as desired, then hit `Esc` key and type `:wq`. Hit `Enter` key
+To edit a line, type `i`, edit as desired, 
+When done editing, save and quit: 
+hit `Esc` key and type `:wq`, followed by `Enter` key
 Go here for [more info on editing in vim](vimCommands)
 
 This is the default script (with line numbering added for reference below):
@@ -129,7 +132,7 @@ For example, 898-908%4 would process 4 cells at a time. When the first 4 finish,
 %2 is safest but can do more and rerun to catch errors.
 :::
 
-After making these edits, save your script and exit:
+After making any edits, save your script and exit:
 ``` 
 #(If in insert mode), use [Esc] to exit insert mode 
 :wq
@@ -162,7 +165,7 @@ For further information on the rest of the script (parts you will NOT likely edi
 >*Lines 35-56: The script runs a seperate call to the download script for each month from Jan of the start year to Dec of the end year. > This is to not overwhelm the server when requesting downloads.
  
 :::{note}
-**For GRID IDs >1000**: SLURM processors usually do not allow array numbers >1000. To get around this, modify the GRID_ID on line 29 to: `GRID_ID=$(($SLURM_ARRAY_TASK_ID + 1000))` Then subtract 1000 from the array number on line 10.
+**For GRID IDs >999**: SLURM processors usually do not allow array numbers >999. To get around this, modify the GRID_ID on line 10 to: `GRID_ID=$(($SLURM_ARRAY_TASK_ID + X))` where  $SLURM_ARRAY_TASK_ID is your array number on line 9 and X is a number added to that to total the actual cell number
 :::
 
 
@@ -237,20 +240,15 @@ For cells that did not load completely, check the .err and .out files:
 ```
 #i.e for grid cell 909, if 78 is job number for an incomplete process:
 cat sldown.bellows.909.78.err
-cat sldown.bellows.909.78.out 
 ```
-If the .out file does not indicate any big problems and the slider at the bottom of the .err file is near 100% with only a few files missing in the fraction next to it (e.g. 124/127), you probably do not need to worry about larger issues. These cells do need to be rerun, however, to register correctly in the database for further processing.
-**Repeat steps 2 and 3 above**. In adition to editing the grid cells to correspond to those that you are rerunning, in the 
-By setting "Ignore Incomplete" to "yes", the database will populate correctly even if all of the images do not download. If they do not load the second time, they probably aren't going to, so you can move on as long as only a few images are missing. Check the .err and .out files to make sure there are no major errors, though.
-
-Check .err and .out files as before.
+If the .err file indicates that the downloading process timed out for any period, you need to rerun the same download script. Repeat the run/check process until no error messages are given (note: yellow warnings about deleted files at the beginning of the script are fine. Errors for the very last period of the script may also need to be ignored, but should be noted in the downloading column of the cell spreadsheet.
 
 ## 6. Move .err and .out files to new directory to facilitate tracking of new downloads
 All these files will soon make it difficult to find the new ones to monitor. Move them to an archive directory after checking to clean up the clutter.
 ```
 #Make the directory (first time only)
-mkdir /home/<username>/code/bash/archive/
+mkdir /home/<username>/code/bash/archive/downloads
 #Move .err and .out files from /bash to /archive
 cd ~/code/bash/
-mv /home/<username>/code/bash/*.{err,out} /home/<username>/code/bash/archive/
+mv /home/<username>/code/bash/stacdl2_py.*.{err,out} /home/<username>/code/bash/archive/downloads
 ```

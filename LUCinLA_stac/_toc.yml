@@ -12,7 +12,7 @@ parts:
   - caption: Computer setup
     chapters:
     - file: Connecting_to_cluster
-    - file: Environment_setup
+    - file: environment_setup
     - file: TransferingFiles
   - caption: Processing
     chapters:

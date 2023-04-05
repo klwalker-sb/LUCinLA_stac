@@ -123,11 +123,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="environment_setup.html">
-   Setting up a virtual environment
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="TransferingFiles.html">
    Transfering Files to/from cluster
   </a>
@@ -201,11 +196,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="slurm.html">
    Slurm
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="editing_this_guide.html">
-   To edit this guide
   </a>
  </li>
 </ul>
@@ -296,8 +286,8 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#edit-the-post-eri-sh-document-for-targeted-grid-cells-and-sensor-product">
-   1. Edit the post_eri.sh document for targeted grid cells and sensor product
+  <a class="reference internal nav-link" href="#edit-the-eostac-brdf-sh-document-for-targeted-grid-cells-and-sensor-product">
+   1. Edit the eostac_brdf.sh document for targeted grid cells and sensor product
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -319,100 +309,93 @@
   <div class="section" id="post-download-processing">
 <span id="post"></span><h1>Post-download processing<a class="headerlink" href="#post-download-processing" title="Permalink to this headline">¶</a></h1>
 <p>================================================================================================================================</p>
-<div class="section" id="edit-the-post-eri-sh-document-for-targeted-grid-cells-and-sensor-product">
-<h2>1. Edit the post_eri.sh document for targeted grid cells and sensor product<a class="headerlink" href="#edit-the-post-eri-sh-document-for-targeted-grid-cells-and-sensor-product" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="edit-the-eostac-brdf-sh-document-for-targeted-grid-cells-and-sensor-product">
+<h2>1. Edit the eostac_brdf.sh document for targeted grid cells and sensor product<a class="headerlink" href="#edit-the-eostac-brdf-sh-document-for-targeted-grid-cells-and-sensor-product" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
-<span class="n">vim</span> <span class="n">post_eri</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">vim</span> <span class="n">eostac_brdf_py</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>To edit a line, type <code class="docutils literal notranslate"><span class="pre">i</span></code>, edit as desired, then hit <code class="docutils literal notranslate"><span class="pre">Esc</span></code> key and type <code class="docutils literal notranslate"><span class="pre">:wq</span></code>. Hit <code class="docutils literal notranslate"><span class="pre">Enter</span></code> key
 Go here for <a class="reference internal" href="vim.html#vimcommands"><span class="std std-ref">more info on editing in vim</span></a></p>
 <p>This is the default script (with line numbering added for reference below):
 Default script</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1- #!/bin/bash
-2- 
-3-  #SBATCH -N 1 # number of nodes
-4-  #SBATCH -n 8 # number of cores
-5-  #SBATCH -t 0-08:00 # time (D-HH:MM)
-6-  #SBATCH -p basic
-7-  #SBATCH -o slpst.%N.%a.%j.out # STDOUT
-8-  #SBATCH -e slpst.%N.%a.%j.err # STDERR
-9-  #SBATCH --job-name=&quot;pstsa&quot;
-10- #SBATCH --array=911
-11- 
-12- # Change permissions on output files
-13- umask 002 
-14- #####################################################
-15- 
-16- # landsat | sentinel-2
-17- SATELLITE=&quot;sentinel-2&quot;
-18- ASSET_ID=&quot;COPERNICUS/S2&quot;
-19- 
-20- # LT05 | LE07 | LC08
-21- #LANDSAT_SENSOR=&quot;LC08&quot;
-22- #ASSET_ID=&quot;LANDSAT/${LANDSAT_SENSOR}/C01/T1_SR&quot;
-23- #SATELLITE=&quot;landsat&quot;
-24- 
-25- # There are 2 threads per worker from the config file
-26- NUM_WORKERS=4
-27- BATCH_SIZE=100
-28- #####################################################
-29- 
-30- # As an array job
-31- GRID_ID=$SLURM_ARRAY_TASK_ID
-32- 
-33- MY_USERNAME=&quot;&quot;
-34- IN_DIR=&quot;/raid-cel/sandbox/sandbox-cel/paraguay_lc/raster/grids&quot;
-35- CONFIG_FILE=&quot;/home/${MY_USERNAME}/project/config/config_eri.yaml&quot;
-36- 
-37- #############################################
-38- # Turn off NumPy parallelism and rely on dask
-39- #############################################
-40- export OPENBLAS_NUM_THREADS=1
-41- export MKL_NUM_THREADS=1
-42- # This should be sufficient for OpenBlas and MKL
-43- export OMP_NUM_THREADS=1
-44- ################################################
-45- 
-46- # activate the virtual environment
-47- source ~/.nasaenv/bin/activate
-48- 
-49- eosvault post --in-dir $IN_DIR --grid $GRID_ID --config-file $CONFIG_FILE --batch-size $BATCH_SIZE --max-workers 
-50- $NUM_WORKERS --satellite $SATELLITE --asset-id $ASSET_ID
-51- 
-52- deactivate
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1-  #!/bin/bash -l
+
+2-  #SBATCH -N 1 # number of nodes
+3-  #SBATCH -n 8 # number of cores
+4-  #SBATCH -t 0-48:00 # time (D-HH:MM)
+5-  #SBATCH -p basic
+6-  #SBATCH -o stac_brdf_py.%N.%a.%j.out # STDOUT
+7-  #SBATCH -e stac_brdf_py.%N.%a.%j.err # STDERR
+8-  #SBATCH --job-name=&quot;brdf_py&quot;
+9-  #SBATCH --array=932
+
+    ####Run as array job:
+10- GRID_ID=$(($SLURM_ARRAY_TASK_ID + 3000))
+
+    ####Set permissions on output files
+11- umask 002
+
+    ###Settables:
+12-  PROJECT_DIR=&quot;/raid-cel/sandbox/sandbox-cel/paraguay_lc&quot;
+13-  PROJECT_PATH=&quot;${PROJECT_DIR}/stac/grid/00${GRID_ID}/&quot;
+14-  OUT_PATH=&quot;${PROJECT_DIR}/stac/grid/00${GRID_ID}/brdf&quot;
+15-  GRID_FILE=&quot;/raid-cel/sandbox/sandbox-cel/LUCinLA_grid_8858.gpkg&quot;
+16-  COEFFS=&quot;~/tmp/eostac/files/coefficients&quot;
+17-  EPSG=8858
+18-  BUFFER=100
+
+    ###################################################################
+    ### activate the virtual environment
+19-  conda activate venv.lucinsa38_dl
+
+20-  START_YEAR=2000
+21-  END_YEAR=2023
+22-  y=$START_YEAR
+23-  while [ $y -ne $END_YEAR ]
+24-  do
+25-    START_DATE=&quot;${y}-1-01&quot;
+26-    END_DATE=&quot;${y}-12-31&quot;
+27-    echo  Working on $START_DATE to $END_DATE &gt;&amp;2 
+28-    TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+29-    echo $TIMESTAMP &gt;&amp;2
+
+30-    eostac brdf --start-date $START_DATE --end-date $END_DATE --project-path $PROJECT_PATH --out-path $OUT_PATH --threads 8 --apply- 
+       bandpass --coeffs-path $COEFFS
+
+31-    y=$(($y+1))
+32-  done
+
+33-  TIMETOT=$(($(date -d &quot;$TIMESTAMP&quot; &quot;+%s&quot;) - $(date -d &quot;$TIMESTAMP0&quot; &quot;+%s&quot;) ))
+34-  TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+35-  echo done at $TIMESTAMP &gt;&amp;2
+36-  echo full process took: $({$TIMETOT}/60) minutes &gt;&amp;2
+
+37-  conda deactivate
 </pre></div>
 </div>
 <p>Most lines should stay as they are.
-**Do ensure that your username is entered between the quotes in line 37.
-As with the downloading script, <strong>you also need to change Grid info and Product info lines</strong>:<br />
-<strong>Grid info:</strong> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--array=</span> </code> (line 10 here). This is where you enter the gridcells you are processing.<br />
+As with the downloading script, <strong>you need to change Grid info lines</strong>:<br />
+<strong>Grid info:</strong> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--array=</span> </code> (line 9 here). This is where you enter the last 3 digits of the gridcells you are processing.<br />
 You can enter a range (e.g. 898-908), But be mindful that you are not hogging all the computer bandwidth.</p>
 <div class="admonition-you-can-limit-the-number-of-cells-that-are-processed-at-one-time-by-adding-n admonition">
 <p class="admonition-title">You can limit the number of cells that are processed at one time by adding %n</p>
 <p>For example, 898-908%4 would process 4 cells at a time. When the first 4 finish, the next will start.</p>
 </div>
-<p><strong>Product info:</strong> Lines following <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">landsat</span> <span class="pre">|</span> <span class="pre">sentinel-2</span></code> (Lines 16-23 here). This is where you select the satellite product, by uncommenting the corresponding lines (remove the # at the beginning of the line) and commenting those that don’t correspond (replacing the # at the beginning of the line). (Only one product can be run at a time).</p>
-<p><strong><span style='color:purple'> For Sentinel: </span></strong> uncomment <code class="docutils literal notranslate"><span class="pre">SATELLITE=&quot;sentinel-2</span></code> (line 17 here) and <code class="docutils literal notranslate"><span class="pre">ASSET_ID=&quot;COPERNICUS/S2</span></code> (line 18 here).</p>
-<p><strong><span style='color:purple'> For Landsat: </span></strong> uncomment <code class="docutils literal notranslate"><span class="pre">LANDSAT_SENSOR=&quot;LC08&quot;</span></code> <code class="docutils literal notranslate"><span class="pre">ASSET_ID=&quot;LANDSAT/${LANDSAT_SENSOR}/C01/T1_SR&quot;</span></code>and <code class="docutils literal notranslate"><span class="pre">SATELLITE=&quot;landsat&quot;</span></code> (lines 21-23 here). Also change the Landsat sensor (line 21 here) to correspond to the sensor you want to process: “LT05” for Landsat 5, “LE07” for Landsat 7, or “LC08” for Landsat 8 (as noted in line 20). You will do all three, separately.</p>
+<p><strong>Grid_ID_prefix</strong> (line 10 here): GRID_ID=$(($SLURM_ARRAY_TASK_ID + 3000)) change final number so that the final sum = your actual grid id</p>
 </div>
 <div class="section" id="run-the-process">
 <h2>2. Run the process<a class="headerlink" href="#run-the-process" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#if not already in bash directory, navigate there:</span>
 <span class="n">cd</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
 <span class="c1">#submit the command:</span>
-<span class="n">sbatch</span> <span class="n">post_eri</span><span class="o">.</span><span class="n">sh</span>
+<span class="n">sbatch</span> <span class="n">eostac_brdf_py</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Current run-time estimates for single grid cells:</p>
-<ul class="simple">
-<li><p>Sentinel 2:</p></li>
-<li><p>Landsat 8:</p></li>
-<li><p>Landsat 7:</p></li>
-<li><p>Landsat 5:</p></li>
-</ul>
+<p>Current run-time estimates for single grid cells:
+14-20hrs</p>
 </div>
 </div>
 </div>

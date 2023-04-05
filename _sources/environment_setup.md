@@ -16,8 +16,8 @@ jupyter:
 
 ::: {.cell .markdown}
 (Environment)=
-\# Setting up your remote environment
-======================================================================
+
+# \# Setting up your remote environment {#-setting-up-your-remote-environment}
 
 ## The general cluster environment
 
@@ -41,6 +41,7 @@ You should see your username \@bellows in the command prompt.
 If you are unsure whether you are in your home directory, type `cd ~`
 :::
 
+::: {.cell .markdown}
 For this project, we will us Miniconda to create a virtual environment in Python 3.8 called venv.lucinsa38
 
 ### To install Miniconda:
@@ -206,5 +207,6 @@ But better to make the adjustment permanant by adding a`.bash_profile` to your h
     #export USERNAME BASH_ENV PATH
     export TMOUT=0
 
+:::
 :::
 :::

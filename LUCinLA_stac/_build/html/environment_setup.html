@@ -401,7 +401,7 @@ Or in git for Windows enter: <code class="docutils literal notranslate"><span cl
     #  install pre-reqs for geowombat (our main processing code)
     (venv.lucinsa38_dl) conda install cython numpy=1.23.1 rasterio=1.3.0
     # install numpy AFTER installing gdal and make sure that both packages do not get altered
-     (venv.lucinsa38_dl) conda install gdal 3.5.0
+     (venv.lucinsa38_dl) conda install gdal==3.5.0
 
     # install the main geowombat via Conda to let it solve the bulk of the environment (have patience, this can take up to 1hr)
     (venv.lucinsa38_dl) conda install geowombat gdal=3.5.0 numpy=1.23.1 rasterio=1.3.0

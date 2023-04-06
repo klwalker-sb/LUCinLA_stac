@@ -114,7 +114,7 @@ vim eostac_pipe_ts_py.sh
     # RECONSTRUCT
     #############
 25- RINPUT="ms"
-26- START_PAD="2010-01-01"
+26- START_PAD="2000-01-01"
 27- START="2010-04-01"
 28- END_PAD="2022-12-01"
 29- END="2022-09-01"

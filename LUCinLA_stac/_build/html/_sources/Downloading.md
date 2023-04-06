@@ -80,7 +80,7 @@ This is the default script (with line numbering added for reference below):
 
 32-  TIMESTAMP0=`date "+%Y-%m-%d %H:%M:%S"`
 
-33-  START_YEAR=2010
+33-  START_YEAR=2000
 34-  END_YEAR=2023
 35-  YEAR=$START_YEAR
 36-  while [ $YEAR -ne $END_YEAR ]

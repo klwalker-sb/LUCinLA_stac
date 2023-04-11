@@ -1,6 +1,6 @@
 
 (Environment)=
-\# Setting up your remote environment
+# Setting up your remote environment
 
 ## The general cluster environment
 
@@ -76,7 +76,7 @@ Or in git for Windows enter: `git config --global credential.helper wincred`
         # Install eostac from github (this will also install the latest version of geowombat)
         (venv.lucinla38_dl) mkdir repos
         (venv.lucinla38_dl) cd repos
-        (venv.lucinla38_dl) git clone https://github.com/jgrss/eostac
+        (venv.lucinla38_dl) git clone -b KW_processing_db_ https://github.com/jgrss/eostac
         (venv.lucinla38_dl) cd eostac/
         (venv.lucinla38_dl) python setup.py build && pip install . gdal==3.5.0 numpy==1.23.1 rasterio==1.3.0
 

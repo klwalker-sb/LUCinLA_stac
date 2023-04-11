@@ -1,5 +1,6 @@
+
 (Environment)=
-# Setting up your remote environment
+\# Setting up your remote environment
 
 ## The general cluster environment
 
@@ -7,9 +8,7 @@ As with most cluster computers, the ERI system uses a UNIX-based shell called "B
 
 The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command `sbatch`. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter).
 
-:::{warning}
 Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.
-:::
 
 ## Setting up a virtual environment
 
@@ -19,12 +18,10 @@ For this project, we need Python 3.8 and the system we are using only has Python
 
 After connecting to bellows via ssh for the first time, you will need to set up your environment.
 
-:::{admonition}
 Make sure you are in your home directory when creating/changing environment settings!
 You should see your username \@bellows in the command prompt.
 (there may be numbers in front; this is fine for now and can be taken care of later [here](profileIssue)).\
 If you are unsure whether you are in your home directory, type `cd ~`
-:::
 
 For this project, we will us Miniconda to create a virtual environment in Python 3.8 called venv.lucinsa38
 
@@ -32,7 +29,8 @@ For this project, we will us Miniconda to create a virtual environment in Python
 
 On your own computer, go [here](https://docs.conda.io/en/latest/miniconda.html) and download `Miniconda3 Linux 64-bit`
 Transfer this file into your home directory ([see here](Transfering) for ways to transfer files onto the cluster)
-In your home dierctory on the cluster, type: `bash Miniconda3-py38_4.12.0-Linux-x86_64.sh`
+In your home dierctory on the cluster, type: `bash Miniconda3-<>.sh` (with <> filled in with the rest of the actual file name. 
+(You can find the file name by typing `ls` from your home directory)).
 
 Conda's base environment can be activated on startup by setting the activate_base parameter to true:
 `conda config --set auto_activate_base true` (this may be the default)
@@ -42,11 +40,11 @@ you will then need to type `conda activate` each time before you activate your s
 
 ### To create your conda environment with specific version of python:
 
-    conda create --name venv.lucinsa38 python=3.8
+    conda create --name venv.lucinla38_dl python=3.8
 
 ***Activate your virtual environment:*** every time you run code that isn't BASH/SLURM from within the cluster:
 
-    conda activate venv.lucinsa38
+    conda activate venv.lucinla38_dl
 
 ***Deactivate the virtual environment:*** (only when you are done!):
 
@@ -61,42 +59,50 @@ Or in git for Windows enter: `git config --global credential.helper wincred`
 **While in your home directory,** enter the following commands to setup your Python environment:
 
         # Activate the virtual environment
-        conda activate venv.lucinsa38_dl
+        conda activate venv.lucinla38_dl
 
         #Add conda-forge to your channels and make it a priority (this is key for this environment):
-        (venv.lucinsa38_dl) conda config --env --add channels conda-forge
-        (venv.lucinsa38_dl) conda config --env --set channel_priority strict
+        (venv.lucinla38_dl) conda config --env --add channels conda-forge
+        (venv.lucinla38_dl) conda config --env --set channel_priority strict
 
         #  install pre-reqs for geowombat (our main processing code)
-        (venv.lucinsa38_dl) conda install cython numpy=1.23.1 rasterio=1.3.0
+        (venv.lucinla38_dl) conda install cython numpy=1.23.1 rasterio=1.3.0
         # install numpy AFTER installing gdal and make sure that both packages do not get altered
-         (venv.lucinsa38_dl) conda install gdal==3.5.0
+         (venv.lucinla38_dl) conda install gdal==3.5.0
 
         # install the main geowombat via Conda to let it solve the bulk of the environment (have patience, this can take up to 1hr)
-        (venv.lucinsa38_dl) conda install geowombat gdal=3.5.0 numpy=1.23.1 rasterio=1.3.0
+        (venv.lucinla38_dl) conda install geowombat gdal=3.5.0 numpy=1.23.1 rasterio=1.3.0
 
         # Install eostac from github (this will also install the latest version of geowombat)
-        (venv.lucinsa38_dl) mkdir repos
-        (venv.lucinsa38_dl) cd repos
-        (venv.lucinsa38_dl) git clone git clone https://github.com/jgrss/eostac
-        (venv.lucinsa38_dl) cd eostac/
-        (venv.lucinsa38_dl) python setup.py build && pip install . gdal==3.5.0 numpy==1.23.1 rasterio==1.3.0
+        (venv.lucinla38_dl) mkdir repos
+        (venv.lucinla38_dl) cd repos
+        (venv.lucinla38_dl) git clone https://github.com/jgrss/eostac
+        (venv.lucinla38_dl) cd eostac/
+        (venv.lucinla38_dl) python setup.py build && pip install . gdal==3.5.0 numpy==1.23.1 rasterio==1.3.0
 
-        # Install other packages needed in new stac code:
-        (venv.lucinsa38_dl) conda install seaborn, h5netcdf
+        # Install other repos needed for this project:
+        (venv.lucinla38_dl) cd ../
+        (venv.lucinla38_dl) git clone https://github.com/jgrss/geosample
+        (venv.lucinla38_dl) cd geosample/
+        (venv.lucinla38_dl) python setup.py build && pip install .
+        
+        (venv.lucinla38_dl) cd ../
+        (venv.lucinla38_dl) git clone https://github.com/jgrss/stackstac
+        (venv.lucinla38_dl) cd stackstac/
+        (venv.lucinla38_dl) python setup.py build && pip install .
 
 **to uninstall and reinstall a package from a github repo:** (i.e. if changes are made to the package that need to be incorporated)
 
-        conda activate venv.lucinsa38_dl
-        (venv.lucinsa38_dl) pip uninstall <package> -y
-        (venv.lucinsa38_dl) cd ~/repos/<package directory>
+        conda activate venv.lucinla38_dl
+        (venv.lucinla38_dl) pip uninstall <package> -y
+        (venv.lucinla38_dl) cd ~/repos/<package directory>
         #(look up the name of the main branch in the GitHub repo). Here it is 'main', but it could be 'master'/'dev'/etc. 
-        (venv.lucinsa38_dl) git pull origin main
+        (venv.lucinla38_dl) git pull origin main
         #Install new repo. If nothing else has changed it is safest to do this with --no-deps flag to avoid corrupting environment
-        (venv.lucinsa38_dl) python setup.py build && pip install --no-deps .
+        (venv.lucinla38_dl) python setup.py build && pip install --no-deps .
         #If the updated repo has new dependents that you need, install them individually (trying conda before pip), or if needed use:
-        (venv.lucinsa38_dl) python setup.py build && pip install . gdal==3.5.2 numpy==1.23.1 rasterio==1.3.0
-        (venv.lucinsa38_dl) conda deactivate
+        (venv.lucinla38_dl) python setup.py build && pip install . gdal==3.5.2 numpy==1.23.1 rasterio==1.3.0
+        (venv.lucinla38_dl) conda deactivate
 
 (configVim)=
 
@@ -134,7 +140,7 @@ Here is an example of a `.vimrc` doc (you can clone this from /raid-cel/sandbox/
 
         set ic
 
-### Add a personalized .profile file (optional)
+### Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}
 
 You can add a personalized `.profile` file in your HOME directory (output -\> \~/.profile).
 This is useful if you want to create keyboard shortcuts (alias) or ensure global variables are properly set.
@@ -165,7 +171,7 @@ Here is an example of things you might want in a `.profile` doc (you can clone t
         fi
 
 (profileIssue)=
-### Sourcing the profile (optional; only do if you created a .profile above)
+\#\#\# Sourcing the profile (optional; only do if you created a .profile above)
 
 :::{warning}Your personalized profile may not function correctly due to an irregular issue in the bash_profile.:::
 :::
@@ -193,3 +199,4 @@ But better to make the adjustment permanant by adding a`.bash_profile` to your h
 
     #export USERNAME BASH_ENV PATH
     export TMOUT=0
+:::

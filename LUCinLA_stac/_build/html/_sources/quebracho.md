@@ -3,14 +3,14 @@
 quebracho is a new fat node with GPU for primary use by our lab.
 
 Hardware specs: 
- ** 64 CPU
- ** NDIVIA A40 GPU
+* 64 CPU
+* NDIVIA A40 GPU
 
 Software specs:
- ** CUDA = 
- ** GDAL = 3.5.0
- ** RStudio (in progress)
- ** Zabbix for usage monitoring (in progress)
+* CUDA = 
+* GDAL = 3.5.0
+* RStudio (in progress)
+* Zabbix for usage monitoring (in progress)
 
 ## To log in to Quebracho:
 
@@ -48,7 +48,3 @@ For most jobs, you will need to submit through the queue via SLURM (this makes s
 
 See [here](Downloading) for an example of a SLURM script.
 See [here](SlurmCommands) for general SLURM commands. 
-
-
-
-```

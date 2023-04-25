@@ -3,14 +3,14 @@
 quebracho is a new fat node with GPU for primary use by our lab.
 
 Hardware specs: 
- ** 64 CPU
- ** NDIVIA A40 GPU
+* 64 CPU
+* NDIVIA A40 GPU
 
 Software specs:
- ** CUDA = 
- ** GDAL = 3.5.0
- ** RStudio (in progress)
- ** Zabbix for usage monitoring (in progress)
+* CUDA = 
+* GDAL = 3.5.0
+* RStudio (in progress)
+* Zabbix for usage monitoring (in progress)
 
 ## To log in to Quebracho:
 

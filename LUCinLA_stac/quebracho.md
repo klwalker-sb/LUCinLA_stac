@@ -1,4 +1,4 @@
-# Quebracho
+# quebracho
 ======================================================================================================================================
 quebracho is a new fat node with GPU for primary use by our lab.
 

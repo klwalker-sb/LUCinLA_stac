@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project background &#8212; LUCinLA_stac</title>
+    <title>Setting up a new project &#8212; LUCinLA_stac</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Processing overview" href="Processing_overview.html" />
-    <link rel="prev" title="General framework" href="General_framework.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="editing_this_guide.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -94,14 +93,14 @@
   Overview
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="General_framework.html">
    General framework
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project_background.html">
    Project background
   </a>
  </li>
@@ -182,7 +181,7 @@
   Computing resources
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro_to_git.html">
    Intro to git
@@ -203,8 +202,8 @@
    Slurm
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="quebracho.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    Setting up a new project
   </a>
  </li>
@@ -249,7 +248,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Project_background.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/quebracho.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -269,7 +268,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FProject_background.html&body=Your%20issue%20content%20here."><button
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fquebracho.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -290,6 +289,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#getting-the-indices">
+   Getting the indices:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-the-grid-file">
+   Creating the grid file:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-the-scripts">
+   Modifying the scripts:
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -298,17 +320,76 @@
         
               <div>
                 
-  <div class="section" id="project-background">
-<h1>Project background<a class="headerlink" href="#project-background" title="Permalink to this headline">¶</a></h1>
-<p>================================================================================================================================</p>
-<p>LUCinLA provides a framework and tools to synthesize large quantities of satellite imagery from multiple sensors to generate modereate- to high-resolution (~10m) landcover maps focused on agriculture/vegetation.
-Our projects involve large study areas but small units-of-analysis (field sizes are often &lt;2ha). We are often interested in changes across decades of annualy dynamic landcover classes such as crops (often with different rotations between and within years), thus requiring both a long and dense time-series stack.</p>
-<p>Current LUCinLA projects in Robert Heilmayr’s Conservation Economics Lab (CEL) include:</p>
-<ul class="simple">
-<li><p>A NASA-funded grant on property values and land-use change in Paraguay and Uruguay:  The supporting map, produced by the procedure outlined in this guide, will be a high-resolution maps of fields, identified to crop-type, across a large region spanning Paraguay and Uruguay (focusing on the Pampas, Chaco, and Alto Parana Atlantic Forest regions).</p></li>
-<li><p>Forest mapping in Chile, to assess the effect of payments to private landowners on forest cover (and forest type in terms of natural vs. plantation) and ultimately carbon stocks.</p></li>
-</ul>
-<p>The framework outlined in this guide enables large quantities of satellite data to be ingested and processed to generate carefully calibrated, gap-filled weekly time-series data over the entire study region at 10m resolution.</p>
+  <div class="section" id="setting-up-a-new-project">
+<h1>Setting up a new project<a class="headerlink" href="#setting-up-a-new-project" title="Permalink to this headline">¶</a></h1>
+<p>======================================================================================================================================
+The following skeleton, containing the grid file and two index files is necessary for a new project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/&lt;</span><span class="n">country</span><span class="o">&gt;</span><span class="n">_lc</span>
+    <span class="n">raster</span>
+        <span class="n">grids</span>
+        <span class="n">landsat_index</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">gz</span>
+        <span class="n">sentinel</span><span class="o">-</span><span class="mi">2</span><span class="n">_index</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">gz</span>
+        <span class="n">srtm</span>
+    <span class="n">vector</span>
+        <span class="n">grids</span><span class="o">.</span><span class="n">gpkg</span>
+</pre></div>
+</div>
+<div class="section" id="getting-the-indices">
+<h2>Getting the indices:<a class="headerlink" href="#getting-the-indices" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">index.csv.gz</span></code> files are complete catalogues of available imagery with basic parameters such as date and extent. You can use index files from other projects, but to get the most up-to-date indices, copy them from Google cloud:
+for Landsat: gs://gcp-public-data-landsat/index.csv.gz and for Sentinel: gs://gcp-public-data-sentinel-2/index.csv.gz</p>
+</div>
+<div class="section" id="creating-the-grid-file">
+<h2>Creating the grid file:<a class="headerlink" href="#creating-the-grid-file" title="Permalink to this headline">¶</a></h2>
+<p>Script to create gridfile (from Jordan Graesser’s <a class="reference external" href="https://github.com/jgrss/eosvault">EOSvault Github page</a>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zones</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="o">&lt;</span><span class="n">vector</span> <span class="n">file</span> <span class="k">with</span> <span class="n">target</span> <span class="n">bounds</span><span class="o">&gt;</span><span class="p">)</span>
+
+<span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">total_bounds</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">round10</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="c1">#Round to the nearest 10</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Target grid size (in meters)</span>
+<span class="n">grid_size</span> <span class="o">=</span> <span class="mi">20000</span>
+
+<span class="c1"># Target cell storage size (in meters)</span>
+<span class="n">cell_size</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1">#Create the Grids</span>
+<span class="n">df_grids</span> <span class="o">=</span> <span class="n">zones</span><span class="o">.</span><span class="n">grid</span><span class="p">((</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">),</span>
+                       <span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span>
+                       <span class="n">cell_size</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span>
+                       <span class="n">crs</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+                       
+<span class="c1">#Take the intersecting grids only:</span>
+<span class="n">df_grids</span> <span class="o">=</span> <span class="n">df_grids</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">geom</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">geom</span> <span class="ow">in</span> <span class="n">df_grids</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">]]</span>
+
+<span class="c1">#Add unique ids:</span>
+<span class="n">df_grids</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;UNQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">df_grids</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#Save tp file:</span>
+<span class="n">df_grids</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;rgrids.gpkg&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">zones.grid</span></code> can be found <a class="reference external" href="https://github.com/jgrss/zones/blob/master/zones/base.py">here</a></p>
+</div>
+<div class="section" id="modifying-the-scripts">
+<h2>Modifying the scripts:<a class="headerlink" href="#modifying-the-scripts" title="Permalink to this headline">¶</a></h2>
+<p>Make sure to modify the lines in <code class="docutils literal notranslate"><span class="pre">~/project/config/config.yaml</span></code> to point to the correct input and output locations.
+Also modify all downloading and processing scripts in <code class="docutils literal notranslate"><span class="pre">~/code/bash</span></code></p>
+<p>In the downloading scripts, you need to enter the crs in proj4js format. You can look this up at <a class="reference external" href="http://spatialreference.org">spatialreference.org</a>, or can convert using earthpy (i.e: proj4 = et.epsg[‘32613’])</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -336,8 +417,7 @@ Our projects involve large study areas but small units-of-analysis (field sizes 
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="General_framework.html" title="previous page">General framework</a>
-    <a class='right-next' id="next-link" href="Processing_overview.html" title="next page">Processing overview</a>
+    <a class='left-prev' id="prev-link" href="editing_this_guide.html" title="previous page">&lt;no title&gt;</a>
 
         </div>
         

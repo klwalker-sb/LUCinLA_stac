@@ -4,13 +4,11 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Setting up your remote environment &#8212; LUCinLA_stac</title>
     
-  <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -20,62 +18,46 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Transfering Files to/from cluster" href="TransferingFiles.html" />
     <link rel="prev" title="Connecting to the ERI cluster" href="Connecting_to_cluster.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
+    <meta name="docsearch:language" content="en" />
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
-
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -84,15 +66,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="index.html">
-      
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
-        
-      
       
       <img src="_static/cover.png" class="logo" alt="logo">
       
@@ -103,17 +80,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
-        
-        <ul class="nav bd-sidenav bd-sidenav__home-link">
-            <li class="toctree-l1">
-                <a class="reference internal" href="intro.html">
-                    Land-Use Change in Latin America (LUCinLA) Computing Guide
-                </a>
-            </li>
-        </ul>
-        <p aria-level="2" class="caption" role="heading">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Land-Use Change in Latin America (LUCinLA) Computing Guide
+  </a>
+ </li>
+</ul>
+<p class="caption">
  <span class="caption-text">
   Overview
  </span>
@@ -135,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Computer setup
  </span>
@@ -157,7 +133,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Processing
  </span>
@@ -189,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   New project configuration
  </span>
@@ -197,11 +173,11 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Setting_up_new_project.html">
-   Setting up a new project
+   Quebracho
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Computing resources
  </span>
@@ -227,296 +203,156 @@ const thebe_selector_output = ".output, .cell_output"
    Slurm
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quebracho.html">
+   Setting up a new project
+  </a>
+ </li>
 </ul>
 
     </div>
-</nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
             
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/environment_setup.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fenvironment_setup.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
             </div>
-            
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-general-cluster-environment">
+   The general cluster environment
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setting-up-a-virtual-environment">
+   Setting up a virtual environment
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-install-miniconda">
+     To install Miniconda:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#to-create-your-conda-environment-with-specific-version-of-python">
+     To create your conda environment with specific version of python:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts">
+     Install Python tools/packages and dependencies from project github scripts:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#configure-vim-optional">
+     Configure vim (optional)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional">
+     Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
-    <div id="rtd-footer-container"></div>
 </div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
         
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-expand"></i>
-  </span>
-
-</button>
-
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac/"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fenvironment_setup.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="_sources/environment_setup.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
-</label>
-
-    </div>
-</div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-general-cluster-environment">
-   The general cluster environment
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-a-virtual-environment">
-   Setting up a virtual environment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-install-miniconda">
-     To install Miniconda:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-create-your-conda-environment-with-specific-version-of-python">
-     To create your conda environment with specific version of python:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts">
-     Install Python tools/packages and dependencies from project github scripts:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#configure-vim-optional">
-     Configure vim (optional)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional">
-     Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-    </nav>
-</div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Setting up your remote environment</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-general-cluster-environment">
-   The general cluster environment
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#setting-up-a-virtual-environment">
-   Setting up a virtual environment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-install-miniconda">
-     To install Miniconda:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#to-create-your-conda-environment-with-specific-version-of-python">
-     To create your conda environment with specific version of python:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts">
-     Install Python tools/packages and dependencies from project github scripts:
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#configure-vim-optional">
-     Configure vim (optional)
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional">
-     Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <main id="main-content" role="main">
-                
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="setting-up-your-remote-environment">
-<span id="environment"></span><h1>Setting up your remote environment<a class="headerlink" href="#setting-up-your-remote-environment" title="Permalink to this headline">#</a></h1>
-<section id="the-general-cluster-environment">
-<h2>The general cluster environment<a class="headerlink" href="#the-general-cluster-environment" title="Permalink to this headline">#</a></h2>
+  <div class="section" id="setting-up-your-remote-environment">
+<span id="environment"></span><h1>Setting up your remote environment<a class="headerlink" href="#setting-up-your-remote-environment" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-general-cluster-environment">
+<h2>The general cluster environment<a class="headerlink" href="#the-general-cluster-environment" title="Permalink to this headline">¶</a></h2>
 <p>As with most cluster computers, the ERI system uses a UNIX-based shell called “BASH”. This is a very simplified system that interprets code via command-line interface. To interact with the system, you need to use Shell scripting, which is based on UNIX/Linux command language. For a quick review of basic UNIX commands, <a class="reference internal" href="commandLine_bash.html#unix"><span class="std std-ref">see here</span></a>. For a more comprehensive coverage of working with BASH scripting, see these hpc-carpentry lessons on <a class="reference external" href="http://www.hpc-carpentry.org/hpc-shell/02-navigation/index.html">navigating in bash</a> and <a class="reference external" href="http://www.hpc-carpentry.org/hpc-shell/03-files/index.html">file manipulation in bash</a>.</p>
 <p>The point of high-performance computing is to manage and process large work loads. This is acheived through a work load manager, SLURM (Simple Linux Utility for Resource Management). Ultimate processing commands are sent to SLURM from .sh scripts in the bash directory via the command <code class="docutils literal notranslate"><span class="pre">sbatch</span></code>. Any other non-UNIX-based commands are processed within a virtual environment (e.g. via a Python interpreter).</p>
 <p>Any processing done outside of SLURM (i.e. via IPython of Jupyter Notebook) can cause the whole system to crash for everyone because the resources used are not accounted for by the system when allocating to SLURM jobs. Do not run anything other than minimal tasks outside of SLURM.</p>
-</section>
-<section id="setting-up-a-virtual-environment">
-<h2>Setting up a virtual environment<a class="headerlink" href="#setting-up-a-virtual-environment" title="Permalink to this headline">#</a></h2>
+</div>
+<div class="section" id="setting-up-a-virtual-environment">
+<h2>Setting up a virtual environment<a class="headerlink" href="#setting-up-a-virtual-environment" title="Permalink to this headline">¶</a></h2>
 <p>Virtual environments allow us to customize our coding toolkit and preferences for each project within its own container so that it does not risk interfering with those of other projects or users. Within a virtual environment, you can define the version of Python that will be used, install packages specific to the project, and customize settings to facilitate your interactions, including aliases, which are shortcuts to replace frequently used or cumbersome commands.</p>
 <p>For this project, we need Python 3.8 and the system we are using only has Python 3.7 installed. It is common for an HPC system to not have the exact version of Python desired for a project. There are various environmental managers that can be installed to solve this problem. <span class="xref myst">see here</span> for a discussion of various environmental managers (Anaconda, Miniconda, Pyenv, Mamba) and the advantages and disadvantages of each. For the specific environment we are going to set up on this specific system, we have done the hard work of testing out all options for you and recommend using Miniconda.</p>
 <p>After connecting to bellows via ssh for the first time, you will need to set up your environment.</p>
@@ -525,8 +361,8 @@ You should see your username &#64;bellows in the command prompt.
 (there may be numbers in front; this is fine for now and can be taken care of later <a class="reference internal" href="#profileissue"><span class="std std-ref">here</span></a>).<br />
 If you are unsure whether you are in your home directory, type <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">~</span></code></p>
 <p>For this project, we will us Miniconda to create a virtual environment in Python 3.8 called venv.lucinsa38</p>
-<section id="to-install-miniconda">
-<h3>To install Miniconda:<a class="headerlink" href="#to-install-miniconda" title="Permalink to this headline">#</a></h3>
+<div class="section" id="to-install-miniconda">
+<h3>To install Miniconda:<a class="headerlink" href="#to-install-miniconda" title="Permalink to this headline">¶</a></h3>
 <p>On your own computer, go <a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">here</a> and download <code class="docutils literal notranslate"><span class="pre">Miniconda3</span> <span class="pre">Linux</span> <span class="pre">64-bit</span></code>
 Transfer this file into your home directory (<a class="reference internal" href="TransferingFiles.html#transfering"><span class="std std-ref">see here</span></a> for ways to transfer files onto the cluster)
 In your home dierctory on the cluster, type: <code class="docutils literal notranslate"><span class="pre">bash</span> <span class="pre">Miniconda3-&lt;&gt;.sh</span></code> (with &lt;&gt; filled in with the rest of the actual file name.
@@ -536,9 +372,9 @@ In your home dierctory on the cluster, type: <code class="docutils literal notra
 If you prefer to not have it do this (i.e, if you use other environment managers as well), you can set this to false:
 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">config</span> <span class="pre">--set</span> <span class="pre">auto_activate_base</span> <span class="pre">false</span></code>
 you will then need to type <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span></code> each time before you activate your specific environment</p>
-</section>
-<section id="to-create-your-conda-environment-with-specific-version-of-python">
-<h3>To create your conda environment with specific version of python:<a class="headerlink" href="#to-create-your-conda-environment-with-specific-version-of-python" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="to-create-your-conda-environment-with-specific-version-of-python">
+<h3>To create your conda environment with specific version of python:<a class="headerlink" href="#to-create-your-conda-environment-with-specific-version-of-python" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda create --name venv.lucinla38_dl python=3.8
 </pre></div>
 </div>
@@ -550,9 +386,9 @@ you will then need to type <code class="docutils literal notranslate"><span clas
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>conda deactivate
 </pre></div>
 </div>
-</section>
-<section id="install-python-tools-packages-and-dependencies-from-project-github-scripts">
-<h3>Install Python tools/packages and dependencies from project github scripts:<a class="headerlink" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="install-python-tools-packages-and-dependencies-from-project-github-scripts">
+<h3>Install Python tools/packages and dependencies from project github scripts:<a class="headerlink" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts" title="Permalink to this headline">¶</a></h3>
 <p>To <strong>interact with github on your virtual computer</strong>, you first need to feed the remote computer the password. You can do this with <a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/updating-credentials-from-the-macos-keychain">an osxcechain credential</a> or by simply caching it by entering the following into your local git bash or mac terminal:
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">credential.helper</span> <span class="pre">cache</span></code>
 Or in git for Windows enter: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">credential.helper</span> <span class="pre">wincred</span></code></p>
@@ -604,9 +440,9 @@ Or in git for Windows enter: <code class="docutils literal notranslate"><span cl
     (venv.lucinla38_dl) conda deactivate
 </pre></div>
 </div>
-</section>
-<section id="configure-vim-optional">
-<span id="configvim"></span><h3>Configure vim (optional)<a class="headerlink" href="#configure-vim-optional" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="configure-vim-optional">
+<span id="configvim"></span><h3>Configure vim (optional)<a class="headerlink" href="#configure-vim-optional" title="Permalink to this headline">¶</a></h3>
 <p>Text documents are edited in vim, which is not the most intuitive tool to those unfamiliar with it. Here you can find commands and tips for <a class="reference internal" href="vim.html#vimcommands"><span class="std std-ref">working with vim</span></a>. You can improve your experience with vim by creating a personalized
 <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> file in your HOME directory ((output -&gt; ~/.vimrc) to configure vim.</p>
 <p>Here is an example of a <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> doc (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_vimrc.sh):</p>
@@ -638,9 +474,9 @@ Or in git for Windows enter: <code class="docutils literal notranslate"><span cl
     set ic
 </pre></div>
 </div>
-</section>
-<section id="add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional">
-<h3>Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}<a class="headerlink" href="#add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional" title="Permalink to this headline">#</a></h3>
+</div>
+<div class="section" id="add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional">
+<h3>Add a personalized .profile file (optional) {#add-a-personalized-profile-file-optional}<a class="headerlink" href="#add-a-personalized-profile-file-optional-add-a-personalized-profile-file-optional" title="Permalink to this headline">¶</a></h3>
 <p>You can add a personalized <code class="docutils literal notranslate"><span class="pre">.profile</span></code> file in your HOME directory (output -&gt; ~/.profile).
 This is useful if you want to create keyboard shortcuts (alias) or ensure global variables are properly set.</p>
 <p>Here is an example of things you might want in a <code class="docutils literal notranslate"><span class="pre">.profile</span></code> doc (you can clone this from /raid-cel/sandbox/sandbox-cel/templates/home_profile.sh):</p>
@@ -669,8 +505,9 @@ This is useful if you want to create keyboard shortcuts (alias) or ensure global
 </pre></div>
 </div>
 <p id="profileissue">### Sourcing the profile (optional; only do if you created a .profile above)</p>
-<div class="highlight-{warning}Your notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Your personalized profile may not function correctly due to an irregular issue in the bash_profile.:::</p>
 </div>
 <p>You could fix this everytime you log in by sourcing the profile:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source .profile
@@ -699,9 +536,9 @@ export TMOUT=0
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
-</section>
-</section>
-</section>
+</div>
+</div>
+</div>
 
     <script type="text/x-thebe-config">
     {
@@ -715,7 +552,7 @@ export TMOUT=0
             mode: "python"
         },
         kernelOptions: {
-            name: "python3",
+            kernelName: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -725,48 +562,34 @@ export TMOUT=0
 
               </div>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="Connecting_to_cluster.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Connecting to the ERI cluster</p>
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Connecting_to_cluster.html" title="previous page">Connecting to the ERI cluster</a>
+    <a class='right-next' id="next-link" href="TransferingFiles.html" title="next page">Transfering Files to/from cluster</a>
+
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="TransferingFiles.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Transfering Files to/from cluster</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            </footer>
+        
         </div>
     </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Kendra Walker<br/>
-  
-      &copy; Copyright 2023.<br/>
-</p>
-        </footer>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kendra Walker<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
     </div>
-    
-</div>
+  </footer>
+</main>
 
 
       </div>
     </div>
   
-  <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-
+  
   </body>
 </html>

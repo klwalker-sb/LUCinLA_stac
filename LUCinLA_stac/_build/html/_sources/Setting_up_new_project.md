@@ -1,67 +1,54 @@
-# Setting up a new project
+# Quebracho
 ======================================================================================================================================
-The following skeleton, containing the grid file and two index files is necessary for a new project:
+quebracho is a new fat node with GPU for primary use by our lab.
+
+Hardware specs: 
+ ** 64 CPU
+ ** NDIVIA A40 GPU
+
+Software specs:
+ ** CUDA = 
+ ** GDAL = 3.5.0
+ ** RStudio (in progress)
+ ** Zabbix for usage monitoring (in progress)
+
+## To log in to Quebracho:
+
+Contact Kendra Walker or Gavin McDonald to get added to the user list for quebracho
+fill out your credentials [here](https://dc1.grit.ucsb.edu/)
+see [here](ssh keys) for details on setting up SSH keys 
+
+To SSH into the cluster, use:
+```ssh <username>@quebracho.grit.ucsb.edu```
+(if you had an account with ERI prior to quebracho, you might need to ssh into grit.ucsb.edu or eri.ucsb.edu first)  
+see [here](connecting) for details on connecting to cluster environments from a Mac/linux or Windows environment
+
+## Running jobs:
+
+You will need to set up an environment and run jobs through the job manager: SLURM
+See [here]((Environment) for general info on setting up an environment
+
+Here is an example of a process to set up an environment to run the pytorch-based library, cultionet (a public git repo for field segmentation):
+
 ```
-raid-cel/sandox/sandbox-cel/<country>_lc
-    raster
-        grids
-        landsat_index
-            index.csv.gz
-        sentinel-2_index
-            index.csv.gz
-        srtm
-    vector
-        grids.gpkg
+conda create --name .cnet38 python=3.8
+conda activate .cnet38
+conda config --add channels conda-forge
+conda config --set channel_priority strict
+conda install cython>=0.29.* numpy<=1.21.0
+pip install torch==1.12.1+cu113 torchvision==0.13.1+cu113 torchaudio==0.12.1 --extra-index-url https://download.pytorch.org/whl/cu113 --no-cache-dir
+python -c "import torch;print(torch.cuda.is_available())" # GPU check: True if cuda/GPU is available. if False, make sure you're not on bellows
+pip install torch-scatter torch-sparse torch-cluster torch-spline-conv torch-geometric torch-geometric-temporal --extra-index-url https://data.pyg.org/whl/torch-1.12.1%2Bcu113.html --no-cache-dir
+conda install -c conda-forge gdal
+pip install cultionet@git+https://github.com/jgrss/cultionet.git
+cultionet train -h #### cultionet install check. if errors, downgrade pytorch-lightning: pip install pytorch-lightning==1.4.0
 ```
 
-## Getting the indices:
-The `index.csv.gz` files are complete catalogues of available imagery with basic parameters such as date and extent. You can use index files from other projects, but to get the most up-to-date indices, copy them from Google cloud:
-for Landsat: gs://gcp-public-data-landsat/index.csv.gz and for Sentinel: gs://gcp-public-data-sentinel-2/index.csv.gz
+For most jobs, you will need to submit through the queue via SLURM (this makes sure that we are not collectively making demands beyond our resources). We are installing Zabbix for additional monitoring capabilities for processes such as RStudio and Jupyter Notebooks that cannot be run through SLURM. The commands `htop` and `top` can also be used to monitor memory usage.
 
-## Creating the grid file:
-Script to create gridfile (from Jordan Graesser's [EOSvault Github page](https://github.com/jgrss/eosvault))
+See [here](Downloading) for an example of a SLURM script.
+See [here](SlurmCommands) for general SLURM commands. 
+
+
+
 ```
-import zones
-import geopandas as gpd
-
-df = gpd.read_file(<vector file with target bounds>)
-
-left, bottom, right, top = df.total_bounds.tolist()
-
-def round10(number, offset):
-    #Round to the nearest 10
-    return (round(number / 10.0) * 10.0) + offset
-
-left = round10(left, -10)
-bottom = round10(bottom, -10)
-right = round10(right, 10)
-top = round10(top, 10)
-
-# Target grid size (in meters)
-grid_size = 20000
-
-# Target cell storage size (in meters)
-cell_size = 10.0
-
-#Create the Grids
-df_grids = zones.grid((left, bottom, right, top),
-                       grid_size, grid_size,
-                       cell_size, cell_size,
-                       crs=df.crs)
-                       
-#Take the intersecting grids only:
-df_grids = df_grids.loc[[geom.intersects(df.geometry.values[0]) for geom in df_grids.geometry.values]]
-
-#Add unique ids:
-df_grids.loc[:, 'UNQ'] = range(1, df_grids.shape[0]+1)
-
-#Save tp file:
-df_grids.to_file('rgrids.gpkg', driver='GPKG')
-```
-Note: `zones.grid` can be found [here](https://github.com/jgrss/zones/blob/master/zones/base.py)
-
-## Modifying the scripts:
-Make sure to modify the lines in `~/project/config/config.yaml` to point to the correct input and output locations.
-Also modify all downloading and processing scripts in `~/code/bash`
-
-In the downloading scripts, you need to enter the crs in proj4js format. You can look this up at spatialreference.org, or can convert using earthpy (i.e: proj4 = et.epsg['32613'])

@@ -48,7 +48,3 @@ For most jobs, you will need to submit through the queue via SLURM (this makes s
 
 See [here](Downloading) for an example of a SLURM script.
 See [here](SlurmCommands) for general SLURM commands. 
-
-
-
-```

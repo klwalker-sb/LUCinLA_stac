@@ -1,4 +1,4 @@
-<!-- #region -->
+(connecting)=
 # Connecting to the ERI cluster
 ================================================================================================================================
 
@@ -13,6 +13,7 @@ You will first need a **github account** so that you can be invited to the neces
 To join the ERI computing cluster, you will first need to **request an ERI account** This can be done through Kendra Walker to make sure you are added to the appropriate spaces. You will be directed to a cite to create your credentials.
 You will need to create a password and also an ssh key. 
 
+(ssh keys)=
 ## generating ssh keys
 **On a mac / linux system:** 
 * type "ssh-keygen -t ecdsa" in the terminal.

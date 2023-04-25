@@ -31,3 +31,4 @@ parts:
     - file: vim
     - file: slurm
     - file: editing_this_guide
+    - file: quebracho

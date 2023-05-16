@@ -48,3 +48,11 @@ For most jobs, you will need to submit through the queue via SLURM (this makes s
 
 See [here](Downloading) for an example of a SLURM script.
 See [here](SlurmCommands) for general SLURM commands. 
+
+
+## R Studio
+We have a nice R Studio interface! You can log on by following this link:
+http://quebracho.grit.ucsb.edu:8787/auth-sign-in?appUri=%2F
+(Note the lack of 's' in http  you also probably have to be logged in to pulse secure to log on to R studio)
+
+please limit your R Studio work to just a few core because it is not monitored by SLURM. Soon we will have an official procedure

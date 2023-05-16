@@ -235,7 +235,7 @@ sbatch CheckLogFiles_dl.job
 This will read and update the master directory and create a summary of cells that were recently run (those with stacdl_py*.err files in your bash directory). After running this script, the only stacdl_py*.err files left in your bash directory are for cells that need to be rerun. You can rerun the whole cell or just the years/months indicated in the errors. To easily view the error periods, open the .out file from the script you just ran (`cat eostac_checkDls.*.out' -- but * needs to be replaced with the job id)`
 and scroll down to the bottom to see `dl_fix_now`. 
 
-![alt](/dl_log_out.jpg)
+![alt](/Images/dl_log_out.jpg)
 
 ## 5. Rerun cells that did not load completely
 Any cell with dates in that column need those periods rerun.

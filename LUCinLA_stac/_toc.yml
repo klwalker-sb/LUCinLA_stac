@@ -23,7 +23,7 @@ parts:
     - file: Jupyter_Notebook
   - caption: New project configuration
     chapters:
-    - file: Setting_up_new_project
+    - file: setting_up_new_project
   - caption: Computing resources
     chapters:
     - file: intro_to_git

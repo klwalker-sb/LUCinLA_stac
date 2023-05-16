@@ -1,4 +1,4 @@
-# Setting up a new project
+# setting up new project
 ======================================================================================================================================
 The following skeleton, containing the grid file and two index files is necessary for a new project:
 ```

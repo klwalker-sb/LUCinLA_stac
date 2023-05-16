@@ -205,7 +205,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="quebracho.html">
-   Setting up a new project
+   quebracho
   </a>
  </li>
 </ul>
@@ -371,94 +371,97 @@ hit <code class="docutils literal notranslate"><span class="pre">Esc</span></cod
 Go here for <a class="reference internal" href="vim.html#vimcommands"><span class="std std-ref">more info on editing in vim</span></a></p>
 <p>This is the default script (with line numbering added for reference below):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>1-  #!/bin/bash -l
- 
-2-  #SBATCH -N 1 # number of nodes
-3-  #SBATCH -n 4 # number of cores
-4-  #SBATCH -t 0-20:00 # time (D-HH:MM)
-5-  #SBATCH -p basic
-6-  #SBATCH -o stacdl2_py.%N.%a.%j.out # STDOUT
-7-  #SBATCH -e stacdl2_py.%N.%a.%j.err # STDERR
-8-  #SBATCH --job-name=&quot;stacdl2_py&quot;
-9-  #SBATCH --array=860
-    ##############################################
-    ### As an array job:
-10- GRID_ID=$(($SLURM_ARRAY_TASK_ID + 3000))
-
-11-  ##Set permissions on output files
-12-  umask 002
-
-13-  ##Settables:
-
-14-  PROJECT_HOME=&quot;/raid-cel/sandbox/sandbox-cel/paraguay_lc/stac&quot;
-15-  LANDSAT_DIR=&quot;${PROJECT_HOME}/grid/00${GRID_ID}/landsat&quot;
-16-  SENTINEL_DIR=&quot;${PROJECT_HOME}/grid/00${GRID_ID}/sentinel2&quot;
-17-  FILETYPE=&#39;.tif&#39;
-18-  OUT_DIR=&quot;${PROJECT_HOME}/grid/00${GRID_ID}&quot;
-19-  L7STOPYR=2017
-20-  GRID_FILE=&quot;/raid-cel/sandbox/sandbox-cel/LUCinLA_grid_8858.gpkg&quot;
-21-  EPSG=8858
-22-  BUFFER=100
-
-     ################################################
-     ### activate the virtual environment
-23-  conda activate venv.lucinsa38_dl
-
-     ## if directories are not empty, run script to check for corrupt files
-24-  if [ -n &quot;$LANDSAT_DIR&quot; ]
-25-  then
-26-     eostac check --out-path $LANDSAT_DIR --file-type $FILETYPE
-27-  fi
-28-  if [ -n &quot;$SENTINEL_DIR&quot; ]
-29-  then
-30-     eostac check --out-path $SENTINEL_DIR --file-type $FILETYPE
-31-  fi
-
-32-  TIMESTAMP0=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
-
-33-  START_YEAR=2000
-34-  END_YEAR=2023
-35-  YEAR=$START_YEAR
-36-  while [ $YEAR -ne $END_YEAR ]
-37-  do
-38-       for m in {1..11}
-39-       do
-40-            CURRENT_MONTH=$(printf &quot;%02d&quot; $m)
-41-            NEXT_ITER=$(($m+1))
-42-            NEXT_MONTH=$(printf &quot;%02d&quot; $NEXT_ITER)
-43-            START_DATE=&quot;${YEAR}-${CURRENT_MONTH}-01&quot;
-                
-44-            if [[ $m -eq 11 ]]
-45-            then
-46-              END_DATE=&quot;${YEAR}-${NEXT_MONTH}-31&quot;
-47-            else
-48-              END_DATE=&quot;${YEAR}-${NEXT_MONTH}-01&quot;
-49-            fi
-
-50-            echo Working on ${START_DATE} to ${END_DATE} &gt;&amp;2	
-51-            TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
-52-            echo $TIMESTAMP &gt;&amp;2
-
-53-            eostac download --start-date $START_DATE --end-date $END_DATE --bounds $GRID_FILE --bounds-query UNQ==$GRID_ID --out-path   
+2- 
+3-  #SBATCH -N 1 # number of nodes
+4-  #SBATCH -n 4 # number of cores
+5-  #SBATCH -t 0-20:00 # time (D-HH:MM)
+6-  #SBATCH -p basic
+7-  #SBATCH -o stacdl_py.%N.%a.%j.out # STDOUT
+8-  #SBATCH -e stacdl_py.%N.%a.%j.err # STDERR
+9-  #SBATCH --job-name=&quot;stacdl_py&quot;
+10- #SBATCH --array=860-870%2
+11- ##############################################
+12- ### As an array job:
+13- GRID_ID=$(($SLURM_ARRAY_TASK_ID + 3000))
+14- echo cell_id = $GRID_ID &gt;&amp;2
+15-
+16-  ##Set permissions on output files
+17-  umask 002
+18-
+19-  ##Settables:
+20-
+21--  PROJECT_HOME=&quot;/raid-cel/sandbox/sandbox-cel/paraguay_lc/stac&quot;
+22--  LANDSAT_DIR=&quot;${PROJECT_HOME}/grid/00${GRID_ID}/landsat&quot;
+23-  SENTINEL_DIR=&quot;${PROJECT_HOME}/grid/00${GRID_ID}/sentinel2&quot;
+24-  FILETYPE=&#39;.tif&#39;
+25-  OUT_DIR=&quot;${PROJECT_HOME}/grid/00${GRID_ID}&quot;
+26-  L7STOPYR=2017
+27-  GRID_FILE=&quot;/raid-cel/sandbox/sandbox-cel/LUCinLA_grid_8858.gpkg&quot;
+28-  EPSG=8858
+29-  BUFFER=100
+30-
+31-  ################################################
+32-  ### activate the virtual environment
+33-  conda activate venv.lucinsa38_dl
+34-  ################################################
+35 - ### prescript:
+36-  ### if directories are not empty, run script to check for corrupt files
+37-  if [ -n &quot;$LANDSAT_DIR&quot; ]
+38-  then
+39-     eostac check --out-path $LANDSAT_DIR --file-type $FILETYPE
+40-  fi
+41-  if [ -n &quot;$SENTINEL_DIR&quot; ]
+42-  then
+43-     eostac check --out-path $SENTINEL_DIR --file-type $FILETYPE
+44-  fi
+45-  #################################################
+46-  TIMESTAMP0=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+47   
+48-  START_YEAR=2000
+49-  END_YEAR=2023
+50-  YEAR=$START_YEAR
+51-  while [ $YEAR -ne $END_YEAR ]
+52-  do
+53-       for m in {1..11}
+54-       do
+55-            CURRENT_MONTH=$(printf &quot;%02d&quot; $m)
+56-            NEXT_ITER=$(($m+1))
+57-            NEXT_MONTH=$(printf &quot;%02d&quot; $NEXT_ITER)
+58-            START_DATE=&quot;${YEAR}-${CURRENT_MONTH}-01&quot;
+59-                
+60--            if [[ $m -eq 11 ]]
+61-            then
+62-              END_DATE=&quot;${YEAR}-${NEXT_MONTH}-31&quot;
+63-            else
+64-              END_DATE=&quot;${YEAR}-${NEXT_MONTH}-01&quot;
+65-            fi
+66-
+67-            echo Working on ${START_DATE} to ${END_DATE} &gt;&amp;2	
+68-            TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+69-            echo $TIMESTAMP &gt;&amp;2
+70-
+71-            eostac download --start-date $START_DATE --end-date $END_DATE --bounds $GRID_FILE --bounds-query UNQ==$GRID_ID --out-path   
                $OUT_DIR --epsg $EPSG --bounds-buffer $BUFFER --l7-stop_year $L7STOPYR --max-items -1 -w 4 -t 2 
-
-54-       done
-55-       YEAR=$(($YEAR+1))
-56-  done
-
-57-  TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
-58-  TIMETOT=$(($(date -d &quot;$TIMESTAMP&quot; &quot;+%s&quot;) - $(date -d &quot;$TIMESTAMP0&quot; &quot;+%s&quot;) ))
-59-  echo Done at $TIMESTAMP &gt;&amp;2
-60-  echo full process took: $(($TIMETOT/60)) minutes &gt;&amp;2
-61-  conda deactivate
+72-
+73-       done
+74-       YEAR=$(($YEAR+1))
+75-  done
+76-
+77--  TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+78-  TIMETOT=$(($(date -d &quot;$TIMESTAMP&quot; &quot;+%s&quot;) - $(date -d &quot;$TIMESTAMP0&quot; &quot;+%s&quot;) ))
+79-  echo Done at $TIMESTAMP &gt;&amp;2
+80-  echo full process took: $(($TIMETOT/60)) minutes &gt;&amp;2
+81-  echo core used: $SLURM_NTASKS &gt;&amp;2
+82-  conda deactivate
 
 </pre></div>
 </div>
 <p>Most lines should stay as they are.<br />
 <strong>the lines that you need to change are:</strong></p>
 <ul class="simple">
-<li><p><strong>Grid info:</strong> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--array=</span></code> (line 9 here). Enter the last 3 digits of each gridcell you are processing.<br />
+<li><p><strong>Grid info:</strong> <code class="docutils literal notranslate"><span class="pre">#SBATCH</span> <span class="pre">--array=</span></code> (line 10 here). Enter the last 3 digits of each gridcell you are processing.<br />
 You can enter a range (e.g. 898-908), But be mindful that you are not hogging all the computer bandwidth.
-If your grid id is &gt;999, modify the number GRID_ID line (line 10 here) to sum to the id
+If your grid id is &gt;999, modify the number GRID_ID line (line 13 here) to sum to the id
 (e.g. cell 3919 = 919 in array line and 3000 in GRID_ID equation)
 (this is because SLURM does not accept numbers greater than 999 in the array line directly)</p></li>
 </ul>
@@ -487,31 +490,33 @@ If your grid id is &gt;999, modify the number GRID_ID line (line 10 here) to sum
 <ul>
 <li><p>These are all configuration flags for SLURM.</p></li>
 <li><p>#SBATCH tells SLURM these are not user comments</p></li>
-<li><p>(line 2): We aren’t doing any distributed computing across nodes, so we will always use -N 1.</p></li>
-<li><p>(line 3): -n 8 are the number of CPUs for concurrent or parallel processing (controlled in the Python scripts).</p></li>
-<li><p>(line 4): -t is the estimated max runtime (increase this if you get timeout errors)</p></li>
-<li><p>(line 5): -p tells SLURM this job should be sent to the standard partition (there are also ‘short’, ‘gpu’, and ‘largemem’).</p></li>
-<li><p>(line 6&amp;7): -o and -e are output and error log files</p></li>
-<li><p>(line 8): -job-name is the name of the batch job</p></li>
-<li><p>(line 9): array is the list of gridcells for processing (1,2,3,etc or 1-3)</p></li>
+<li><p>(line 3): We aren’t doing any distributed computing across nodes, so we will always use -N 1.</p></li>
+<li><p>(line 4): -n 4 are the number of CPUs for concurrent or parallel processing (controlled in the Python scripts).</p></li>
+<li><p>(line 5): -t is the estimated max runtime (increase this if you get timeout errors)</p></li>
+<li><p>(line 6): -p tells SLURM this job should be sent to the standard partition (there are also ‘short’, ‘gpu’, and ‘largemem’).</p></li>
+<li><p>(line 7&amp;8): -o and -e are output and error log files</p></li>
+<li><p>(line 9): -job-name is the name of the batch job</p></li>
+<li><p>(line 10): array is the list of gridcells for processing (1,2,3,etc or 1-3)</p></li>
 </ul>
 </li>
-<li><p>Line 12</p>
+<li><p>Line 14 (and all ‘echo … &gt;&amp;2’ lines): These are statements to print to the .err file (&gt;&amp;2) information for logging purposes</p></li>
+<li><p>Line 16,17</p>
 <ul>
 <li><p>umask sets the permission for files that are creates. left digit is for user, middle digit is for group and right digit is for<br />
 others. 0= no permissions denied (read/write/execute allowed), 2= write permission denied, 7= all permissions denied</p></li>
 </ul>
 </li>
-<li><p>Lines 14-22: General parameters for script. Do not need to change.</p>
+<li><p>Lines 19-29: General parameters for script. Do not need to change.</p>
 <ul>
-<li><p>(line 19): L7STOPYR is the year after which Landsat-7 images should no longer be downloaded/processed</p></li>
-<li><p>(line 21): EPSG is the coordinate system. 8858 is Equal Earth for the Americas.</p></li>
-<li><p>(line 22): BUFFER the distance beyond the grid cell boundary to extend processing (grids will overlap by this much)
-Lines 23-31 run checks for corrupt files if download directories already exist (used when script is rerun after hanging)
-Line 33 gets the current time stamp for progress reporting
-Lines 34-35: User variables for start and end dates to stream. (For Paraguay, the dates are from 1-Jan-2000 to 31-Dec-2022. For Chile,
+<li><p>(line 26): L7STOPYR is the year after which Landsat-7 images should no longer be downloaded/processed</p></li>
+<li><p>(line 27): GRIDFILE is the file with spatial informaiton for each cell</p></li>
+<li><p>(line 28): EPSG is the coordinate system. 8858 is Equal Earth for the Americas.</p></li>
+<li><p>(line 29): BUFFER the distance beyond the grid cell boundary to extend processing (grids will overlap by this much)
+Lines 35-44 run checks for corrupt files if download directories already exist (used when script is rerun after hanging)
+Line 46 gets the current time stamp for progress reporting
+Lines 48-50: User variables for start and end dates to stream. (For Paraguay, the dates are from 1-Jan-2000 to 31-Dec-2022. For Chile,
 the dates are from 1-Jan-1985 to 31-Dec-2022)
-*Lines 35-56: The script runs a seperate call to the download script for each month from Jan of the start year to Dec of the end year. &gt; This is to not overwhelm the server when requesting downloads.</p></li>
+*Lines 51-75: The script runs a seperate call to the download script for each month from Jan of the start year to Dec of the end year. &gt; This is to not overwhelm the server when requesting downloads.</p></li>
 </ul>
 </li>
 </ul>
@@ -531,8 +536,8 @@ the dates are from 1-Jan-1985 to 31-Dec-2022)
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Current run-time estimates for single grid cells:
-~ 5hrs</p>
+<p>Current run-time estimates for single grid cells with 4 cores:
+~ 15hrs</p>
 </div>
 <p>To check on job:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">sldown</span><span class="o">.</span><span class="n">bellows</span><span class="mf">.909.78</span><span class="o">.</span><span class="n">err</span> <span class="p">(</span><span class="k">with</span> <span class="mi">909</span> <span class="o">=</span> <span class="n">grid</span> <span class="n">running</span> <span class="ow">and</span> <span class="mi">78</span> <span class="o">=</span> <span class="n">job</span> <span class="n">number</span><span class="p">)</span>
@@ -550,18 +555,55 @@ the dates are from 1-Jan-1985 to 31-Dec-2022)
 </div>
 <div class="section" id="check-downloading-status">
 <span id="checkdownload"></span><h2>4. Check downloading status:<a class="headerlink" href="#check-downloading-status" title="Permalink to this headline">¶</a></h2>
-<p>Often some images do not download properly the first time. All images for a grid cell need to be downloaded (or exempted) for the remaining processing steps to work.</p>
-<p>To check whether all images processed for a specific gridcell and task:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">sldown</span><span class="o">.</span><span class="n">bellows</span><span class="mf">.909.78</span><span class="o">.</span><span class="n">err</span> <span class="p">(</span><span class="k">with</span> <span class="mi">909</span> <span class="o">=</span> <span class="n">grid</span> <span class="n">running</span> <span class="ow">and</span> <span class="mi">78</span> <span class="o">=</span> <span class="n">job</span> <span class="n">numb</span>
-<span class="c1"># or, if multiple gridcells run:</span>
-<span class="n">ls</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
-<span class="c1"># then for each .err file found:</span>
-<span class="n">cat</span> <span class="p">[</span><span class="n">filename</span><span class="p">]</span>
+<p>There are often errors for some time periods in the first (and second and maybe third…) round of downloading.
+If these errors occur, the cells need to be rerun to pickup missing images due to these errors.
+We have a log checking script to make checking these errors easy and to keep track of the status of each cell.</p>
+<p>Copy these scripts into your code/bash folder:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">/</span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">paraguay_lc</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">CheckLogFiles_dl</span><span class="o">.</span><span class="n">job</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">cp</span> <span class="o">/</span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">paraguay_lc</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">CheckLogFiles_dl</span><span class="o">.</span><span class="n">py</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span>
 </pre></div>
 </div>
-<p>If all images downloaded, you should see something like this (precentage bars to 100% for downloading and no errors):
-<img alt="alt" src="_images/cat_download_multi.png" /></p>
-<p>You can also generate a figure to see which cells downloaded fully:
+<p>now within code/bash, open the bash file for CheckLogFiles_dl.job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vim</span> <span class="n">CheckLogFiles_dl</span><span class="o">.</span><span class="n">job</span>
+</pre></div>
+</div>
+<p>the database path should be pointing to the location of the global processing database for the project:
+DBPATH=”/raid-cel/r/downspout-cel/paraguay_lc/cell_processing.csv”
+IGNORE contains dates that commonly have errors that we cannot fix at the moment
+the archive should point to a folder in your homespace where you will archive log files when you are done with them:
+ARCHIVE=’/home/username/archive/eostac_logs’
+(change username to your username and make the directory if it does not already exist</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">eostac_logs</span>
+</pre></div>
+</div>
+<p>close the file</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#(If in insert mode), use [Esc] to exit insert mode </span>
+<span class="p">:</span><span class="n">wq</span>
+</pre></div>
+</div>
+<p>now run the script:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">CheckLogFiles_dl</span><span class="o">.</span><span class="n">job</span>
+</pre></div>
+</div>
+<p>This will read and update the master directory and create a summary of cells that were recently run (those with stacdl_py*.err files in your bash directory). After running this script, the only stacdl_py*.err files left in your bash directory are for cells that need to be rerun. You can rerun the whole cell or just the years/months indicated in the errors. To easily view the error periods, open the .out file from the script you just ran (<code class="docutils literal notranslate"><span class="pre">cat</span> <span class="pre">eostac_checkDls.*.out'</span> <span class="pre">--</span> <span class="pre">but</span> <span class="pre">*</span> <span class="pre">needs</span> <span class="pre">to</span> <span class="pre">be</span> <span class="pre">replaced</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">job</span> <span class="pre">id)</span></code>
+and scroll down to the bottom to see <code class="docutils literal notranslate"><span class="pre">dl_fix_now</span></code>.</p>
+<p><img alt="alt" src="_images/dl_log_out.jpg" /></p>
+</div>
+<div class="section" id="rerun-cells-that-did-not-load-completely">
+<h2>5. Rerun cells that did not load completely<a class="headerlink" href="#rerun-cells-that-did-not-load-completely" title="Permalink to this headline">¶</a></h2>
+<p>Any cell with dates in that column need those periods rerun.
+You might want to copy your eostac_dl_py.sh script and have a eostac_dl2_py.sh script where you modify the dates to run. Make sure to keep the corrupt file check prescript to remove files that may have gotten corrupted during the error event.</p>
+</div>
+<div class="section" id="move-err-and-out-files-to-new-directory-to-facilitate-tracking-of-new-downloads">
+<h2>6. Move .err and .out files to new directory to facilitate tracking of new downloads<a class="headerlink" href="#move-err-and-out-files-to-new-directory-to-facilitate-tracking-of-new-downloads" title="Permalink to this headline">¶</a></h2>
+<p>These files should move automatically after you run the FileCheck script, but if they do not and get in the way (after you have addressed errors), move them to an archive directory to clean up the clutter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Move .err and .out files from /bash to /archive</span>
+<span class="n">cd</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">stacdl2_py</span><span class="o">.*.</span><span class="p">{</span><span class="n">err</span><span class="p">,</span><span class="n">out</span><span class="p">}</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">archive</span><span class="o">/</span><span class="n">eostac_logs</span>
+</pre></div>
+</div>
+<p>################################################################################################################################
+You can also generate a figure to see which cells downloaded fully:
 ——-NOTE: We are not currently using this ——————-</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Activate virtual environment:</span>
 <span class="n">source</span> <span class="o">.</span><span class="n">nasaenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
@@ -585,24 +627,7 @@ Download file to view on local desktop by opening a separate terminal and typing
 <p>The figure will look something like this:
 <img alt="" src="_images/grid_status.png" />
 The key indicates which cells loaded completely for each product. Those not listed need to be redownloaded. (Turquoise (y) means all are good)</p>
-</div>
-<div class="section" id="rerun-cells-that-did-not-load-completely">
-<span id="incomplete"></span><h2>5. Rerun cells that did not load completely<a class="headerlink" href="#rerun-cells-that-did-not-load-completely" title="Permalink to this headline">¶</a></h2>
-<p>For cells that did not load completely, check the .err and .out files:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#i.e for grid cell 909, if 78 is job number for an incomplete process:</span>
-<span class="n">cat</span> <span class="n">sldown</span><span class="o">.</span><span class="n">bellows</span><span class="mf">.909.78</span><span class="o">.</span><span class="n">err</span>
-</pre></div>
-</div>
-<p>If the .err file indicates that the downloading process timed out for any period, you need to rerun the same download script. Repeat the run/check process until no error messages are given (note: yellow warnings about deleted files at the beginning of the script are fine. Errors for the very last period of the script may also need to be ignored, but should be noted in the downloading column of the cell spreadsheet.</p>
-</div>
-<div class="section" id="move-err-and-out-files-to-new-directory-to-facilitate-tracking-of-new-downloads">
-<h2>6. Move .err and .out files to new directory to facilitate tracking of new downloads<a class="headerlink" href="#move-err-and-out-files-to-new-directory-to-facilitate-tracking-of-new-downloads" title="Permalink to this headline">¶</a></h2>
-<p>All these files will soon make it difficult to find the new ones to monitor. Move them to an archive directory after checking to clean up the clutter.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#Make the directory (first time only)</span>
-<span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">downloads</span>
-<span class="c1">#Move .err and .out files from /bash to /archive</span>
-<span class="n">cd</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span>
-<span class="n">mv</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">stacdl2_py</span><span class="o">.*.</span><span class="p">{</span><span class="n">err</span><span class="p">,</span><span class="n">out</span><span class="p">}</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">username</span><span class="o">&gt;/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">archive</span><span class="o">/</span><span class="n">downloads</span>
+<div class="highlight-default notranslate" id="incomplete"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

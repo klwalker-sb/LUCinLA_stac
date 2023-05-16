@@ -80,17 +80,6 @@ Or in git for Windows enter: `git config --global credential.helper wincred`
         (venv.lucinla38_dl) cd eostac/
         (venv.lucinla38_dl) python setup.py build && pip install . gdal==3.5.0 numpy==1.23.1 rasterio==1.3.0
 
-        # Install other repos needed for this project:
-        (venv.lucinla38_dl) cd ../
-        (venv.lucinla38_dl) git clone https://github.com/jgrss/geosample
-        (venv.lucinla38_dl) cd geosample/
-        (venv.lucinla38_dl) python setup.py build && pip install .
-        
-        (venv.lucinla38_dl) cd ../
-        (venv.lucinla38_dl) git clone https://github.com/jgrss/stackstac
-        (venv.lucinla38_dl) cd stackstac/
-        (venv.lucinla38_dl) python setup.py build && pip install .
-
 **to uninstall and reinstall a package from a github repo:** (i.e. if changes are made to the package that need to be incorporated)
 
         conda activate venv.lucinla38_dl

@@ -214,12 +214,12 @@ now within code/bash, open the bash file for CheckLogFiles_dl.job:
 ```
 vim CheckLogFiles_dl.job
 ```
-the database path should be pointing to the location of the global processing database for the project:
-DBPATH="/raid-cel/r/downspout-cel/paraguay_lc/cell_processing.csv"
-IGNORE contains dates that commonly have errors that we cannot fix at the moment
-the archive should point to a folder in your homespace where you will archive log files when you are done with them:
-ARCHIVE='/home/username/archive/eostac_logs'
-(change username to your username and make the directory if it does not already exist
+The database path should be pointing to the location of the global processing database for the project:
+ DBPATH="/raid-cel/r/downspout-cel/paraguay_lc/cell_processing.csv"
+ IGNORE contains dates that commonly have errors that we cannot fix at the moment.
+ The archive should point to a folder in your homespace where you will archive log files when you are done with them:
+ ARCHIVE='/home/username/archive/eostac_logs'
+ (change username to your username and make the directory if it does not already exist
 ```
 mkdir /home/username/archive/eostac_logs
 ```

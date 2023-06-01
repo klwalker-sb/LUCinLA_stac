@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quebracho &#8212; LUCinLA_stac</title>
+    <title>setting up new project &#8212; LUCinLA_stac</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -173,7 +173,7 @@
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Quebracho
+   setting up new project
   </a>
  </li>
 </ul>
@@ -205,7 +205,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="quebracho.html">
-   Setting up a new project
+   quebracho
   </a>
  </li>
 </ul>
@@ -249,7 +249,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/Setting_up_new_project.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/setting_up_new_project.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -269,7 +269,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FSetting_up_new_project.html&body=Your%20issue%20content%20here."><button
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fsetting_up_new_project.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -296,13 +296,18 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#to-log-in-to-quebracho">
-   To log in to Quebracho:
+  <a class="reference internal nav-link" href="#getting-the-indices">
+   Getting the indices:
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#running-jobs">
-   Running jobs:
+  <a class="reference internal nav-link" href="#creating-the-grid-file">
+   Creating the grid file:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modifying-the-scripts">
+   Modifying the scripts:
   </a>
  </li>
 </ul>
@@ -316,52 +321,75 @@
         
               <div>
                 
-  <div class="section" id="quebracho">
-<h1>Quebracho<a class="headerlink" href="#quebracho" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="setting-up-new-project">
+<h1>setting up new project<a class="headerlink" href="#setting-up-new-project" title="Permalink to this headline">¶</a></h1>
 <p>======================================================================================================================================
-quebracho is a new fat node with GPU for primary use by our lab.</p>
-<p>Hardware specs:
-** 64 CPU
-** NDIVIA A40 GPU</p>
-<p>Software specs:
-** CUDA =
-** GDAL = 3.5.0
-** RStudio (in progress)
-** Zabbix for usage monitoring (in progress)</p>
-<div class="section" id="to-log-in-to-quebracho">
-<h2>To log in to Quebracho:<a class="headerlink" href="#to-log-in-to-quebracho" title="Permalink to this headline">¶</a></h2>
-<p>Contact Kendra Walker or Gavin McDonald to get added to the user list for quebracho
-fill out your credentials <a class="reference external" href="https://dc1.grit.ucsb.edu/">here</a>
-see [here](ssh keys) for details on setting up SSH keys</p>
-<p>To SSH into the cluster, use:
-<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">&lt;username&gt;&#64;quebracho.grit.ucsb.edu</span></code>
-(if you had an account with ERI prior to quebracho, you might need to ssh into <a class="reference external" href="http://grit.ucsb.edu">grit.ucsb.edu</a> or <a class="reference external" href="http://eri.ucsb.edu">eri.ucsb.edu</a> first)<br />
-see <a class="reference internal" href="Connecting_to_cluster.html#connecting"><span class="std std-ref">here</span></a> for details on connecting to cluster environments from a Mac/linux or Windows environment</p>
-</div>
-<div class="section" id="running-jobs">
-<h2>Running jobs:<a class="headerlink" href="#running-jobs" title="Permalink to this headline">¶</a></h2>
-<p>You will need to set up an environment and run jobs through the job manager: SLURM
-See [here]((Environment) for general info on setting up an environment</p>
-<p>Here is an example of a process to set up an environment to run the pytorch-based library, cultionet (a public git repo for field segmentation):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span> <span class="o">.</span><span class="n">cnet38</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.8</span>
-<span class="n">conda</span> <span class="n">activate</span> <span class="o">.</span><span class="n">cnet38</span>
-<span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="n">add</span> <span class="n">channels</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">conda</span> <span class="n">config</span> <span class="o">--</span><span class="nb">set</span> <span class="n">channel_priority</span> <span class="n">strict</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="n">cython</span><span class="o">&gt;=</span><span class="mf">0.29</span><span class="o">.*</span> <span class="n">numpy</span><span class="o">&lt;=</span><span class="mf">1.21.0</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="o">==</span><span class="mf">1.12.1</span><span class="o">+</span><span class="n">cu113</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.13.1</span><span class="o">+</span><span class="n">cu113</span> <span class="n">torchaudio</span><span class="o">==</span><span class="mf">0.12.1</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">cu113</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span>
-<span class="n">python</span> <span class="o">-</span><span class="n">c</span> <span class="s2">&quot;import torch;print(torch.cuda.is_available())&quot;</span> <span class="c1"># GPU check: True if cuda/GPU is available. if False, make sure you&#39;re not on bellows</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="o">-</span><span class="n">scatter</span> <span class="n">torch</span><span class="o">-</span><span class="n">sparse</span> <span class="n">torch</span><span class="o">-</span><span class="n">cluster</span> <span class="n">torch</span><span class="o">-</span><span class="n">spline</span><span class="o">-</span><span class="n">conv</span> <span class="n">torch</span><span class="o">-</span><span class="n">geometric</span> <span class="n">torch</span><span class="o">-</span><span class="n">geometric</span><span class="o">-</span><span class="n">temporal</span> <span class="o">--</span><span class="n">extra</span><span class="o">-</span><span class="n">index</span><span class="o">-</span><span class="n">url</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">pyg</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">torch</span><span class="o">-</span><span class="mf">1.12.1</span><span class="o">%</span><span class="mi">2</span><span class="n">Bcu113</span><span class="o">.</span><span class="n">html</span> <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">cache</span><span class="o">-</span><span class="nb">dir</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">gdal</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">cultionet</span><span class="nd">@git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jgrss</span><span class="o">/</span><span class="n">cultionet</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cultionet</span> <span class="n">train</span> <span class="o">-</span><span class="n">h</span> <span class="c1">#### cultionet install check. if errors, downgrade pytorch-lightning: pip install pytorch-lightning==1.4.0</span>
+The following skeleton, containing the grid file and two index files is necessary for a new project:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/&lt;</span><span class="n">country</span><span class="o">&gt;</span><span class="n">_lc</span>
+    <span class="n">raster</span>
+        <span class="n">grids</span>
+        <span class="n">landsat_index</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">gz</span>
+        <span class="n">sentinel</span><span class="o">-</span><span class="mi">2</span><span class="n">_index</span>
+            <span class="n">index</span><span class="o">.</span><span class="n">csv</span><span class="o">.</span><span class="n">gz</span>
+        <span class="n">srtm</span>
+    <span class="n">vector</span>
+        <span class="n">grids</span><span class="o">.</span><span class="n">gpkg</span>
 </pre></div>
 </div>
-<p>For most jobs, you will need to submit through the queue via SLURM (this makes sure that we are not collectively making demands beyond our resources). We are installing Zabbix for additional monitoring capabilities for processes such as RStudio and Jupyter Notebooks that cannot be run through SLURM. The commands <code class="docutils literal notranslate"><span class="pre">htop</span></code> and <code class="docutils literal notranslate"><span class="pre">top</span></code> can also be used to monitor memory usage.</p>
-<p>See <a class="reference internal" href="Downloading.html#downloading"><span class="std std-ref">here</span></a> for an example of a SLURM script.
-See <a class="reference internal" href="slurm.html#slurmcommands"><span class="std std-ref">here</span></a> for general SLURM commands.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<div class="section" id="getting-the-indices">
+<h2>Getting the indices:<a class="headerlink" href="#getting-the-indices" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">index.csv.gz</span></code> files are complete catalogues of available imagery with basic parameters such as date and extent. You can use index files from other projects, but to get the most up-to-date indices, copy them from Google cloud:
+for Landsat: gs://gcp-public-data-landsat/index.csv.gz and for Sentinel: gs://gcp-public-data-sentinel-2/index.csv.gz</p>
+</div>
+<div class="section" id="creating-the-grid-file">
+<h2>Creating the grid file:<a class="headerlink" href="#creating-the-grid-file" title="Permalink to this headline">¶</a></h2>
+<p>Script to create gridfile (from Jordan Graesser’s <a class="reference external" href="https://github.com/jgrss/eosvault">EOSvault Github page</a>)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">zones</span>
+<span class="kn">import</span> <span class="nn">geopandas</span> <span class="k">as</span> <span class="nn">gpd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="o">&lt;</span><span class="n">vector</span> <span class="n">file</span> <span class="k">with</span> <span class="n">target</span> <span class="n">bounds</span><span class="o">&gt;</span><span class="p">)</span>
+
+<span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">total_bounds</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">round10</span><span class="p">(</span><span class="n">number</span><span class="p">,</span> <span class="n">offset</span><span class="p">):</span>
+    <span class="c1">#Round to the nearest 10</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">number</span> <span class="o">/</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">*</span> <span class="mf">10.0</span><span class="p">)</span> <span class="o">+</span> <span class="n">offset</span>
+
+<span class="n">left</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">left</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">bottom</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">bottom</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">right</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">right</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">top</span> <span class="o">=</span> <span class="n">round10</span><span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Target grid size (in meters)</span>
+<span class="n">grid_size</span> <span class="o">=</span> <span class="mi">20000</span>
+
+<span class="c1"># Target cell storage size (in meters)</span>
+<span class="n">cell_size</span> <span class="o">=</span> <span class="mf">10.0</span>
+
+<span class="c1">#Create the Grids</span>
+<span class="n">df_grids</span> <span class="o">=</span> <span class="n">zones</span><span class="o">.</span><span class="n">grid</span><span class="p">((</span><span class="n">left</span><span class="p">,</span> <span class="n">bottom</span><span class="p">,</span> <span class="n">right</span><span class="p">,</span> <span class="n">top</span><span class="p">),</span>
+                       <span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span>
+                       <span class="n">cell_size</span><span class="p">,</span> <span class="n">cell_size</span><span class="p">,</span>
+                       <span class="n">crs</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">crs</span><span class="p">)</span>
+                       
+<span class="c1">#Take the intersecting grids only:</span>
+<span class="n">df_grids</span> <span class="o">=</span> <span class="n">df_grids</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">geom</span><span class="o">.</span><span class="n">intersects</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">geom</span> <span class="ow">in</span> <span class="n">df_grids</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">values</span><span class="p">]]</span>
+
+<span class="c1">#Add unique ids:</span>
+<span class="n">df_grids</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;UNQ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">df_grids</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1">#Save tp file:</span>
+<span class="n">df_grids</span><span class="o">.</span><span class="n">to_file</span><span class="p">(</span><span class="s1">&#39;rgrids.gpkg&#39;</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GPKG&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">zones.grid</span></code> can be found <a class="reference external" href="https://github.com/jgrss/zones/blob/master/zones/base.py">here</a></p>
+</div>
+<div class="section" id="modifying-the-scripts">
+<h2>Modifying the scripts:<a class="headerlink" href="#modifying-the-scripts" title="Permalink to this headline">¶</a></h2>
+<p>Make sure to modify the lines in <code class="docutils literal notranslate"><span class="pre">~/project/config/config.yaml</span></code> to point to the correct input and output locations.
+Also modify all downloading and processing scripts in <code class="docutils literal notranslate"><span class="pre">~/code/bash</span></code></p>
+<p>In the downloading scripts, you need to enter the crs in proj4js format. You can look this up at <a class="reference external" href="http://spatialreference.org">spatialreference.org</a>, or can convert using earthpy (i.e: proj4 = et.epsg[‘32613’])</p>
 </div>
 </div>
 

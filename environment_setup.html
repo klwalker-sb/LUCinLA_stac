@@ -172,8 +172,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Setting_up_new_project.html">
-   Quebracho
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
   </a>
  </li>
 </ul>
@@ -316,8 +316,13 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts">
-     Install Python tools/packages and dependencies from project github scripts:
+    <a class="reference internal nav-link" href="#prep-to-be-able-to-install-packages-from-github">
+     Prep to be able to install packages from github:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#install-python-tools-packages-for-lucinla38-environment">
+     Install Python tools/packages for lucinla38 environment:
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -387,11 +392,15 @@ you will then need to type <code class="docutils literal notranslate"><span clas
 </pre></div>
 </div>
 </div>
-<div class="section" id="install-python-tools-packages-and-dependencies-from-project-github-scripts">
-<h3>Install Python tools/packages and dependencies from project github scripts:<a class="headerlink" href="#install-python-tools-packages-and-dependencies-from-project-github-scripts" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="prep-to-be-able-to-install-packages-from-github">
+<h3>Prep to be able to install packages from github:<a class="headerlink" href="#prep-to-be-able-to-install-packages-from-github" title="Permalink to this headline">¶</a></h3>
 <p>To <strong>interact with github on your virtual computer</strong>, you first need to feed the remote computer the password. You can do this with <a class="reference external" href="https://docs.github.com/en/get-started/getting-started-with-git/updating-credentials-from-the-macos-keychain">an osxcechain credential</a> or by simply caching it by entering the following into your local git bash or mac terminal:
 <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">credential.helper</span> <span class="pre">cache</span></code>
-Or in git for Windows enter: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">credential.helper</span> <span class="pre">wincred</span></code></p>
+Or in git for Windows enter: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">credential.helper</span> <span class="pre">wincred</span></code>
+Alternatively, you can create a <code class="docutils literal notranslate"><span class="pre">Personal</span> <span class="pre">access</span> <span class="pre">token</span></code> in your Githib account by going into Settings, then Developer Settings (at the bottom). Once you make your token, you can copy and paste that text whenever prompted for a github password on the cluster.</p>
+</div>
+<div class="section" id="install-python-tools-packages-for-lucinla38-environment">
+<h3>Install Python tools/packages for lucinla38 environment:<a class="headerlink" href="#install-python-tools-packages-for-lucinla38-environment" title="Permalink to this headline">¶</a></h3>
 <p><strong>While in your home directory,</strong> enter the following commands to setup your Python environment:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # Activate the virtual environment
     conda activate venv.lucinla38_dl

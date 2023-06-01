@@ -50,12 +50,14 @@ you will then need to type `conda activate` each time before you activate your s
 
     conda deactivate
 
-### Install Python tools/packages and dependencies from project github scripts:
+### Prep to be able to install packages from github:
 
 To **interact with github on your virtual computer**, you first need to feed the remote computer the password. You can do this with [an osxcechain credential](https://docs.github.com/en/get-started/getting-started-with-git/updating-credentials-from-the-macos-keychain) or by simply caching it by entering the following into your local git bash or mac terminal:
 `git config --global credential.helper cache`
 Or in git for Windows enter: `git config --global credential.helper wincred`
+Alternatively, you can create a `Personal access token` in your Githib account by going into Settings, then Developer Settings (at the bottom). Once you make your token, you can copy and paste that text whenever prompted for a github password on the cluster.
 
+### Install Python tools/packages for lucinla38 environment:
 **While in your home directory,** enter the following commands to setup your Python environment:
 
         # Activate the virtual environment

@@ -179,7 +179,7 @@ For further information on the rest of the script (parts you will NOT likely edi
 #if not already in bash directory, navigate there:
 cd ~/code/bash/
 #submit the command:
-sbatch eostac_dl.py.sh
+sbatch eostac_dl_py.sh
 ``` 
 :::{note}
 Current run-time estimates for single grid cells with 4 cores:

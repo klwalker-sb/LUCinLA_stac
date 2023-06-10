@@ -40,9 +40,9 @@ For large file transfers, globus-online is recommended, as it will pick up where
 #  Copy processing scripts
 Copy the four primary processing scripts to the folder from which you will be submitting commands(home/\<username\>/code/bash).
     Replace \<country\> and \<cntry\> with text that corresponds to the country you are working in:
-    For Paraguay: \<\country\> = paraguay and \<cntry\> = py
-    For Uruguay: \<country\> = uruguay and \<cntry\> = ury
-    For Chile: \<country\> = chile and \<cntry\> = chile
+    * For Paraguay: \<\country\> = paraguay and \<cntry\> = py
+    * For Uruguay: \<country\> = uruguay and \<cntry\> = ury
+    * For Chile: \<country\> = chile and \<cntry\> = chile
 ```
 #if it doesn't already exist, Make code/bash directory:
 mkdir ~/code/bash

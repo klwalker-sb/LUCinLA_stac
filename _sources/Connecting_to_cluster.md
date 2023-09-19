@@ -44,9 +44,11 @@ ssh [username]@ssh.bellows.grit.ucsb.edu
 ```
 
 :::{note} Pre-2023 account holders might still need to double ssh:
-```ssh.eri.ucsb.edu
-   ssh [username]@bellows.eri.ucsb.edu
 ```
+ssh.eri.ucsb.edu
+ssh [username]@bellows.eri.ucsb.edu
+```
+:::
 
 **If using windows,** it is easiest to connect to the cluster via an ssh (Secure SHell) client such as (PuttyL)= [Putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/), [Xming](http://sourceforge.net/projects/xming/), or [MobaXterm](https://mobaxterm.mobatek.net/). A Putty conneciton simulates the remote terminal view, and thus requires fully command-line based interfacing. MobaXterm, on the hand, offers ssh/ftp hybrid that allows for both command-line and graphical interfacing; this may be preferable to those who are more confortable manipulating files visually. Note, [X2go](https://wiki.x2go.org/doku.php/download:start) is also an option that provides a graphics viewer. See the CSC instructions [here](http://csc.cnsi.ucsb.edu/docs/using-x2go-gui-login-knot-or-pod) (you will need to modify these for the ERI login).
 
@@ -61,7 +63,8 @@ Next time you log in via Putty, just load your configuration by its name and "Op
 |**To configure MobaXterm:** |                                 |
 | :---------------------------------------: | :---------------------: |
 |   ![alt](/Images/Moba1.png)                  | ![alt](/Images/Moba2.png) |
-| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter username@ssh.grit.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh username@bellows.grit.ucsb.edu **5)** Click Ok. |  (UPDATE: username@bellows.grit.ucsb.edu should work directly in the first window now, no need for the second ssh.
+| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter username@ssh.grit.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh username@bellows.grit.ucsb.edu **5)** Click Ok. |
+(UPDATE: username@bellows.grit.ucsb.edu should work directly in the first window now, no need for the second ssh.)
 You will be prompted to enter your password.
 Next time you log in via MobaXterm, just double click your session name.
 <!-- #endregion -->

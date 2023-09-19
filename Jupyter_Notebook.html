@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quebracho" href="Setting_up_new_project.html" />
+    <link rel="next" title="setting up new project" href="setting_up_new_project.html" />
     <link rel="prev" title="Pipeline process" href="Pipeline.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -172,8 +172,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Setting_up_new_project.html">
-   Quebracho
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
   </a>
  </li>
 </ul>
@@ -205,7 +205,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="quebracho.html">
-   Setting up a new project
+   quebracho
   </a>
  </li>
 </ul>
@@ -321,14 +321,36 @@
 <p>================================================================================================================================</p>
 <p>Jupyter notebooks provide a platform to create and share documents that contain live code, equations, visualizations, and text.
 via Jupyter notebook, you can visualize and analyze data straight on the cluster without needing to tansfer files or install new code.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Jupyter Notebook allows you to run code directly on the cluster without running through SLURM. This means that SLURM cannot account for your memory use when allocating other jobs – PLEASE BE MINDFUL OF THIS and do not run jobs &gt; 1-2 cores via Jupyter.:::</p>
+</div>
 <div class="section" id="install-jupyter-notebooks-on-cluster">
 <h2>Install Jupyter notebooks on cluster<a class="headerlink" href="#install-jupyter-notebooks-on-cluster" title="Permalink to this headline">¶</a></h2>
-<p>Create a folder in your home directory to house your Jupyter notebooks (e.g. <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Jupyter</span></code>)
+<p>From any node on the cluster (i.e. bellows/quebracho), create a folder in your home directory to house your Jupyter notebooks (e.g. <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Jupyter</span></code>)
 You can clone the LUCinSA_helper repo <a class="reference external" href="https://github.com/klwalker-sb/LUCinSA_helpers">here</a> or you can make your own after connecting to Jupyter.</p>
-<p>Install Jupyter Notebook into your virtual environment on the cluster:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">.</span><span class="n">nasaenv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="n">jupyter</span> <span class="n">notebook</span>
+<p>Install Jupyter Notebook into your base environment on the cluster:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">notebook</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nb_conda_kernels</span>
 </pre></div>
+</div>
+<p>optional: install extentions – see <a class="reference external" href="https://towardsdatascience.com/jupyter-notebook-extensions-517fa69d2231">here</a> for more on Jupyter extentions</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyter_contrib_nbextensions</span>
+</pre></div>
+</div>
+<p>Next install a jupyter kernel into each virutal environment that you plan to run in Jupyter (this will allow you to switch between kernels
+within your notebook).</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">venv</span><span class="o">.</span><span class="n">lucinla38_dl</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">notebook</span>
+<span class="n">conda</span> <span class="n">install</span> <span class="n">ipykernel</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is highly recommended that you run Jupyter from a virtual environment and not your base environment:::</p>
+<p>If you do not have a virtual environment, create one:
+<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span>&#160; <span class="pre">venv.lucinla38_jupyter</span> <span class="pre">python=3.8</span> <span class="pre">pip</span> <span class="pre">ipykernel</span> <span class="pre">notebook</span></code>
+See <a class="reference internal" href="environment_setup.html#environment"><span class="std std-ref">here</span></a> for details on setting up your virtual environment.</p>
 </div>
 </div>
 <div class="section" id="connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter">
@@ -338,29 +360,30 @@ You can clone the LUCinSA_helper repo <a class="reference external" href="https:
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p><strong>To connect to Jupyter via PuTTY:</strong></p></th>
 <th class="text-align:center head"><p></p></th>
-<th class="text-align:center head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><img alt="" src="_images/PuttyForJupyter1.jpg" /></p></td>
-<td class="text-align:center"><p><img alt="" src="_images/PuttyForJupyter2.jpg" /></p></td>
-<td class="text-align:center"><p><img alt="" src="_images/PuttyForJupyter3.jpg" /></p></td>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="_images/PuttyForJupyter1b.jpg" /></p></td>
+<td class="text-align:center"><p><img alt="" src="_images/PuttyForJupyter2b.jpg" /></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><strong>1)</strong> on first PuTTY screen, enter SSH address to bula as normal</p></td>
-<td class="text-align:center"><p><strong>2)</strong> click <code class="docutils literal notranslate"><span class="pre">SSH</span></code>, then <code class="docutils literal notranslate"><span class="pre">Tunnels</span></code> on menu on left. In “Source Port”, enter port number (8889 here. Pick a different number to avoid conflicts)</p></td>
-<td class="text-align:center"><p><strong>3)</strong> add another Tunnel to bellows in the same way, with something like 222 in the “Source Port” and <user>&#64;bellows.eri.ucsb.edu:22 in the destination port. (the last number should match your original local port from the first PuTTY screen). Click “Add”.</p></td>
+<tr class="row-odd"><td class="text-align:center"><p><strong>1)</strong> on first PuTTY screen, enter SSH address to node as normal</p></td>
+<td class="text-align:center"><p><strong>2)</strong> click <code class="docutils literal notranslate"><span class="pre">SSH</span></code>, then <code class="docutils literal notranslate"><span class="pre">Tunnels</span></code> on menu on left. In “Source Port”, enter port number (8887 here. Pick a different number to avoid conflicts)</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To use jupyter on quebracho, just replace <code class="docutils literal notranslate"><span class="pre">bellows</span></code> with <code class="docutils literal notranslate"><span class="pre">quebracho</span></code> in the first ssh command:::</p>
 <p>Go back to session and save session with name (e.g. <code class="docutils literal notranslate"><span class="pre">JupyterOnERI</span></code> here) for future use</p>
 <ul class="simple">
 <li><p>Click “Open” to open the connection and enter password as normal.</p></li>
-<li><p>Activate your virtual environment that has Jupyter installed on it (i.e: <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.nasaenv/bin/activate</span></code>)</p></li>
+<li><p>Activate your virtual environment that has Jupyter installed on it (i.e: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">venv.lucinla38_jupyter</span></code>)</p></li>
 <li><p>At next prompt, enter: <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">--no-browser</span> <span class="pre">--port=&lt;port&gt;</span></code> (using the port number from step 2 of your SSH connection)</p></li>
 <li><p>Leave this window running and open a browser from your computer and enter into the address bar: <code class="docutils literal notranslate"><span class="pre">http://localhost:&lt;port&gt;/</span></code>
 You should now see a Jupter tree of your home directory on the cluster. Navigate to the notebook you want to use.</p></li>
 </ul>
-<p>(you can create a permanant password by entering <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">password</span></code> at the prompt after activating a virtual environment with Jupyter installed, before entering the )</p>
+<p>(you can create a permanant password by entering <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">password</span></code> at the prompt after activating a virtual environment with Jupyter installed, before entering the notebook)</p>
+</div>
 </div>
 </div>
 
@@ -390,7 +413,7 @@ You should now see a Jupter tree of your home directory on the cluster. Navigate
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="Pipeline.html" title="previous page">Pipeline process</a>
-    <a class='right-next' id="next-link" href="Setting_up_new_project.html" title="next page">Quebracho</a>
+    <a class='right-next' id="next-link" href="setting_up_new_project.html" title="next page">setting up new project</a>
 
         </div>
         

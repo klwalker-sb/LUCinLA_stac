@@ -349,9 +349,11 @@ within your notebook).</p>
 <p class="admonition-title">Warning</p>
 <p>It is highly recommended that you run Jupyter from a virtual environment and not your base environment</p>
 </div>
-<p>If you do not have a virtual environment, create one. e.g.:
-<code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span>&#160; <span class="pre">venv.lucinla38_jupyter</span> <span class="pre">python=3.8</span> <span class="pre">pip</span> <span class="pre">ipykernel</span> <span class="pre">notebook</span></code>
-See <a class="reference internal" href="environment_setup.html#environment"><span class="std std-ref">here</span></a> for details on setting up your virtual environment.</p>
+<p>If you do not have a virtual environment, create one. e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">create</span> <span class="o">--</span><span class="n">name</span>  <span class="n">venv</span><span class="o">.</span><span class="n">lucinla38_jupyter</span> <span class="n">python</span><span class="o">=</span><span class="mf">3.8</span> <span class="n">pip</span> <span class="n">ipykernel</span> <span class="n">notebook</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="environment_setup.html#environment"><span class="std std-ref">here</span></a> for details on setting up your virtual environment.</p>
 </div>
 <div class="section" id="connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter">
 <h2>Connect to cluster via ssh with tunnel to port for Jupyter<a class="headerlink" href="#connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter" title="Permalink to this headline">¶</a></h2>
@@ -374,6 +376,10 @@ See <a class="reference internal" href="environment_setup.html#environment"><spa
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To use jupyter on quebracho, just replace <code class="docutils literal notranslate"><span class="pre">bellows</span></code> with <code class="docutils literal notranslate"><span class="pre">quebracho</span></code> in the first ssh command</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>if your jupyter notebook uses interactive web tools (like leaflet, folium, etc.), you will need to open up a second port the same way you open the first (8887 here) to pass within your jupyter scripts</p>
 </div>
 <p>Go back to session and save session with name (e.g. <code class="docutils literal notranslate"><span class="pre">JupyterOnERI</span></code> here) for future use</p>
 <ul class="simple">

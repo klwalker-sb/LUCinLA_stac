@@ -172,8 +172,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Setting_up_new_project.html">
-   Quebracho
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
   </a>
  </li>
 </ul>
@@ -205,7 +205,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="quebracho.html">
-   Setting up a new project
+   quebracho
   </a>
  </li>
 </ul>
@@ -374,10 +374,14 @@ If you are not already set up with a VPN, see <a class="reference external" href
 <h2>ssh into the bellows server on the ERI cluster<a class="headerlink" href="#ssh-into-the-bellows-server-on-the-eri-cluster" title="Permalink to this headline">¶</a></h2>
 <p>The CEL project space resides on the bellows server, which is first reached through a general ERI gateway.<br />
 This means you will need to ssh twice into the system to reach our space:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">grit</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span>  <span class="c1">##(pre 2023 account holders use ssh.eri.ucsb.edu)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">bellows</span><span class="o">.</span><span class="n">grit</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span> 
 <span class="c1">#enter password at prompt</span>
-<span class="n">ssh</span> <span class="p">[</span><span class="n">username</span><span class="p">]</span><span class="nd">@bellows</span><span class="o">.</span><span class="n">eri</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span>
-<span class="c1">#enter password at prompt</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Pre-2023 account holders might still need to double ssh:</p>
+<div class="highlight-ssh.eri.ucsb.edu notranslate"><div class="highlight"><pre><span></span>   ssh [username]@bellows.eri.ucsb.edu
 </pre></div>
 </div>
 <p><strong>If using windows,</strong> it is easiest to connect to the cluster via an ssh (Secure SHell) client such as (PuttyL)= <a class="reference external" href="http://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty</a>, <a class="reference external" href="http://sourceforge.net/projects/xming/">Xming</a>, or <a class="reference external" href="https://mobaxterm.mobatek.net/">MobaXterm</a>. A Putty conneciton simulates the remote terminal view, and thus requires fully command-line based interfacing. MobaXterm, on the hand, offers ssh/ftp hybrid that allows for both command-line and graphical interfacing; this may be preferable to those who are more confortable manipulating files visually. Note, <a class="reference external" href="https://wiki.x2go.org/doku.php/download:start">X2go</a> is also an option that provides a graphics viewer. See the CSC instructions <a class="reference external" href="http://csc.cnsi.ucsb.edu/docs/using-x2go-gui-login-knot-or-pod">here</a> (you will need to modify these for the ERI login).</p>
@@ -385,21 +389,18 @@ This means you will need to ssh twice into the system to reach our space:</p>
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>(<strong>To configure Putty:</strong></p></th>
 <th class="text-align:center head"><p></p></th>
-<th class="text-align:center head"><p></p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:center"><p><img alt="alt" src="_images/Putty1.jpg" /></p></td>
-<td class="text-align:center"><p><img alt="alt" src="_images/Putty2.jpg" /></p></td>
-<td class="text-align:center"><p><strong>1)</strong> Host name = <a class="reference external" href="mailto:username&#37;&#52;&#48;ssh&#46;grit&#46;ucsb&#46;edu">username<span>&#64;</span>ssh<span>&#46;</span>grit<span>&#46;</span>ucsb<span>&#46;</span>edu</a>. Name configuration and save “Session” on left, “Save”, then “Open” <strong>2)</strong> Click “SSH” on left. Remote Command = <a class="reference external" href="mailto:username&#37;&#52;&#48;bellows&#46;eri&#46;ucsb&#46;edu">username<span>&#64;</span>bellows<span>&#46;</span>eri<span>&#46;</span>ucsb<span>&#46;</span>edu</a></p></td>
+<tr class="row-even"><td class="text-align:center"><p><img alt="alt" src="_images/Putty1b.jpg" /></p></td>
+<td class="text-align:center"><p><img alt="alt" src="_images/Putty3.jpg" /></p></td>
 </tr>
-<tr class="row-odd"><td class="text-align:center"><p><img alt="alt" src="_images/Putty3.jpg" /></p></td>
-<td class="text-align:center"><p><img alt="alt" src="_images/Putty4.jpg" /></p></td>
-<td class="text-align:center"><p><strong>3)</strong> Click “Auth” on the left and browse to your private ssh key. Correctly configured keys will have an icon with a hat. <strong>4)</strong> Click “Session” on left, “Save”, then “Open”</p></td>
+<tr class="row-odd"><td class="text-align:center"><p><strong>1)</strong> Host name = <a class="reference external" href="mailto:username&#37;&#52;&#48;ssh&#46;bellows&#46;gritt&#46;ucsb&#46;edu">username<span>&#64;</span>ssh<span>&#46;</span>bellows<span>&#46;</span>gritt<span>&#46;</span>ucsb<span>&#46;</span>edu</a>. Name configuration and save “Session” (on left, “Save”, then “Open”)</p></td>
+<td class="text-align:center"><p><strong>2)</strong> Click “Auth” (under ssh) on the left and browse to your private ssh key. Correctly configured keys will have an icon with a hat. Click “Session” on left, “Save”, then “Open”</p></td>
 </tr>
 </tbody>
 </table>
-<p>You will be prompted for your password twice.
+<p>You will be prompted for your password.
 Next time you log in via Putty, just load your configuration by its name and “Open”.</p>
 <table class="colwidths-auto table">
 <thead>
@@ -412,13 +413,14 @@ Next time you log in via Putty, just load your configuration by its name and “
 <td class="text-align:center"><p><img alt="alt" src="_images/Moba2.png" /></p></td>
 </tr>
 <tr class="row-odd"><td class="text-align:center"><p>Click new session icon in top left corner</p></td>
-<td class="text-align:center"><p><strong>1)</strong> Click “SSH” in top left corner. <strong>2)</strong> In “Remote Host” enter <a class="reference external" href="mailto:username&#37;&#52;&#48;ssh&#46;grit&#46;ucsb&#46;edu">username<span>&#64;</span>ssh<span>&#46;</span>grit<span>&#46;</span>ucsb<span>&#46;</span>edu</a> <strong>3)</strong> Open “Advanced SSH Settings” <strong>4)</strong> In “Execute Command” enter ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;bellows&#46;eri&#46;ucsb&#46;edu">username<span>&#64;</span>bellows<span>&#46;</span>eri<span>&#46;</span>ucsb<span>&#46;</span>edu</a> <strong>5)</strong> Click Ok.</p></td>
+<td class="text-align:center"><p><strong>1)</strong> Click “SSH” in top left corner. <strong>2)</strong> In “Remote Host” enter <a class="reference external" href="mailto:username&#37;&#52;&#48;ssh&#46;grit&#46;ucsb&#46;edu">username<span>&#64;</span>ssh<span>&#46;</span>grit<span>&#46;</span>ucsb<span>&#46;</span>edu</a> <strong>3)</strong> Open “Advanced SSH Settings” <strong>4)</strong> In “Execute Command” enter ssh <a class="reference external" href="mailto:username&#37;&#52;&#48;bellows&#46;grit&#46;ucsb&#46;edu">username<span>&#64;</span>bellows<span>&#46;</span>grit<span>&#46;</span>ucsb<span>&#46;</span>edu</a> <strong>5)</strong> Click Ok.</p></td>
 </tr>
 </tbody>
 </table>
-<p>You will be prompted to enter your password twice.
+<p>You will be prompted to enter your password.
 Next time you log in via MobaXterm, just double click your session name.</p>
 <!-- #endregion -->
+</div>
 </div>
 </div>
 

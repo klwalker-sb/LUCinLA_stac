@@ -323,7 +323,7 @@
 via Jupyter notebook, you can visualize and analyze data straight on the cluster without needing to tansfer files or install new code.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Jupyter Notebook allows you to run code directly on the cluster without running through SLURM. This means that SLURM cannot account for your memory use when allocating other jobs – PLEASE BE MINDFUL OF THIS and do not run jobs &gt; 1-2 cores via Jupyter.:::</p>
+<p>Jupyter Notebook allows you to run code directly on the cluster without running through SLURM. This means that SLURM cannot account for your memory use when allocating other jobs – PLEASE BE MINDFUL OF THIS and do not run jobs &gt; 1-2 cores via Jupyter.</p>
 </div>
 <div class="section" id="install-jupyter-notebooks-on-cluster">
 <h2>Install Jupyter notebooks on cluster<a class="headerlink" href="#install-jupyter-notebooks-on-cluster" title="Permalink to this headline">¶</a></h2>
@@ -347,11 +347,11 @@ within your notebook).</p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>It is highly recommended that you run Jupyter from a virtual environment and not your base environment:::</p>
-<p>If you do not have a virtual environment, create one:
+<p>It is highly recommended that you run Jupyter from a virtual environment and not your base environment</p>
+</div>
+<p>If you do not have a virtual environment, create one. e.g.:
 <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">create</span> <span class="pre">--name</span>&#160; <span class="pre">venv.lucinla38_jupyter</span> <span class="pre">python=3.8</span> <span class="pre">pip</span> <span class="pre">ipykernel</span> <span class="pre">notebook</span></code>
 See <a class="reference internal" href="environment_setup.html#environment"><span class="std std-ref">here</span></a> for details on setting up your virtual environment.</p>
-</div>
 </div>
 <div class="section" id="connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter">
 <h2>Connect to cluster via ssh with tunnel to port for Jupyter<a class="headerlink" href="#connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter" title="Permalink to this headline">¶</a></h2>
@@ -373,7 +373,8 @@ See <a class="reference internal" href="environment_setup.html#environment"><spa
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>To use jupyter on quebracho, just replace <code class="docutils literal notranslate"><span class="pre">bellows</span></code> with <code class="docutils literal notranslate"><span class="pre">quebracho</span></code> in the first ssh command:::</p>
+<p>To use jupyter on quebracho, just replace <code class="docutils literal notranslate"><span class="pre">bellows</span></code> with <code class="docutils literal notranslate"><span class="pre">quebracho</span></code> in the first ssh command</p>
+</div>
 <p>Go back to session and save session with name (e.g. <code class="docutils literal notranslate"><span class="pre">JupyterOnERI</span></code> here) for future use</p>
 <ul class="simple">
 <li><p>Click “Open” to open the connection and enter password as normal.</p></li>
@@ -383,7 +384,6 @@ See <a class="reference internal" href="environment_setup.html#environment"><spa
 You should now see a Jupter tree of your home directory on the cluster. Navigate to the notebook you want to use.</p></li>
 </ul>
 <p>(you can create a permanant password by entering <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">password</span></code> at the prompt after activating a virtual environment with Jupyter installed, before entering the notebook)</p>
-</div>
 </div>
 </div>
 

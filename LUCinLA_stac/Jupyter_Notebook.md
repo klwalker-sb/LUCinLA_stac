@@ -31,7 +31,9 @@ conda install ipykernel
 :::
 
 If you do not have a virtual environment, create one. e.g.:
-```conda create --name  venv.lucinla38_jupyter python=3.8 pip ipykernel notebook```
+```
+conda create --name  venv.lucinla38_jupyter python=3.8 pip ipykernel notebook
+```
 See [here](Environment) for details on setting up your virtual environment.
 
 
@@ -45,6 +47,9 @@ If using PuTTY:
 | **1)** on first PuTTY screen, enter SSH address to node as normal  | **2)** click `SSH`, then `Tunnels` on menu on left. In "Source Port", enter port number (8887 here. Pick a different number to avoid conflicts) |
 
 :::{note} To use jupyter on quebracho, just replace `bellows` with `quebracho` in the first ssh command
+:::
+
+:::{note} if your jupyter notebook uses interactive web tools (like leaflet, folium, etc.), you will need to open up a second port the same way you open the first (8887 here) to pass within your jupyter scripts
 :::
     
 Go back to session and save session with name (e.g. `JupyterOnERI` here) for future use

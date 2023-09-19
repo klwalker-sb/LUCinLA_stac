@@ -3,7 +3,7 @@
 
 Jupyter notebooks provide a platform to create and share documents that contain live code, equations, visualizations, and text.
 via Jupyter notebook, you can visualize and analyze data straight on the cluster without needing to tansfer files or install new code.
-:::{warning} Jupyter Notebook allows you to run code directly on the cluster without running through SLURM. This means that SLURM cannot account for your memory use when allocating other jobs -- PLEASE BE MINDFUL OF THIS and do not run jobs > 1-2 cores via Jupyter.:::
+:::{warning} Jupyter Notebook allows you to run code directly on the cluster without running through SLURM. This means that SLURM cannot account for your memory use when allocating other jobs -- PLEASE BE MINDFUL OF THIS and do not run jobs > 1-2 cores via Jupyter.
 :::
 
 ## Install Jupyter notebooks on cluster
@@ -27,9 +27,10 @@ conda activate venv.lucinla38_dl
 conda install -c conda-forge notebook
 conda install ipykernel
 ```
-:::{warning} It is highly recommended that you run Jupyter from a virtual environment and not your base environment:::
+:::{warning} It is highly recommended that you run Jupyter from a virtual environment and not your base environment
+:::
 
-If you do not have a virtual environment, create one:
+If you do not have a virtual environment, create one. e.g.:
 ```conda create --name  venv.lucinla38_jupyter python=3.8 pip ipykernel notebook```
 See [here](Environment) for details on setting up your virtual environment.
 
@@ -43,7 +44,8 @@ If using PuTTY:
 | ![](/Images/PuttyForJupyter1b.jpg)     | ![](/Images/PuttyForJupyter2b.jpg)      |
 | **1)** on first PuTTY screen, enter SSH address to node as normal  | **2)** click `SSH`, then `Tunnels` on menu on left. In "Source Port", enter port number (8887 here. Pick a different number to avoid conflicts) |
 
-:::{note} To use jupyter on quebracho, just replace `bellows` with `quebracho` in the first ssh command:::
+:::{note} To use jupyter on quebracho, just replace `bellows` with `quebracho` in the first ssh command
+:::
     
 Go back to session and save session with name (e.g. `JupyterOnERI` here) for future use
 

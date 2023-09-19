@@ -63,7 +63,8 @@ Next time you log in via Putty, just load your configuration by its name and "Op
 |**To configure MobaXterm:** |                                 |
 | :---------------------------------------: | :---------------------: |
 |   ![alt](/Images/Moba1.png)                  | ![alt](/Images/Moba2.png) |
-| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter username@ssh.grit.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh username@bellows.grit.ucsb.edu **5)** Click Ok. |  (UPDATE: username@bellows.grit.ucsb.edu should work directly in the first window now, no need for the second ssh.)
+| Click new session icon in top left corner |  **1)** Click "SSH" in top left corner. **2)** In "Remote Host" enter username@ssh.grit.ucsb.edu **3)** Open "Advanced SSH Settings" **4)** In "Execute Command" enter ssh username@bellows.grit.ucsb.edu **5)** Click Ok. |
+(UPDATE: username@bellows.grit.ucsb.edu should work directly in the first window now, no need for the second ssh.)
 You will be prompted to enter your password.
 Next time you log in via MobaXterm, just double click your session name.
 <!-- #endregion -->

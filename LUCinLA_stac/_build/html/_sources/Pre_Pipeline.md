@@ -42,30 +42,31 @@ Default script
     ###################################################################
     ### activate the virtual environment
 19-  conda activate venv.lucinsa38_dl
+     
+20-     TIMESTAMP0=`date "+%Y-%m-%d %H:%M:%S"`
+21-  START_YEAR=2000
+22-  END_YEAR=2023
+23-  y=$START_YEAR
+24-  while [ $y -ne $END_YEAR ]
+25-  do
+26-    START_DATE="${y}-1-01"
+27-    END_DATE="${y}-12-31"
+28-    echo  Working on $START_DATE to $END_DATE >&2 
+29-    TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S"`
+30-    echo $TIMESTAMP >&2
 
-20-  START_YEAR=2000
-21-  END_YEAR=2023
-22-  y=$START_YEAR
-23-  while [ $y -ne $END_YEAR ]
-24-  do
-25-    START_DATE="${y}-1-01"
-26-    END_DATE="${y}-12-31"
-27-    echo  Working on $START_DATE to $END_DATE >&2 
-28-    TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S"`
-29-    echo $TIMESTAMP >&2
-
-30-    eostac brdf --start-date $START_DATE --end-date $END_DATE --project-path $PROJECT_PATH --out-path $OUT_PATH --threads 8 --apply- 
+31-    eostac brdf --start-date $START_DATE --end-date $END_DATE --project-path $PROJECT_PATH --out-path $OUT_PATH --threads 8 --apply- 
        bandpass --coeffs-path $COEFFS
 
-31-    y=$(($y+1))
-32-  done
+32-    y=$(($y+1))
+33-  done
 
-33-  TIMETOT=$(($(date -d "$TIMESTAMP" "+%s") - $(date -d "$TIMESTAMP0" "+%s") ))
-34-  TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S"`
-35-  echo done at $TIMESTAMP >&2
-36-  echo full process took: $({$TIMETOT}/60) minutes >&2
+34-  TIMETOT=$(($(date -d "$TIMESTAMP" "+%s") - $(date -d "$TIMESTAMP0" "+%s") ))
+35-  TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S"`
+36-  echo done at $TIMESTAMP >&2
+37-  echo full process took: $({$TIMETOT}/60) minutes >&2
 
-37-  conda deactivate
+38-  conda deactivate
 ````
 Most lines should stay as they are.
 As with the downloading script, **you need to change Grid info lines**:  

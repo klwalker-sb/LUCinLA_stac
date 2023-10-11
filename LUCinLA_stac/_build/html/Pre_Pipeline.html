@@ -172,8 +172,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Setting_up_new_project.html">
-   Quebracho
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
   </a>
  </li>
 </ul>
@@ -205,7 +205,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="quebracho.html">
-   Setting up a new project
+   quebracho
   </a>
  </li>
 </ul>
@@ -358,30 +358,31 @@ Default script</p>
     ###################################################################
     ### activate the virtual environment
 19-  conda activate venv.lucinsa38_dl
+     
+20-     TIMESTAMP0=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+21-  START_YEAR=2000
+22-  END_YEAR=2023
+23-  y=$START_YEAR
+24-  while [ $y -ne $END_YEAR ]
+25-  do
+26-    START_DATE=&quot;${y}-1-01&quot;
+27-    END_DATE=&quot;${y}-12-31&quot;
+28-    echo  Working on $START_DATE to $END_DATE &gt;&amp;2 
+29-    TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+30-    echo $TIMESTAMP &gt;&amp;2
 
-20-  START_YEAR=2000
-21-  END_YEAR=2023
-22-  y=$START_YEAR
-23-  while [ $y -ne $END_YEAR ]
-24-  do
-25-    START_DATE=&quot;${y}-1-01&quot;
-26-    END_DATE=&quot;${y}-12-31&quot;
-27-    echo  Working on $START_DATE to $END_DATE &gt;&amp;2 
-28-    TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
-29-    echo $TIMESTAMP &gt;&amp;2
-
-30-    eostac brdf --start-date $START_DATE --end-date $END_DATE --project-path $PROJECT_PATH --out-path $OUT_PATH --threads 8 --apply- 
+31-    eostac brdf --start-date $START_DATE --end-date $END_DATE --project-path $PROJECT_PATH --out-path $OUT_PATH --threads 8 --apply- 
        bandpass --coeffs-path $COEFFS
 
-31-    y=$(($y+1))
-32-  done
+32-    y=$(($y+1))
+33-  done
 
-33-  TIMETOT=$(($(date -d &quot;$TIMESTAMP&quot; &quot;+%s&quot;) - $(date -d &quot;$TIMESTAMP0&quot; &quot;+%s&quot;) ))
-34-  TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
-35-  echo done at $TIMESTAMP &gt;&amp;2
-36-  echo full process took: $({$TIMETOT}/60) minutes &gt;&amp;2
+34-  TIMETOT=$(($(date -d &quot;$TIMESTAMP&quot; &quot;+%s&quot;) - $(date -d &quot;$TIMESTAMP0&quot; &quot;+%s&quot;) ))
+35-  TIMESTAMP=`date &quot;+%Y-%m-%d %H:%M:%S&quot;`
+36-  echo done at $TIMESTAMP &gt;&amp;2
+37-  echo full process took: $({$TIMETOT}/60) minutes &gt;&amp;2
 
-37-  conda deactivate
+38-  conda deactivate
 </pre></div>
 </div>
 <p>Most lines should stay as they are.

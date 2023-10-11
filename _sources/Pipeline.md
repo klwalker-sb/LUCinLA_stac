@@ -8,11 +8,48 @@ We are currently using only two processes in our image prep: coregistration (STE
 First run the coregistration script (eostac_pipe_py.sh)
 Then run the time-series script (eostac_pipe_ts_py.sh)  for each index you need processed
 
-
-:::{note}The CEL drive space on the cluster is setup such that all products through co-registration saved on the sandbox space (`raid-cel/sandbox/sandbox-cel` or just `/home/sandbox-cel`). These files are not backed up for more than 10 days (if you lose important files, you can probably get them recovered within 10 days, but not after). Time series outputs and beyond are saved to the downspout space (`raid-cel/r/downspout-cel` or just `/home/downspout-cel`), which has a separate long term backup.
+:::{note}The CEL drive space on the cluster is setup such that all products through co-registration saved on the sandbox space (`raid-cel/sandbox/sandbox-cel` or just `/home/sandbox-cel`). These files are not backed up for more than 4 days (if you lose important files, you can probably get them recovered within 4 days, but not after). Time series outputs and beyond are saved to the downspout space (`raid-cel/r/downspout-cel` or just `/home/downspout-cel`), which has a separate long term backup.
 :::
 
-**To run the coregistration step:**
+### Create a new virtual environment for the pipeline process (to avoid conflicts and keep what is working working)
+```
+conda create --name venv.lucinla38_pipe python=3.8
+conda activate venv.lucinla38_pipe
+conda config --env --add channels conda-forge
+conda config --env --set channel_priority strict
+conda install  numpy=1.23.1 cython
+conda install gdal=3.5.0 pyproj rasterio=1.3.0 pyproj=3.3.1 cython xarray rioxarray netCDF4
+
+cd ~/repos
+git clone https://github.com/jgrss/geowombat
+cd geowombat
+pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0 
+cd ../
+git clone https://github.com/jgrss/pytuyau
+cd pytuyau
+python setup.py build && pip install --no-deps .
+cd ../
+git clone https://github.com/jgrss/rastercrf
+cd rastercrf
+python setup.py build && pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0 
+cd ../
+git clone https://github.com/jgrss/satsmooth
+cd satsmooth
+python setup.py build && pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0
+cd ../
+git clone https://github.com/jgrss/sacfei
+cd  sacfei
+python setup.py build && pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0
+cd ../
+git clone https://github.com/jgrss/pymorph3
+cd pymorph3
+python setup.py build && pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0
+pip install ray sphinx_tabs sklearn-xarray
+conda install arosics cmocean pyfftw rtree
+conda install ipdb ipython notebook ipykernel
+```
+
+### To run the coregistration step:
 ```
 cd code/bash
 vim eostac_pipe_py.sh
@@ -49,12 +86,12 @@ vim eostac_pipe_py.sh
    ###############################
 
    # activate the virtual environment
-19-  conda activate venv.lucinsa38_pipe
+19-  conda activate venv.lucinla38_pipe
 
 20-  CONFIG_UPDATES="grids:[${GRIDS}] res:${REF_RES} crs:${REF_CRS} 
 21-  cloud_mask:sat_sensors:${SAT_SENSORS}
-22-  main_path:/raid-cel/sandbox/sandbox-cel/paraguay_lc/stac/grid
-23-  backup_path:/raid-cel/r/downspout-cel/paraguay_lc/stac/grids
+22-  main_path:/home/sandbox-cel/paraguay_lc/stac/grid
+23-  backup_path:/home/downspout-cel/paraguay_lc/stac/grids
 24-  num_workers:${SLURM_CPUS_ON_NODE} 
 25-  io:n_chunks:${NCHUNKS} cloud_mask:reset_db:${RESET_CLOUD_DB} 
 26-  cloud_mask:ref_res:${REF_RES}"
@@ -71,7 +108,7 @@ You can enter a range (e.g. 898-908), But be mindful that you are not hogging a
 For example, 898-908%4 would process 4 cells at a time. When the first 4 finish, the next will start.
 :::
 
-**To run the time series step:**
+### To run the time series step:
 ```
 cd code/bash
 vim eostac_pipe_ts_py.sh
@@ -81,7 +118,7 @@ vim eostac_pipe_ts_py.sh
 
 2- #SBATCH -N 1 # number of nodes
 3- #SBATCH -n 8 # number of cores
-4- #SBATCH -t 0-08:00 # time (D-HH:MM)
+4- #SBATCH -t 0-24:00 # time (D-HH:MM)
 5- #SBATCH -p basic 
 6- #SBATCH -o stacpipe_ts.%N.%a.%j.out # STDOUT
 7- #SBATCH -e stacpipe_ts.%N.%a.%j.err # STDERR
@@ -90,8 +127,8 @@ vim eostac_pipe_ts_py.sh
 
 10- GRIDS="$(($SLURM_ARRAY_TASK_ID + 3000))"
 
-11- #VIs=("evi2")
-12- VIs=("gcvi" "wi")
+11- VIs=("evi2")
+12- #VIs=("gcvi" "wi")
 13- #VIs=("evi2" "gcvi" "wi")
 14- #VIs=("kndvi" "nbr" "ndmi")
 15- #VIs=("evi2" "gcvi" " wi" " kndvi" "nbr" "ndmi")
@@ -105,21 +142,22 @@ vim eostac_pipe_ts_py.sh
 19- export OMP_NUM_THREADS=1
     ################################################
 
-21-  METHOD='STAC'
-22-  STEP="reconstruct"
-23-  SAT_SENSORS=S2,S2cp,LT05,LE07,LC08,LC09
-24-  NCHUNKS=512
+20-  METHOD='STAC'
+21-  STEP="reconstruct"
+22-  SAT_SENSORS=S2,S2cp,LT05,LE07,LC08,LC09
+23-  NCHUNKS=512
+24-  REWRITE_WIN='False'
 
     #############
     # RECONSTRUCT
     #############
 25- RINPUT="ms"
 26- START_PAD="2000-01-01"
-27- START="2010-04-01"
+27- START="2000-04-01"
 28- END_PAD="2022-12-01"
 29- END="2022-09-01"
-30- SKIP_INTERVAL=1
-31- SKIP_YEARS=10
+30- SKIP_INTERVAL=7
+31- SKIP_YEARS=1
 32- ROVERWRITE="False"
 33- SM_CHUNKS=512
 34- PREFILL_GAPS="False"
@@ -127,22 +165,28 @@ vim eostac_pipe_ts_py.sh
 36- DTS_MIN_WIN=15
 37- PREFILL_YEARS=2
 38- DTS_t=5
+39- PREFILL_MAX_DAYS=50
+40- PREFILL_WMAX=75
+41- PREFILL_WMIN=21
+42- RMOUT="True"
+43- SMOOTH_METH="wh"
 
     ###############################
     # DO NOT MODIFY BELOW THIS LINE
     ###############################
 
     # activate the virtual environment
-39- conda activate venv.lucinsa38_pipe
+44- conda activate venv.lucinla38_pipe
 
     # Do for each index:
-40- for VI in "${VIs[@]}"
-41- do
+45- for VI in "${VIs[@]}"
+46- do
 
-42-   CONFIG_UPDATES="grids:[${GRIDS}] res:${REF_RES} crs:${REF_CRS} 
+47-   CONFIG_UPDATES="grids:[${GRIDS}] res:${REF_RES} crs:${REF_CRS}
+      reconstruct:rewrite_win:${REWRITE_WIN}
       cloud_mask:sat_sensors:${SAT_SENSORS}
-      main_path:/raid-cel/sandbox/sandbox-cel/paraguay_lc/stac/grid
-      backup_path:/raid-cel/r/downspout-cel/paraguay_lc/stac/grids
+      main_path:/home/sandbox-cel/paraguay_lc/stac/grid
+      backup_path:/home/downspout-cel/paraguay_lc/stac/grids
       dlMehod:${METHOD}
       num_workers:${SLURM_CPUS_ON_NODE} 
       io:n_chunks:${NCHUNKS} cloud_mask:reset_db:${RESET_CLOUD_DB} 
@@ -153,22 +197,40 @@ vim eostac_pipe_ts_py.sh
       reconstruct:smooth_kwargs:max_window:${DTS_MAX_WIN}
       reconstruct:smooth_kwargs:min_window:${DTS_MIN_WIN}
       reconstruct:smooth_kwargs:prefill_max_years:${PREFILL_YEARS}
+      reconstruct:smooth_kwargs:prefill_max_years:${PREFILL_MAX_DAYS}
+      reconstruct:smooth_kwargs:prefill_wmax:${PREFILL_WMAX}
+      reconstruct:smooth_kwargs:prefill_wmax:${PREFILL_WMIN}
       reconstruct:smooth_kwargs:prefill_gaps:${PREFILL_GAPS} reconstruct:smooth_kwargs:t:${DTS_t}
       clean:remove_items:${REMOVE_ITEMS}"
 
-43-   tuyau $STEP --config-updates $CONFIG_UPDATES
+48-   tuyau $STEP --config-updates $CONFIG_UPDATES
 
-44- done
-14- conda deactivate
+49- done
+50- conda deactivate
 ```
-## index options (lines 11-15):
+
+:::{note} time series are run by window for 12 windows. If all windows do not run, you can run the code by window to just finish those left
+by altering the BASH script as below (change win and end_win to rerun only the windows needed):
+```
+45- for VI in "${VIs[@]}"
+46- do
+47-
+48-     WIN=0
+49-     END_WIN=16
+50-     while [ $WIN -ne $END_WIN ]
+51-     do
+52-
+53-         CONFIG_UPDATES=....
+```
+:::
+
+### index options (lines 11-15):
  * To run a preliminary check, start with evi2
  * For segmention inputs, we are using evi2, gcvi and wi
  * For final classification, we are using evi2, gcvi, wi, kndvi, nbr & ndmi
 
 ### other options for vegetation indices:
 Current options for vegetation indices are:
- * avi = ?? (removed?)
  * evi2 = 2.5 * ( NIR - RED) / ( NIR + 2.4 * RED + 1.0 )
      * Enhanced Vegetation Index, good for areas of high LAI (leaf-area index), where NDVI tends to saturate
  * gcvi= scaled index using Green & NIR

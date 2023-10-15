@@ -23,7 +23,7 @@ conda install gdal=3.5.0 pyproj rasterio=1.3.0 pyproj=3.3.1 cython xarray rioxar
 cd ~/repos
 git clone https://github.com/jgrss/geowombat
 cd geowombat
-pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0 
+pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0  # note setup.py not working currently, so just use pip install .
 cd ../
 git clone https://github.com/jgrss/pytuyau
 cd pytuyau
@@ -33,7 +33,7 @@ git clone https://github.com/jgrss/rastercrf
 cd rastercrf
 python setup.py build && pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0 
 cd ../
-git clone https://github.com/jgrss/satsmooth
+git clone https://github.com/jgrss/satsmooth # note conflict with v. 1.5.16 of satsmooth. works with v. 1.5.14 
 cd satsmooth
 python setup.py build && pip install . numpy==1.23.1 rasterio==1.3.0 pyproj==3.3.1 gdal==3.5.0
 cd ../
@@ -98,7 +98,7 @@ vim eostac_pipe_py.sh
 
 27-  tuyau $STEP --config-updates $CONFIG_UPDATES
 
-28-  conda source deactivate
+28-  conda deactivate
 ```
 Most lines should stay as they are.\
 **the lines that you need to change are:**\
@@ -106,6 +106,9 @@ Most lines should stay as they are.\
 You can enter a range (e.g. 898-908), But be mindful that you are not hogging all the computer bandwidth.
 :::{admonition}You can limit the number of cells that are processed at one time by adding %n
 For example, 898-908%4 would process 4 cells at a time. When the first 4 finish, the next will start.
+:::
+
+::{note} The .err file will register a lot of warnings (one for every image that cannot be coregistered for whatever reason.) If you see warnings but no ERROR in the .err file, things probably ran correctly.
 :::
 
 ### To run the time series step:

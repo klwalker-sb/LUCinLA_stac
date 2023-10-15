@@ -329,7 +329,8 @@ via Jupyter notebook, you can visualize and analyze data straight on the cluster
 <h2>Install Jupyter notebooks on cluster<a class="headerlink" href="#install-jupyter-notebooks-on-cluster" title="Permalink to this headline">¶</a></h2>
 <p>From any node on the cluster (i.e. bellows/quebracho), create a folder in your home directory to house your Jupyter notebooks (e.g. <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">~/Jupyter</span></code>)
 You can clone the LUCinSA_helper repo <a class="reference external" href="https://github.com/klwalker-sb/LUCinSA_helpers">here</a> or you can make your own after connecting to Jupyter.</p>
-<p>Install Jupyter Notebook into your base environment on the cluster:</p>
+<p>Install Jupyter Notebook into your base environment on the cluster (this is optiona; it will allow you to switch between kernels
+within your notebook).</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">notebook</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">nb_conda_kernels</span>
 </pre></div>
@@ -338,8 +339,7 @@ You can clone the LUCinSA_helper repo <a class="reference external" href="https:
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">jupyter_contrib_nbextensions</span>
 </pre></div>
 </div>
-<p>Next install a jupyter kernel into each virutal environment that you plan to run in Jupyter (this will allow you to switch between kernels
-within your notebook).</p>
+<p>Next install a jupyter kernel into each virutal environment that you plan to run in Jupyter</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">venv</span><span class="o">.</span><span class="n">lucinla38_dl</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">notebook</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="n">ipykernel</span>
@@ -357,7 +357,17 @@ within your notebook).</p>
 </div>
 <div class="section" id="connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter">
 <h2>Connect to cluster via ssh with tunnel to port for Jupyter<a class="headerlink" href="#connect-to-cluster-via-ssh-with-tunnel-to-port-for-jupyter" title="Permalink to this headline">¶</a></h2>
-<p>If using PuTTY:</p>
+<p>You first need to <strong>connect to the UCSB network through a VPN</strong> (Pulse Secure). This is currently necessary even if you are on campus.</p>
+<p><strong>If on a Mac:</strong>
+ssh into the remote terminal as you normally do (eg. <code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">[username]&#64;bellows.grit.ucsb.edu</span></code>)
+On the remote terminal, activate the environment through which you will run Jupyter (eg.: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">venv.lucinla38_dl</span></code>)
+If this is your first time using Jupyter, create your permanant Jupyter password with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">password</span></code>
+Now open a notebook on a second port (that you will connect to in the next step): <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">--no-browser</span> <span class="pre">--port=&lt;port&gt;</span></code> where &lt;port&gt; is any 4-digit number.
+Back in your local terminal, connect to the new port by way of the remote terminal:
+<code class="docutils literal notranslate"><span class="pre">ssh</span> <span class="pre">-L</span> <span class="pre">&lt;port&gt;:localhost:&lt;port&gt;</span> <span class="pre">&lt;username&gt;&#64;bellows.eri.ucsb.edu</span></code>
+Open a web browser and go to the <code class="docutils literal notranslate"><span class="pre">url:</span> <span class="pre">http://localhost:&lt;port&gt;</span></code> (remember that &lt;port&gt; is the smae 4-digit number throughout)
+After entering your password at the prompt, you should see the file tree from your home directory.</p>
+<p><strong>If using PuTTY:</strong></p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p><strong>To connect to Jupyter via PuTTY:</strong></p></th>
@@ -376,6 +386,10 @@ within your notebook).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>To use jupyter on quebracho, just replace <code class="docutils literal notranslate"><span class="pre">bellows</span></code> with <code class="docutils literal notranslate"><span class="pre">quebracho</span></code> in the first ssh command</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> can be replaced with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">lab</span></code> throughout</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>

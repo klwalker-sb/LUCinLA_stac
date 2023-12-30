@@ -1,30 +1,12 @@
 # LUCinLA_stac
 
-beginnings of a computing guide for Land-Use Change in Latin AMerica projects in Heilmeyr lab
+Guide to computer setup and processing for remote sensing projects on Land-Use Change in Latin America in Robert Heilmayr’s lab at UC Santa Barbara with methods developed in collaboration with Jordan Graesser
 
 ## Usage
 
-### Building the book
+This giude can be accessed online at: https://klwalker-sb.github.io/LUCinLA_stac/
 
-If you'd like to develop and/or build the LUCinLA_stac book, you should:
-
-1. Clone this repository
-2. Run `pip install -r requirements.txt` (it is recommended you do this within a virtual environment)
-3. (Optional) Edit the books source files located in the `lucinla_stac/` directory
-4. Run `jupyter-book clean lucinla_stac/` to remove any existing builds
-5. Run `jupyter-book build lucinla_stac/`
-
-A fully-rendered HTML version of the book will be built in `lucinla_stac/_build/html/`.
-
-### Hosting the book
-
-Please see the [Jupyter Book documentation](https://jupyterbook.org/publish/web.html) to discover options for deploying a book online using services such as GitHub, GitLab, or Netlify.
-
-For GitHub and GitLab deployment specifically, the [cookiecutter-jupyter-book](https://github.com/executablebooks/cookiecutter-jupyter-book) includes templates for, and information about, optional continuous integration (CI) workflow files to help easily and automatically deploy books online with GitHub or GitLab. For example, if you chose `github` for the `include_ci` cookiecutter option, your book template was created with a GitHub actions workflow file that, once pushed to GitHub, automatically renders and pushes your book to the `gh-pages` branch of your repo and hosts it on GitHub Pages when a push or pull request is made to the main branch.
-
-## Contributors
-
-We welcome and recognize all contributions. You can see a list of current contributors in the [contributors tab](https://github.com/klwalker-sb/lucinla_stac/graphs/contributors).
+This guide focuses on setup details specific to the computing environment available to us at UC Santa Barbara and is mostly geared toward students with little to no experience with High-Performance Computing who need to quickly jump into data processing. While the computing environment is quite specific, the more general framework for ingesting, processing, and checking large quantities of imagery using primarily open-source resources could be of interest to others with similar tasks and computing resources.
 
 ## Credits
 

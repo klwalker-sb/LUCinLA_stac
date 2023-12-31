@@ -1,21 +1,4 @@
----
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: pandoc
-      format_version: 2.12
-      jupytext_version: 1.11.4
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  nbformat: 4
-  nbformat_minor: 5
----
-
-::: {.cell .markdown}
-# \# To edit this guide {\#-to-edit-this-guide} {#-to-edit-this-guide--to-edit-this-guide}
+# To edit this guide
 
 `{figure} /Images/logo.png :scale: 50% :name: logo.png Note this is a Jupyter Book.`
 For more information, see the [Jupyter Book guide](https://jupyterbook.org/intro.html).

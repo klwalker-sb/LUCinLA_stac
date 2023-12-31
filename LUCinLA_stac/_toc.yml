@@ -1,5 +1,4 @@
 # Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
 root: intro
@@ -13,15 +12,19 @@ parts:
     chapters:
     - file: Connecting_to_cluster
     - file: environment_setup
-    - file: TransferingFiles
+    - file: Transfering_files
   - caption: Processing
     chapters:
     - file: Processing
     - file: Downloading
     - file: Pre_Pipeline
     - file: Pipeline
+    - file: Cleaning_files
     - file: Errors
     - file: Jupyter_Notebook
+  - caption: Classification
+    chapters:
+    - file: Classification_rf
   - caption: New project configuration
     chapters:
     - file: setting_up_new_project

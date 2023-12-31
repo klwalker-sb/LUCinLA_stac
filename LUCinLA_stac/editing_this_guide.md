@@ -15,10 +15,10 @@ After any edits, the book needs to be rebuilt:
     ####(If using Git Bash, need to activate conda first with "conda activate")
     ####(If Git Bash does not recognize conda yet, see link below)
     conda activate LUCenvWin
-    #Then build book (from inside outer LUCinSA directory):
-    jupyter-book build LUCinSA/
+    #Then build book (from inside outer LUCinLA_stac directory):
+    jupyter-book build LUCinLA_stac/
     #commit changes to GitHub:
-    cd LUCinSA
+    cd LUCinLA_stac
     git add ./*
     git commit -m "edits"
     git push

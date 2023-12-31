@@ -1,21 +1,4 @@
----
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .md
-      format_name: pandoc
-      format_version: 2.12
-      jupytext_version: 1.11.4
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
-  nbformat: 4
-  nbformat_minor: 5
----
-
-::: {.cell .markdown}
-# \# To edit this guide {\#-to-edit-this-guide} {#-to-edit-this-guide--to-edit-this-guide}
+# To edit this guide
 
 `{figure} /Images/logo.png :scale: 50% :name: logo.png Note this is a Jupyter Book.`
 For more information, see the [Jupyter Book guide](https://jupyterbook.org/intro.html).
@@ -32,10 +15,10 @@ After any edits, the book needs to be rebuilt:
     ####(If using Git Bash, need to activate conda first with "conda activate")
     ####(If Git Bash does not recognize conda yet, see link below)
     conda activate LUCenvWin
-    #Then build book (from inside outer LUCinSA directory):
-    jupyter-book build LUCinSA/
+    #Then build book (from inside outer LUCinLA_stac directory):
+    jupyter-book build LUCinLA_stac/
     #commit changes to GitHub:
-    cd LUCinSA
+    cd LUCinLA_stac
     git add ./*
     git commit -m "edits"
     git push

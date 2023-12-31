@@ -33,7 +33,3 @@ After any edits, the book needs to be rebuilt:
 A Conda Environment .yml (LUCenvWin) is provided with settings for Windows. After creating and activating virtual environment,
 need to install Jupyter Book: pip install jupyter-book
 :::
-
-::: {.cell .markdown}
-:::
-:::

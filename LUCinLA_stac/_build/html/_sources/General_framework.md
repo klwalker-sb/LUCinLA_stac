@@ -13,9 +13,9 @@ Characteristics of our processing include:
 * The opensource repo **[Geowombat](https://geowombat.readthedocs.io/en/latest/)** as our primary toolkit 
     for processing raster data at scale (Read more about Geowombat [here](https://geowombat.readthedocs.io/en/latest/))
     
-* Multi-sensor image standardization including BRDF correction and coregistration in following with the methods used to produce the harmonized Landsat and Sentinel data set (Claverie et al 2018)
+* Multi-sensor image standardization including BRDF correction {cite:p}`BRDF` and coregistration (based on AROSICS {cite:p}`arosics`,{cite:p}`arosics2`} in following with the methods used to produce the harmonized Landsat and Sentinel data set {cite:p}`HLS`
 
-* Time-series smoothing
+* Time-series smoothing, following methods from {cite:t}`TS_smoother`
 
 * Optional object-based classification using segmentation output of a convolutional neural network trainied with time-series data
 

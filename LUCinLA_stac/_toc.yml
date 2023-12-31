@@ -36,3 +36,6 @@ parts:
     - file: slurm
     - file: editing_this_guide
     - file: quebracho
+  -caption: Cited References
+   chapters:
+    - file: bibliography

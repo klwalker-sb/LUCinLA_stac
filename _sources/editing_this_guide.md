@@ -23,7 +23,7 @@ After any edits, the book needs to be rebuilt:
     git commit -m "edits"
     git push
     #push newly-built HTML to gh-pages branch:
-     ghp-import -n -p -f LUCinSA/_build/html
+     ghp-import -n -p -f LUCinLA_stac/_build/html
 
 [see this guide to use conda in Git Hub](https://discuss.codecademy.com/t/setting-up-conda-in-git-bash/534473)
 [see this guide for more on publishing a Jupyter Book online](https://jupyterbook.org/start/publish.html)
@@ -32,8 +32,4 @@ After any edits, the book needs to be rebuilt:
 **Jupyter Book is not compatible with Python 3.8** in Windows. Set up environment using Python 3.7.
 A Conda Environment .yml (LUCenvWin) is provided with settings for Windows. After creating and activating virtual environment,
 need to install Jupyter Book: pip install jupyter-book
-:::
-
-::: {.cell .markdown}
-:::
 :::

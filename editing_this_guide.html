@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; LUCinLA_stac</title>
+    <title>To edit this guide &#8212; LUCinLA_stac</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Setting up a new project" href="quebracho.html" />
+    <link rel="next" title="quebracho" href="quebracho.html" />
     <link rel="prev" title="Slurm" href="slurm.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -128,7 +128,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="TransferingFiles.html">
+  <a class="reference internal" href="Transfering_files.html">
    Transfering Files to/from cluster
   </a>
  </li>
@@ -160,8 +160,30 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="Cleaning_files.html">
+   cleaning files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Errors.html">
+   troubleshooting errors
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Jupyter_Notebook.html">
    Using Jupyter Notebook to interact with data on cluster
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Classification_rf.html">
+   classification
   </a>
  </li>
 </ul>
@@ -172,8 +194,8 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="Setting_up_new_project.html">
-   Quebracho
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
   </a>
  </li>
 </ul>
@@ -182,7 +204,7 @@
   Computing resources
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro_to_git.html">
    Intro to git
@@ -203,9 +225,14 @@
    Slurm
   </a>
  </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   To edit this guide
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="quebracho.html">
-   Setting up a new project
+   quebracho
   </a>
  </li>
 </ul>
@@ -294,7 +321,12 @@
                 <i class="fas fa-list"></i> Contents
             </div>
             <nav id="bd-toc-nav">
-                <ul class="simple visible nav section-nav flex-column">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#building-the-book">
+   Building the book
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -306,47 +338,45 @@
         
               <div>
                 
-  <div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span># \# To edit this guide {\#-to-edit-this-guide} {#-to-edit-this-guide--to-edit-this-guide}
-
-`{figure} /Images/logo.png :scale: 50% :name: logo.png Note this is a Jupyter Book.`
-For more information, see the [Jupyter Book guide](https://jupyterbook.org/intro.html).
-
-This is written in myST Markdown. For formatting, see the [myST Syntax guide](https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html). Jupyter Book allows us to get fancier by writing directives. See the[MyST documentation](https://myst-parser.readthedocs.io/)
-
-For information on publishing (for future), see [this guide](https://github.com/pabloinsente/jupyter-book-tutorial)
-
-## Building the book
-
-After any edits, the book needs to be rebuilt:
-
-    #Activate virtual environment:
-    ####(If using Git Bash, need to activate conda first with &quot;conda activate&quot;)
-    ####(If Git Bash does not recognize conda yet, see link below)
-    conda activate LUCenvWin
-    #Then build book (from inside outer LUCinSA directory):
-    jupyter-book build LUCinSA/
-    #commit changes to GitHub:
-    cd LUCinSA
-    git add ./*
-    git commit -m &quot;edits&quot;
-    git push
-    #push newly-built HTML to gh-pages branch:
-     ghp-import -n -p -f LUCinSA/_build/html
-
-[see this guide to use conda in Git Hub](https://discuss.codecademy.com/t/setting-up-conda-in-git-bash/534473)
-[see this guide for more on publishing a Jupyter Book online](https://jupyterbook.org/start/publish.html)
-
-:::{admonition}Note if using Windows:
-**Jupyter Book is not compatible with Python 3.8** in Windows. Set up environment using Python 3.7.
-A Conda Environment .yml (LUCenvWin) is provided with settings for Windows. After creating and activating virtual environment,
-need to install Jupyter Book: pip install jupyter-book
+  <div class="section" id="to-edit-this-guide">
+<h1>To edit this guide<a class="headerlink" href="#to-edit-this-guide" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">{figure}</span> <span class="pre">/Images/logo.png</span> <span class="pre">:scale:</span> <span class="pre">50%</span> <span class="pre">:name:</span> <span class="pre">logo.png</span> <span class="pre">Note</span> <span class="pre">this</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">Jupyter</span> <span class="pre">Book.</span></code>
+For more information, see the <a class="reference external" href="https://jupyterbook.org/intro.html">Jupyter Book guide</a>.</p>
+<p>This is written in myST Markdown. For formatting, see the <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/syntax/syntax.html">myST Syntax guide</a>. Jupyter Book allows us to get fancier by writing directives. See the<a class="reference external" href="https://myst-parser.readthedocs.io/">MyST documentation</a></p>
+<p>For information on publishing (for future), see <a class="reference external" href="https://github.com/pabloinsente/jupyter-book-tutorial">this guide</a></p>
+<div class="section" id="building-the-book">
+<h2>Building the book<a class="headerlink" href="#building-the-book" title="Permalink to this headline">¶</a></h2>
+<p>After any edits, the book needs to be rebuilt:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#Activate virtual environment:
+####(If using Git Bash, need to activate conda first with &quot;conda activate&quot;)
+####(If Git Bash does not recognize conda yet, see link below)
+conda activate LUCenvWin
+#Then build book (from inside outer LUCinLA_stac directory):
+jupyter-book build LUCinLA_stac/
+#commit changes to GitHub:
+cd LUCinLA_stac
+git add ./*
+git commit -m &quot;edits&quot;
+git push
+#push newly-built HTML to gh-pages branch:
+ ghp-import -n -p -f LUCinSA/_build/html
 </pre></div>
+</div>
+<p><a class="reference external" href="https://discuss.codecademy.com/t/setting-up-conda-in-git-bash/534473">see this guide to use conda in Git Hub</a>
+<a class="reference external" href="https://jupyterbook.org/start/publish.html">see this guide for more on publishing a Jupyter Book online</a></p>
+<div class="admonition-note-if-using-windows admonition">
+<p class="admonition-title">Note if using Windows:</p>
+<p><strong>Jupyter Book is not compatible with Python 3.8</strong> in Windows. Set up environment using Python 3.7.
+A Conda Environment .yml (LUCenvWin) is provided with settings for Windows. After creating and activating virtual environment,
+need to install Jupyter Book: pip install jupyter-book</p>
 </div>
 <div class="highlight-{.cell notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -375,7 +405,7 @@ need to install Jupyter Book: pip install jupyter-book
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="slurm.html" title="previous page">Slurm</a>
-    <a class='right-next' id="next-link" href="quebracho.html" title="next page">Setting up a new project</a>
+    <a class='right-next' id="next-link" href="quebracho.html" title="next page">quebracho</a>
 
         </div>
         

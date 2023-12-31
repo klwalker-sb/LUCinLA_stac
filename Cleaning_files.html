@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Land-Use Change in Latin America (LUCinLA) Computing Guide &#8212; LUCinLA_stac</title>
+    <title>cleaning files &#8212; LUCinLA_stac</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,7 +51,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="General framework" href="General_framework.html" />
+    <link rel="next" title="troubleshooting errors" href="Errors.html" />
+    <link rel="prev" title="Pipeline process" href="Pipeline.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -82,8 +83,8 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Land-Use Change in Latin America (LUCinLA) Computing Guide
   </a>
  </li>
@@ -137,7 +138,7 @@
   Processing
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Processing.html">
    Processing
@@ -158,8 +159,8 @@
    Pipeline process
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="Cleaning_files.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    cleaning files
   </a>
  </li>
@@ -275,7 +276,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/Cleaning_files.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -295,7 +296,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FCleaning_files.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -316,6 +317,29 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#as-part-of-the-regular-pipeline-procedure">
+   As part of the regular pipeline procedure:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#as-a-mechanism-to-delete-corrupted-files">
+   As a mechanism to delete corrupted files:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#as-a-mechanism-to-remove-unwanted-images">
+   As a mechanism to remove unwanted images:
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -324,24 +348,34 @@
         
               <div>
                 
-  <div class="section" id="land-use-change-in-latin-america-lucinla-computing-guide">
-<h1>Land-Use Change in Latin America (LUCinLA) Computing Guide<a class="headerlink" href="#land-use-change-in-latin-america-lucinla-computing-guide" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cleaning-files">
+<span id="cleaning"></span><h1>cleaning files<a class="headerlink" href="#cleaning-files" title="Permalink to this headline">¶</a></h1>
 <p>================================================================================================================================
-Guide to computer setup and processing for remote-sensing projects on Land-Use Change in Latin America
-in Robert Heilmayr’s lab at UC Santa Barbara with methods developed in collaboration with Jordan Graesser</p>
-<p><img alt="alt" src="_images/Forest_to_Soy_ALL.jpg" /></p>
-<p>This guide focuses on setup details specific to the computing environment available to us at UC Santa Barbara and is mostly geared toward students with little to no experience with High-Performance Computing who need to quickly jump into data processing. While the computing environment is quite specific, the more general framework for ingesting, processing, and checking large quantities of imagery using primarily open-source resources could be of interest to others with similar tasks and computing resources.</p>
-<div class="toctree-wrapper compound">
+use <code class="docutils literal notranslate"><span class="pre">tuyau</span> <span class="pre">clean</span></code> to clean out files that are no longer needed and to properly delete corrupted files.</p>
+<div class="section" id="as-part-of-the-regular-pipeline-procedure">
+<h2>As part of the regular pipeline procedure:<a class="headerlink" href="#as-part-of-the-regular-pipeline-procedure" title="Permalink to this headline">¶</a></h2>
+<p>Following the time series step in the pipeline, <code class="docutils literal notranslate"><span class="pre">tuyau</span> <span class="pre">clean</span></code> can be used to delete the original download files and free up quite a bit of memory (downloads consume ~100GB of memory per cell for a 2000-2022 time series)</p>
+<p><strong>Make sure the parameter <code class="docutils literal notranslate"><span class="pre">clean:delete_record</span></code> is set to <code class="docutils literal notranslate"><span class="pre">False</span></code></strong> (its default). As long as <code class="docutils literal notranslate"><span class="pre">clean:delete_record</span></code> is not set to True, the record will be preserved in the <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> database and any processed files will not be redownloaded. (Even if <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> is deleted, it can be recreated (albeit with less info) from the files in the brdf folder, so processed files need not be redownloaded with future updates)</p>
+<p>The recommended parameter configuration for regular file cleaning can be found in the bash script <code class="docutils literal notranslate"><span class="pre">eostac_clean.sh</span></code> (in sandbox-cel/paraguay_lc/templates). By default, this will clean out both the download folders and the nocoreg folder (the nocoreg folder contains a copy of each brdf prior to the coreg step. This can be used to check the accuracy of the coreg step, but does take up a bit of memory).</p>
 </div>
-<div class="toctree-wrapper compound">
+<div class="section" id="as-a-mechanism-to-delete-corrupted-files">
+<h2>As a mechanism to delete corrupted files:<a class="headerlink" href="#as-a-mechanism-to-delete-corrupted-files" title="Permalink to this headline">¶</a></h2>
+<p>In the case of corrupted files or other files that should be reprocessed after removal, <code class="docutils literal notranslate"><span class="pre">clean:delete_record</span></code> should be set to <code class="docutils literal notranslate"><span class="pre">True</span></code>. This ensures that the file record is deleted from <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> when the file is deleted from the downloads folder so that is is able to be redownloaded. If the file has been run through the brdf stage, the corresponding brdf file is also deleted (which can be tricky manually as it can have a variety of file names, depending on whether the coreg step has been run and whether it succeeded). The brdf field is reset to NaN in <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> so that it can be recreated. If a brdf file is corrupted and not the download itself, can set <code class="docutils literal notranslate"><span class="pre">clean:remove_items</span></code> to ‘[brdf]’ to remove only the brdf file and record.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>if <code class="docutils literal notranslate"><span class="pre">clean:delete_record</span></code> is set to <code class="docutils literal notranslate"><span class="pre">True</span></code> in <code class="docutils literal notranslate"><span class="pre">tuyau</span> <span class="pre">clean</span></code>, the brdf file and record will be deleted even if <code class="docutils literal notranslate"><span class="pre">brdf</span></code> is not in <code class="docutils literal notranslate"><span class="pre">clean:remove_items</span></code>. This allows/forces the item to be reprocessed in future runs of the downloading/brdf processes. :::</p>
+<p><code class="docutils literal notranslate"><span class="pre">eostac_clean_removeFromDB.sh</span></code> (in sandbox-cel/paraguay_lc/templates) has the recommended configuration to remove corrupted downloads.
+files to be cleaned can be specified with the parameters:
+*<code class="docutils literal notranslate"><span class="pre">clean:sat_sensors</span></code> (options = S2A,S2B,LT05,LE07,LC08,LC09,S2(for all sentinel only),L(for all Landsat only) or All)
+*<code class="docutils literal notranslate"><span class="pre">clean:date_range</span></code>  (format: ‘[YYYYMMDD, YYYYMMDD]’. if a single image is to be cleaned, can use ‘[YYYYMMDD]’. if all files are to be cleaned (all dates), use ‘[0]’)
+*<code class="docutils literal notranslate"><span class="pre">clean:xlist</span></code> can be used to provide a list of images to remove (format is path to .csv file with one image per row (no heading)). File names can be from download or brdf folder (if from download, will remove brdf as well)</p>
 </div>
-<div class="toctree-wrapper compound">
 </div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
+<div class="section" id="as-a-mechanism-to-remove-unwanted-images">
+<h2>As a mechanism to remove unwanted images:<a class="headerlink" href="#as-a-mechanism-to-remove-unwanted-images" title="Permalink to this headline">¶</a></h2>
+<p>This is useful if you want to remove a list of images that are deemed to be low quality, for example. This list can be generated using the LUCinSA_helpers create_thubnails method followed by the thumbnail_filter notebook.</p>
+<p>in <code class="docutils literal notranslate"><span class="pre">tuyau</span> <span class="pre">clean</span></code>, set <code class="docutils literal notranslate"><span class="pre">clean:delete_record</span></code> to <code class="docutils literal notranslate"><span class="pre">False</span></code> and set <code class="docutils literal notranslate"><span class="pre">clean:xlist</span></code> to the path to your list of images to remove (formated as .csv file with one image per row (no heading)). File names can be from download or brdf folder (if from download, will remove brdf as well)
+When <code class="docutils literal notranslate"><span class="pre">clean:delete_record</span></code> is set to False, the record will remain in <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> and will be flagged so that it is not reprocessed with future updates.</p>
 </div>
 </div>
 
@@ -370,7 +404,8 @@ in Robert Heilmayr’s lab at UC Santa Barbara with methods developed in collabo
         
         <div class='prev-next-bottom'>
             
-    <a class='right-next' id="next-link" href="General_framework.html" title="next page">General framework</a>
+    <a class='left-prev' id="prev-link" href="Pipeline.html" title="previous page">Pipeline process</a>
+    <a class='right-next' id="next-link" href="Errors.html" title="next page">troubleshooting errors</a>
 
         </div>
         

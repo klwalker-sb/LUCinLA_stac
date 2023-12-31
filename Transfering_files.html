@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transfering Files to/from cluster &#8212; LUCinLA_stac</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Processing" href="Processing.html" />
+    <link rel="prev" title="Setting up your remote environment" href="environment_setup.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/cover.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LUCinLA_stac</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Land-Use Change in Latin America (LUCinLA) Computing Guide
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Overview
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="General_framework.html">
+   General framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project_background.html">
+   Project background
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing_overview.html">
+   Processing overview
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Computer setup
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Connecting_to_cluster.html">
+   Connecting to the ERI cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="environment_setup.html">
+   Setting up your remote environment
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Transfering Files to/from cluster
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing.html">
+   Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Downloading.html">
+   Downloading process
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pre_Pipeline.html">
+   Post-download processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pipeline.html">
+   Pipeline process
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Cleaning_files.html">
+   cleaning files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Errors.html">
+   troubleshooting errors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Jupyter_Notebook.html">
+   Using Jupyter Notebook to interact with data on cluster
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Classification_rf.html">
+   classification
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  New project configuration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Computing resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_to_git.html">
+   Intro to git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="commandLine_bash.html">
+   command line
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vim.html">
+   Vim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="slurm.html">
+   Slurm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_this_guide.html">
+   To edit this guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quebracho.html">
+   quebracho
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Transfering_files.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FTransfering_files.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Transfering Files to/from cluster
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-command-line">
+     via command line
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-ftp-client">
+     via FTP client
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#via-globus-online">
+     via Globus online
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#copy-processing-scripts">
+   Copy processing scripts
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="transfering-files-to-from-cluster">
+<span id="transfering"></span><h1>Transfering Files to/from cluster<a class="headerlink" href="#transfering-files-to-from-cluster" title="Permalink to this headline">¶</a></h1>
+<p>================================================================================================================================</p>
+<div class="section" id="via-command-line">
+<h2>via command line<a class="headerlink" href="#via-command-line" title="Permalink to this headline">¶</a></h2>
+<p><strong>On a Mac</strong>, you can transfer small files via the command line using <code class="docutils literal notranslate"><span class="pre">rsync</span></code>. You can <a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories">learn more about rsync here</a>, or <a class="reference external" href="https://linux.die.net/man/1/rsync">here to see all command options</a></p>
+<div class="admonition-these-rsync-commands-are-run-from-a-separate-terminal admonition">
+<p class="admonition-title">These rsync commands are run from a separate terminal</p>
+<p>(you do not need to close your open terminal, but open a second one from your computer to run these)</p>
+</div>
+<p>#To Download a file from ERI to local:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rsync</span> <span class="o">-</span><span class="n">raz</span> <span class="o">--</span><span class="n">progress</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">grit</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">&lt;</span><span class="n">ERI</span> <span class="n">path</span><span class="o">/</span><span class="n">fileName</span><span class="o">.</span><span class="n">ext</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">local</span> <span class="n">path</span><span class="o">/</span><span class="n">fileName</span><span class="o">.</span><span class="n">ext</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>#To Upload a file from local to ERI</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rsync</span> <span class="o">&lt;</span><span class="n">local</span> <span class="n">path</span><span class="o">/</span><span class="n">fileName</span><span class="o">.</span><span class="n">ext</span><span class="o">&gt;</span> <span class="o">-</span><span class="n">raz</span> <span class="o">--</span><span class="n">progress</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span><span class="nd">@ssh</span><span class="o">.</span><span class="n">grit</span><span class="o">.</span><span class="n">ucsb</span><span class="o">.</span><span class="n">edu</span><span class="p">:</span><span class="o">&lt;</span><span class="n">ERI</span> <span class="n">path</span><span class="o">/</span><span class="n">fileName</span><span class="o">.</span><span class="n">ext</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p><strong>On Windows</strong>, rsync or a similar file sync tool can be set up on a bash command interface such as git bash or cygwin, but the setup is a bit dodgy and unstable. A more robust option for Windows is to use an all-in-one SSH/FTP client like MobaXterm, or to add an FTP client to the mix.</p>
+</div>
+<div class="section" id="via-ftp-client">
+<h2>via FTP client<a class="headerlink" href="#via-ftp-client" title="Permalink to this headline">¶</a></h2>
+<p>You can also transfer files using a File Transfer Protocol (FTP). If you are already using MobaXterm, you have an FTP included. Just double-click files from the file tree on the left to open them, or drag them onto your computer to copy them. You can also use a dedicated FTP such as WinSCP. (<a class="reference external" href="https://winscp.net/eng/index.php">Get WinSCP here</a>). There are also FTP options for Macs, such as [FileZilla(]<a class="reference external" href="https://filezilla-project.org/">https://filezilla-project.org/</a>).</p>
+<p>As with SSH, you must be logged into a UCSB VPN client first.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="text-align:center head"><p>Example with WinSCP2:</p></th>
+<th class="text-align:center head"><p></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-align:center"><p><img alt="" src="_images/WinSCP2.png" /></p></td>
+<td class="text-align:center"><p><img alt="" src="_images/WinSCP3.png" /></p></td>
+</tr>
+<tr class="row-odd"><td class="text-align:center"><p>1 - In “New Site”, enter username and address for bellows. Then click “Advanced”</p></td>
+<td class="text-align:center"><p>2 - In “Tunnel”, enter unsername and address for ERI. Click “OK” and save config.</p></td>
+</tr>
+</tbody>
+</table>
+<p>You will be prompted to enter your password twice.
+Now you have a visual directory map from which you can transfer files between your PC and the Cluster</p>
+<div class="figure align-default" id="winscp4-png">
+<a class="reference internal image-reference" href="_images/WinSCP4.png"><img alt="_images/WinSCP4.png" src="_images/WinSCP4.png" style="width: 485.40000000000003px; height: 265.8px;" /></a>
+</div>
+</div>
+<div class="section" id="via-globus-online">
+<h2>via Globus online<a class="headerlink" href="#via-globus-online" title="Permalink to this headline">¶</a></h2>
+<p>For large file transfers, globus-online is recommended, as it will pick up where it left off if your connection gets interrupted. CSC has a good description of globus-online and getting set up <a class="reference external" href="http://csc.cnsi.ucsb.edu/docs/globus-online">on their website here</a></p>
+</div>
+</div>
+<div class="section" id="copy-processing-scripts">
+<h1>Copy processing scripts<a class="headerlink" href="#copy-processing-scripts" title="Permalink to this headline">¶</a></h1>
+<p>Copy the four primary processing scripts to the folder from which you will be submitting commands(home/&lt;username&gt;/code/bash).
+Replace &lt;country&gt; and &lt;cntry&gt; with text that corresponds to the country you are working in:
+* For Paraguay: &lt;\country&gt; = paraguay and &lt;cntry&gt; = py
+* For Uruguay: &lt;country&gt; = uruguay and &lt;cntry&gt; = ury
+* For Chile: &lt;country&gt; = chile and &lt;cntry&gt; = chile</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#if it doesn&#39;t already exist, Make code/bash directory:</span>
+<span class="n">mkdir</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span>
+<span class="c1">#Copy scripts over:</span>
+<span class="n">cp</span> <span class="o">/</span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/&lt;</span><span class="n">country</span><span class="o">&gt;</span><span class="n">_lc</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">eostac_dl_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">eostac_dl_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span>
+<span class="n">cp</span> <span class="o">/</span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/&lt;</span><span class="n">country</span><span class="o">&gt;</span><span class="n">_lc</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">eostac_brdf_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">eostac_brdf_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span>
+<span class="n">cp</span> <span class="o">/</span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/&lt;</span><span class="n">country</span><span class="o">&gt;</span><span class="n">_lc</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">eostac_pipe_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">eostac_pipe_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span>
+<span class="n">cp</span> <span class="o">/</span><span class="n">raid</span><span class="o">-</span><span class="n">cel</span><span class="o">/</span><span class="n">sandbox</span><span class="o">/</span><span class="n">sandbox</span><span class="o">-</span><span class="n">cel</span><span class="o">/&lt;</span><span class="n">country</span><span class="o">&gt;</span><span class="n">_lc</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">eostac_pipe_ts_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span> <span class="o">~/</span><span class="n">code</span><span class="o">/</span><span class="n">bash</span><span class="o">/</span><span class="n">eostac_pipe_ts_</span><span class="o">&lt;</span><span class="n">cntry</span><span class="o">&gt;.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you get an error that ‘raid-cel/sandbox/sandbox_cel….’ does not exist:
+try <code class="docutils literal notranslate"><span class="pre">/home/sandbox-cel</span></code> in the place of <code class="docutils literal notranslate"><span class="pre">/raid-cel/sandbox/sandbox-cel</span></code></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="environment_setup.html" title="previous page">Setting up your remote environment</a>
+    <a class='right-next' id="next-link" href="Processing.html" title="next page">Processing</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kendra Walker<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

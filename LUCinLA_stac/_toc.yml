@@ -20,6 +20,7 @@ parts:
     - file: Downloading
     - file: Pre_Pipeline
     - file: Pipeline
+    - file: Errors
     - file: Jupyter_Notebook
   - caption: New project configuration
     chapters:

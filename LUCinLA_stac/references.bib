@@ -1,55 +1,92 @@
 ---
 ---
-
-@inproceedings{holdgraf_evidence_2014,
-  address   = {Brisbane, Australia, Australia},
-  title     = {Evidence for {Predictive} {Coding} in {Human} {Auditory} {Cortex}},
-  booktitle = {International {Conference} on {Cognitive} {Neuroscience}},
-  publisher = {Frontiers in Neuroscience},
-  author    = {Holdgraf, Christopher Ramsay and de Heer, Wendy and Pasley, Brian N. and Knight, Robert T.},
-  year      = {2014}
+@article{HLS,
+   author = {Claverie, Martin and Ju, Junchang and Masek, Jeffrey G. and Dungan, Jennifer L. and Vermote, Eric F. and Roger, Jean-Claude and Skakun, Sergii V. and Justice, Christopher O.},
+   title = {The Harmonized Landsat and Sentinel-2 surface reflectance data set},
+   journal = {Remote Sensing of Environment},
+   volume = {219},
+   pages = {145-161},
+   ISSN = {0034-4257},
+   DOI = {10.1016/j.rse.2018.09.002},
+   url = {<Go to ISI>://WOS:000450379200011},
+   year = {2018},
+   type = {Journal Article}
+   
+@article{TS_smoother,
+   author = {Graesser, J. and Stanimirova, R. and Friedl, M. A.},
+   title = {Reconstruction of Satellite Time Series With a Dynamic Smoother},
+   journal = {Ieee Journal of Selected Topics in Applied Earth Observations and Remote Sensing},
+   volume = {15},
+   pages = {1803-1813},
+   abstract = {Time series reconstruction methods are widely used to generate smooth and gap-free time series using imagery acquired at coarse spatial resolution and high frequency return intervals. However, as interest has grown in leveraging the nearly 40-a record of Landsat to study long-term changes in terrestrial ecosystems at 30-m spatial resolution, new methods are required to reconstruct time series of Landsat imagery, which have lower temporal density than coarse resolution sensors such as AVHRR or MODIS. To address this need, we introduce a dynamic temporal smoothing (DTS) method that reconstructs sparse and noisy signals into dense time series at regular intervals. The DTS is a weighted smoother with parameters that adjust dynamically to variation in time series and can be applied to both dense and sparse time series measurements. Because the DTS smoother we describe is specifically designed to reconstruct high-quality time series of optical imagery, it has utility for applications focused on land cover and vegetation remote sensing over long time periods at moderate spatial resolution. We present the DTS algorithm that we have implemented and illustrate the ability of the DTS to reconstruct time series of Landsat imagery across multiple sensors (TM, ETM+, and OLI). To demonstrate the effectiveness of the DTS algorithm we apply it and evaluate results across a diverse range of land cover and vegetation types in the South American Southern Cone region.},
+   keywords = { time-series smoothing},
+   ISSN = {1939-1404},
+   DOI = {10.1109/jstars.2022.3146081},
+   url = {<Go to ISI>://WOS:000761219000003},
+   year = {2022},
+   type = {Journal Article}
 }
 
-@article{holdgraf_rapid_2016,
-  title   = {Rapid tuning shifts in human auditory cortex enhance speech intelligibility},
-  volume  = {7},
-  issn    = {2041-1723},
-  url     = {http://www.nature.com/doifinder/10.1038/ncomms13654},
-  doi     = {10.1038/ncomms13654},
-  number  = {May},
-  journal = {Nature Communications},
-  author  = {Holdgraf, Christopher Ramsay and de Heer, Wendy and Pasley, Brian N. and Rieger, Jochem W. and Crone, Nathan and Lin, Jack J. and Knight, Robert T. and Theunissen, Frédéric E.},
-  year    = {2016},
-  pages   = {13654},
-  file    = {Holdgraf et al. - 2016 - Rapid tuning shifts in human auditory cortex enhance speech intelligibility.pdf:C\:\\Users\\chold\\Zotero\\storage\\MDQP3JWE\\Holdgraf et al. - 2016 - Rapid tuning shifts in human auditory cortex enhance speech intelligibility.pdf:application/pdf}
+@article{Graesser_SouthernCone,
+   author = {Graesser, J. and Stanimirova, R. and Tarrio, K. and Copati, E. J. and Volante, J. N. and Veron, S. R. and Banchero, S. and Elena, H. and de Abelleyra, D. and Friedl, M. A.},
+   title = {Temporally-Consistent Annual Land Cover from Landsat Time Series in the Southern Cone of South America},
+   journal = {Remote Sensing},
+   volume = {14},
+   number = {16},
+   abstract = {The impact of land cover change across the planet continues to necessitate accurate methods to detect and monitor evolving processes from satellite imagery. In this context, regional and global land cover mapping over time has largely treated time as independent and addressed temporal map consistency as a post-classification endeavor. However, we argue that time can be better modeled as codependent during the model classification stage to produce more consistent land cover estimates over long time periods and gradual change events. To produce temporally-dependent land cover estimates-meaning land cover is predicted over time in connected sequences as opposed to predictions made for a given time period without consideration of past land cover-we use structured learning with conditional random fields (CRFs), coupled with a land cover augmentation method to produce time series training data and bi-weekly Landsat imagery over 20 years (1999-2018) across the Southern Cone region of South America. A CRF accounts for the natural dependencies of land change processes. As a result, it is able to produce land cover estimates over time that better reflect real change and stability by reducing pixel-level annual noise. Using CRF, we produced a twenty-year dataset of land cover over the region, depicting key change processes such as cropland expansion and tree cover loss at the Landsat scale. The augmentation and CRF approach introduced here provides a more temporally consistent land cover product over traditional mapping methods.},
+   DOI = {10.3390/rs14164005},
+   url = {<Go to ISI>://WOS:000846606000001},
+   year = {2022},
+   type = {Journal Article}
+ 
+@article{BRDF,
+   author = {Roy, D. P. and Zhang, H. K. and Ju, J. and Gomez-Dans, J. L. and Lewis, P. E. and Schaaf, C. B. and Sun, Q. and Li, J. and Huang, H. and Kovalskyy, V.},
+   title = {A general method to normalize Landsat reflectance data to nadir BRDF adjusted reflectance},
+   journal = {Remote Sensing of Environment},
+   volume = {176},
+   pages = {255-271},
+   abstract = {The Landsat satellites have been providing spectacular imagery of the Earth's surface for over 40years. However, they acquire images at view angles Â±7.5Â° from nadir that cause small directional effects in the surface reflectance. There are also variations with solar zenith angle over the year that can cause apparent change in reflectance even if the surface properties remain constant. When Landsat data from adjoining paths, or from long time series are used, a model of the surface anisotropy is required to adjust all Landsat observations to a uniform nadir view (primarily for visual consistency, vegetation monitoring, or detection of subtle surface changes). Here a generalized approach is developed to provide consistent view angle corrections across the Landsat archive. While this approach is not applicable for generation of Landsat surface albedo, which requires a full characterization of the surface bidirectional reflectance distribution function (BRDF), or for correction to a constant solar illumination angle across a wide range of sun angles, it provides Landsat nadir BRDF-adjusted reflectance (NBAR) for a range of terrestrial monitoring applications. The Landsat NBAR is derived as the product of the observed Landsat reflectance and the ratio of the reflectances modeled using MODIS BRDF spectral model parameters for the observed Landsat and for a nadir view and fixed solar zenith geometry. In this study, a total of 567 conterminous United States (CONUS) January and July 2010 Landsat 5 Thematic Mapper (TM) and Landsat 7 Enhanced Thematic Mapper (ETM+) images that have swath edge overlapping paths sensed in alternating backscatter and forward scattering orientations were used. The average difference between Landsat 5 TM and Landsat 7 ETM+ surface reflectance in the forward and backward scatter directions at the overlapping Landsat scan edges was quantified. The CONUS July view zenith BRDF effects were about 0.02 in the Landsat visible bands, and about 0.03, 0.05 and 0.06, in the 2.1Î¼m, 1.6Î¼m and near-infrared bands respectively. Comparisons of Landsat 5 TM and Landsat 7 ETM+ NBAR derived using MODIS BRDF spectral model parameters defined with respect to different spatial and temporal scales, and defined with respect to different land cover types, were undertaken. The results suggest that, because the BRDF shapes of different terrestrial surfaces are sufficiently similar over the narrow 15Â° Landsat field of view, a fixed set of MODIS BRDF spectral model parameters may be adequate for Landsat NBAR derivation with little sensitivity to the land cover type, condition, or surface disturbance. A fixed set of BRDF spectral model parameters, derived from a global year of highest quality snow-free MODIS BRDF product values, are provided so users may implement the described Landsat NBAR generation method.},
+   ISSN = {0034-4257},
+   DOI = {https://doi.org/10.1016/j.rse.2016.01.023},
+   url = {http://www.sciencedirect.com/science/article/pii/S0034425716300220},
+   year = {2016},
+   type = {Journal Article}
 }
 
-@inproceedings{holdgraf_portable_2017,
-  title    = {Portable learning environments for hands-on computational instruction using container-and cloud-based technology to teach data science},
-  volume   = {Part F1287},
-  isbn     = {978-1-4503-5272-7},
-  doi      = {10.1145/3093338.3093370},
-  abstract = {© 2017 ACM. There is an increasing interest in learning outside of the traditional classroom setting. This is especially true for topics covering computational tools and data science, as both are challenging to incorporate in the standard curriculum. These atypical learning environments offer new opportunities for teaching, particularly when it comes to combining conceptual knowledge with hands-on experience/expertise with methods and skills. Advances in cloud computing and containerized environments provide an attractive opportunity to improve the effciency and ease with which students can learn. This manuscript details recent advances towards using commonly-Available cloud computing services and advanced cyberinfrastructure support for improving the learning experience in bootcamp-style events. We cover the benets (and challenges) of using a server hosted remotely instead of relying on student laptops, discuss the technology that was used in order to make this possible, and give suggestions for how others could implement and improve upon this model for pedagogy and reproducibility.},
-  author   = {Holdgraf, Christopher Ramsay and Culich, A. and Rokem, A. and Deniz, F. and Alegro, M. and Ushizima, D.},
-  year     = {2017},
-  keywords = {Teaching, Bootcamps, Cloud computing, Data science, Docker, Pedagogy}
+@article{arosics,
+  title={AROSICS: An automated and robust open-source image co-registration software for multi-sensor satellite data},
+  author={Scheffler, Daniel and Hollstein, Andr{\'e} and Diedrich, Hannes and Segl, Karl and Hostert, Patrick},
+  journal={Remote sensing},
+  volume={9},
+  number={7},
+  pages={676},
+  year={2017},
+  publisher={MDPI}
+  
+@article{arosics2,
+   author = {Scheffler, Daniel and Frantz, David and Segl, Karl},
+   title = {Spectral harmonization and red edge prediction of Landsat-8 to Sentinel-2 using land cover optimized multivariate regressors},
+   journal = {Remote Sensing of Environment},
+   volume = {241},
+   pages = {111723},
+   abstract = {Multi-sensor remote sensing applications consistently gain importance, boosted by a growing number of freely available earth observation data, increasing computing capacity, and increasingly complex algorithms that need as temporally dense data as possible. Using data provided by different sensors can greatly improve the temporal resolution of time series, fill data gaps and thus improve the quality of land cover monitoring applications. However, multi-sensor approaches are often adversely affected by different spectral characteristics of the sensing instruments, leading to inconsistencies in downstream products. Spectral harmonization, i.e., the transformation of one sensor into the spectral domain of another sensor, may reduce these inconsistencies. It simplifies workflows, increases the reliability of subsequently derived multi-sensor products and may also enable the generation of new products that are not possible with the initial spectral definition. In this paper, we compare the effect of multivariate spectral harmonization techniques on the inter-sensor reflectance consistency and derived products such as spectral indices or land cover classifications. We simulated surface reflectance data of Landsat-8 and Sentinel-2A from airborne hyperspectral data to eliminate any sources of error originating from unequal acquisition geometries, illumination or atmospheric state. We evaluate different methods based on linear, quadratic and random forest regression as well as linear interpolation, and predict not only matching but also unilaterally missing bands (red edge). We additionally consider material-dependent spectral characteristics in the harmonization process by using separate transformation functions for spectral clusters of the input dataset. Our results suggest that spectral harmonization is useful to improve multi-sensor consistency of remote sensing data and subsequently derived products, especially if multiple transformation functions are incorporated. There is a strong dependency between harmonization performance and the similarity of source and target sensor's spectral characteristics. For spectrally transforming Landsat-8 to Sentinel-2A, we achieved the lowest radiometric inter-sensor deviations with 50 spectral clusters and linear regression. Based on simulated data, deviations are below 1.7% reflectance within the red edge spectral region and below 0.3% reflectance for the remaining bands (RMSE). Regarding spectral indices, our results show a reduction of inter-sensor deviation (vegetation pixels only) to 38% of the initial error for NDVI (Normalized Difference Vegetation Index) and to 43% for EVI (Enhanced Vegetation Index). Furthermore, we computed the REIP (Red Edge Inflection Point) with an accuracy of 3.1 nm from Sentinel-2 adapted Landsat-8 data. An exemplary multispectral classification use case revealed an increasing inter-sensor consistency of classification results from 92.3% to 97.3% mean error. Applied to time series of real Landsat-8 and Sentinel-2 data, we observed similar trends, albeit intermingled with non-sensor-induced inconsistencies.},
+   ISSN = {0034-4257},
+   DOI = {https://doi.org/10.1016/j.rse.2020.111723},
+   url = {https://www.sciencedirect.com/science/article/pii/S0034425720300924},
+   year = {2020},
+   type = {Journal Article}
+}
+  
+@misc{Geowombat,
+  author = {Graesser, Jordan, et.al},
+  title = {Geowombat},
+  howpublished = {\url{https://geowombat.readthedocs.io/en/latest/}},
+  note = {Accessed: 2023-11-20}
 }
 
-@article{holdgraf_encoding_2017,
-  title    = {Encoding and decoding models in cognitive electrophysiology},
-  volume   = {11},
-  issn     = {16625137},
-  doi      = {10.3389/fnsys.2017.00061},
-  abstract = {© 2017 Holdgraf, Rieger, Micheli, Martin, Knight and Theunissen. Cognitive neuroscience has seen rapid growth in the size and complexity of data recorded from the human brain as well as in the computational tools available to analyze this data. This data explosion has resulted in an increased use of multivariate, model-based methods for asking neuroscience questions, allowing scientists to investigate multiple hypotheses with a single dataset, to use complex, time-varying stimuli, and to study the human brain under more naturalistic conditions. These tools come in the form of “Encoding” models, in which stimulus features are used to model brain activity, and “Decoding” models, in which neural features are used to generated a stimulus output. Here we review the current state of encoding and decoding models in cognitive electrophysiology and provide a practical guide toward conducting experiments and analyses in this emerging field. Our examples focus on using linear models in the study of human language and audition. We show how to calculate auditory receptive fields from natural sounds as well as how to decode neural recordings to predict speech. The paper aims to be a useful tutorial to these approaches, and a practical introduction to using machine learning and applied statistics to build models of neural activity. The data analytic approaches we discuss may also be applied to other sensory modalities, motor systems, and cognitive systems, and we cover some examples in these areas. In addition, a collection of Jupyter notebooks is publicly available as a complement to the material covered in this paper, providing code examples and tutorials for predictive modeling in python. The aimis to provide a practical understanding of predictivemodeling of human brain data and to propose best-practices in conducting these analyses.},
-  journal  = {Frontiers in Systems Neuroscience},
-  author   = {Holdgraf, Christopher Ramsay and Rieger, J.W. and Micheli, C. and Martin, S. and Knight, R.T. and Theunissen, F.E.},
-  year     = {2017},
-  keywords = {Decoding models, Encoding models, Electrocorticography (ECoG), Electrophysiology/evoked potentials, Machine learning applied to neuroscience, Natural stimuli, Predictive modeling, Tutorials}
-}
-
-@book{ruby,
-  title     = {The Ruby Programming Language},
-  author    = {Flanagan, David and Matsumoto, Yukihiro},
-  year      = {2008},
-  publisher = {O'Reilly Media}
+@misc{Cultionet,
+  author = {Graesser, Jordan, et.al},
+  title = {Cultionet},
+  howpublished = {\url{https://github.com/jgrss/cultionet}},
+  note = {Accessed: 2023-11-20}
 }

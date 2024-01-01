@@ -236,6 +236,18 @@
   </a>
  </li>
 </ul>
+<p class="caption">
+ <span class="caption-text">
+  Cited References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   cited references
+  </a>
+ </li>
+</ul>
 
     </div>
 </nav> <!-- To handle the deprecated key -->
@@ -339,6 +351,30 @@
    </li>
   </ul>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coreg-errors">
+   coreg errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     out of input error
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ts-errors">
+   ts errors
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#no-such-table-error">
+     no such table error
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
             </nav>
@@ -364,6 +400,27 @@ This means that the <code class="docutils literal notranslate"><span class="pre"
 if you locate the <code class="docutils literal notranslate"><span class="pre">scene.info</span></code> file, you will probably see that it has zero bytes.
 <img alt="alt" src="_images/brdf_out_of_input_check.jpg" />
 To get around this error, simply delete the corrupted <code class="docutils literal notranslate"><span class="pre">scene.info</span></code> file and rerun the download script. This will create a new <code class="docutils literal notranslate"><span class="pre">scene.info</span></code> file and will not redownload files that already exist.</p>
+</div>
+</div>
+<div class="section" id="coreg-errors">
+<h2>coreg errors<a class="headerlink" href="#coreg-errors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>out of input error<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p><img alt="alt" src="_images/crg_ran_out_of_input_error.jpg" />
+In this case, the database <code class="docutils literal notranslate"><span class="pre">'processing.info'</span></code> is corrupted.
+if you locate the <code class="docutils literal notranslate"><span class="pre">'processing.info'</span></code> file, you will probably see that it has zero bytes.
+<img alt="alt" src="_images/crg_ran_out_of_input_check.jpg" />
+To fix this error, delete the corrupted <code class="docutils literal notranslate"><span class="pre">'processing.info'</span></code> file. If brdfs have already been run, the best way to build <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> database is to run the <code class="docutils literal notranslate"><span class="pre">reconstruct_db</span></code> (or Notebook 0) from <code class="docutils literal notranslate"><span class="pre">LucinSA_helpers</span></code>. A simpler (but less robust) method is to rerun the download script and the database should be recreated from the existing downloads (this does not work if downloads have already been cleaned).</p>
+</div>
+</div>
+<div class="section" id="ts-errors">
+<h2>ts errors<a class="headerlink" href="#ts-errors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="no-such-table-error">
+<h3>no such table error<a class="headerlink" href="#no-such-table-error" title="Permalink to this headline">¶</a></h3>
+<p><img alt="alt" src="_images/ts_no_such_table_db_error.jpg" />
+This means that the tuyau.db file either does not exist or is corrupted.
+First make sure that you entered the intended cell number when running (including the 1,000 place – it is easy to accidentally run 4923 instead of 3929, for example). Next, make sure that coreg has been run. Lastly, make sure the tuyau.db file exists and has data (if it exists, but has no data, rerunning coreg should repopulate it)
+<img alt="alt" src="_images/ts_no_such_table_db_check.jpg" /></p>
 </div>
 </div>
 </div>

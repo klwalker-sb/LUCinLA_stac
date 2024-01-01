@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vim &#8212; LUCinLA_stac</title>
+    <title>cited references &#8212; LUCinLA_stac</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -51,8 +51,7 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Slurm" href="slurm.html" />
-    <link rel="prev" title="command line" href="commandLine_bash.html" />
+    <link rel="prev" title="quebracho" href="quebracho.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -204,7 +203,7 @@
   Computing resources
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro_to_git.html">
    Intro to git
@@ -215,8 +214,8 @@
    command line
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="vim.html">
    Vim
   </a>
  </li>
@@ -241,9 +240,9 @@
   Cited References
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="bibliography.html">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    cited references
   </a>
  </li>
@@ -288,7 +287,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/vim.md"><button type="button"
+        <a class="dropdown-buttons" href="_sources/bibliography.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -308,7 +307,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fvim.html&body=Your%20issue%20content%20here."><button
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2Fbibliography.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -329,29 +328,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#navigating-in-vim">
-   Navigating in Vim:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#editing-in-vim">
-   Editing in Vim:
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#file-commands-in-vim">
-   File commands in Vim:
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -360,119 +336,27 @@
         
               <div>
                 
-  <div class="section" id="vim">
-<span id="vimcommands"></span><h1>Vim<a class="headerlink" href="#vim" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="cited-references">
+<span id="id1"></span><h1>cited references<a class="headerlink" href="#cited-references" title="Permalink to this headline">¶</a></h1>
 <p>================================================================================================================================</p>
-<div class="section" id="navigating-in-vim">
-<h2>Navigating in Vim:<a class="headerlink" href="#navigating-in-vim" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If archaic keyboarding is not your thing, you can use the cursor by modifying the configuration in <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code> in your home directory. Just add “set cursorline” <code class="docutils literal notranslate"><span class="pre">.vimrc</span></code>. <a class="reference internal" href="environment_setup.html#configvim"><span class="std std-ref">See here.</span></a></p>
-</div>
-<p>Vim uses good old fashion keyboard navigation
-<img alt="_images/hjkl.jpg" class="align-right" src="_images/hjkl.jpg" /><br />
-<strong><span style='color:green'> h </span></strong> = <strong>Left</strong><br />
-<strong><span style='color:green'> l </span></strong> = <strong>Right</strong><br />
-<strong><span style='color:green'> j </span></strong> = <strong>Up</strong><br />
-<strong><span style='color:green'> k </span></strong> = <strong>Down</strong></p>
-<p><strong><span style='color:green'> Shift+H </span></strong> puts cursor at the top of the screen.<br />
-<strong><span style='color:green'> Shift+L </span></strong>  puts cursor at the bottom of the screen.</p>
-<p>To <span style='background:yellow'> highlight text, </span> hold down <strong><span style='color:green'> v </span></strong> while using the <strong><span style='color:green'> h </span></strong> or <strong><span style='color:green'> l </span></strong> movement keys.<br />
-To <span style='background:yellow'> highlight a whole line,</span> hold down <strong><span style='color:green'>Shift+v</span></strong> from the beginning of the line.<br />
-<span style='background:yellow'> to highlight<br />
-multiple lines<br />
-up or down, </span><br />
-Use <strong><span style='color:green'>j</span></strong> or <strong><span style='color:green'>k</span></strong> keys at the same time</p>
-<p>To <strong>search</strong> for a keyword<xxx>, type <strong><span style='color:green'>/<xxx><span></strong></p>
-</div>
-<div class="section" id="editing-in-vim">
-<h2>Editing in Vim:<a class="headerlink" href="#editing-in-vim" title="Permalink to this headline">¶</a></h2>
-<p>The easiest way to edit text in Vim is to <strong>Enter insert mode by typing <span style='color:green'> i </span></strong><br />
-Now you can delete using Delete/Backspace and insert new text at the cursor.<br />
-You can <strong>Exit insert mode with <span style='color:green'> Esc </span></strong></p>
-<p>If you prefer Command editing, here are some basic commands:</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>Editing commands</p></th>
-<th class="text-align:left head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p><strong>Copy</strong> (“yank”)</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> y </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Copy a line</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> yy </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Copy a word</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> yw </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Copy to end of line</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> y$ </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><strong>Paste</strong></p></td>
-<td class="text-align:left"><p>*<strong><span style='color:green'> p </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>Delete</strong> character</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> x </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Delete highlighted</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> d </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Delete whole line</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> dd </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Delete word</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> dw </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p>Delete to end of line</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> D </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p>Delete to end of file ***</p></td>
-<td class="text-align:left"><p><span style='color:green'> dG </span>**</p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>Replace</strong> without confirmation</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> :%s/[pattern]/[replacement]/g </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><strong>Replace</strong> with confirmation</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> :%s/[pattern]/[replacement]/gc </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>Undo</strong></p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> u </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><strong>Redo</strong></p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> Ctrl+r  </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>Repeat</strong></p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> . </span></strong></p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="file-commands-in-vim">
-<h2>File commands in Vim:<a class="headerlink" href="#file-commands-in-vim" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="text-align:left head"><p>File commands</p></th>
-<th class="text-align:left head"><p></p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td class="text-align:left"><p><strong>save</strong></p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> :w </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>save and quit</strong></p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> :wq </span></strong></p></td>
-</tr>
-<tr class="row-even"><td class="text-align:left"><p><strong>save as</strong><filename></p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> :w [filename] </span></strong></p></td>
-</tr>
-<tr class="row-odd"><td class="text-align:left"><p><strong>quit</strong> without saving</p></td>
-<td class="text-align:left"><p><strong><span style='color:green'> :q! </span></strong></p></td>
-</tr>
-</tbody>
-</table>
-</div>
+<p id="id2"><dl class="citation">
+<dt class="label" id="id3"><span class="brackets">CJM+18</span></dt>
+<dd><p>Martin Claverie, Junchang Ju, Jeffrey G. Masek, Jennifer L. Dungan, Eric F. Vermote, Jean-Claude Roger, Sergii V. Skakun, and Christopher O. Justice. The harmonized landsat and sentinel-2 surface reflectance data set. <em>Remote Sensing of Environment</em>, 219:145–161, 2018. URL: <a class="reference external" href="&lt;Go to ISI&gt;://WOS:000450379200011">&lt;Go to ISI&gt;://WOS:000450379200011</a>, <a class="reference external" href="https://doi.org/10.1016/j.rse.2018.09.002">doi:10.1016/j.rse.2018.09.002</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">GSF22</span></dt>
+<dd><p>J. Graesser, R. Stanimirova, and M. A. Friedl. Reconstruction of satellite time series with a dynamic smoother. <em>Ieee Journal of Selected Topics in Applied Earth Observations and Remote Sensing</em>, 15:1803–1813, 2022. URL: <a class="reference external" href="&lt;Go to ISI&gt;://WOS:000761219000003">&lt;Go to ISI&gt;://WOS:000761219000003</a>, <a class="reference external" href="https://doi.org/10.1109/jstars.2022.3146081">doi:10.1109/jstars.2022.3146081</a>.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets">RZJ+16</span></dt>
+<dd><p>D. P. Roy, H. K. Zhang, J. Ju, J. L. Gomez-Dans, P. E. Lewis, C. B. Schaaf, Q. Sun, J. Li, H. Huang, and V. Kovalskyy. A general method to normalize landsat reflectance data to nadir brdf adjusted reflectance. <em>Remote Sensing of Environment</em>, 176:255–271, 2016. URL: <a class="reference external" href="http://www.sciencedirect.com/science/article/pii/S0034425716300220">http://www.sciencedirect.com/science/article/pii/S0034425716300220</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.rse.2016.01.023">doi:https://doi.org/10.1016/j.rse.2016.01.023</a>.</p>
+</dd>
+<dt class="label" id="id8"><span class="brackets">SFS20</span></dt>
+<dd><p>Daniel Scheffler, David Frantz, and Karl Segl. Spectral harmonization and red edge prediction of landsat-8 to sentinel-2 using land cover optimized multivariate regressors. <em>Remote Sensing of Environment</em>, 241:111723, 2020. URL: <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S0034425720300924">https://www.sciencedirect.com/science/article/pii/S0034425720300924</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/j.rse.2020.111723">doi:https://doi.org/10.1016/j.rse.2020.111723</a>.</p>
+</dd>
+<dt class="label" id="id7"><span class="brackets">SHD+17</span></dt>
+<dd><p>Daniel Scheffler, André Hollstein, Hannes Diedrich, Karl Segl, and Patrick Hostert. Arosics: an automated and robust open-source image co-registration software for multi-sensor satellite data. <em>Remote sensing</em>, 9(7):676, 2017.</p>
+</dd>
+</dl>
+</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -500,8 +384,7 @@ You can <strong>Exit insert mode with <span style='color:green'> Esc </span></st
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="commandLine_bash.html" title="previous page">command line</a>
-    <a class='right-next' id="next-link" href="slurm.html" title="next page">Slurm</a>
+    <a class='left-prev' id="prev-link" href="quebracho.html" title="previous page">quebracho</a>
 
         </div>
         

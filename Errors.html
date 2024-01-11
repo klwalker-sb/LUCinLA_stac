@@ -183,7 +183,7 @@
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="Classification_rf.html">
-   classification
+   single-year classification
   </a>
  </li>
 </ul>
@@ -373,6 +373,11 @@
      no such table error
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bad-object-header-error">
+     bad object header error
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -421,6 +426,11 @@ To fix this error, delete the corrupted <code class="docutils literal notranslat
 This means that the tuyau.db file either does not exist or is corrupted.
 First make sure that you entered the intended cell number when running (including the 1,000 place – it is easy to accidentally run 4923 instead of 3929, for example). Next, make sure that coreg has been run. Lastly, make sure the tuyau.db file exists and has data (if it exists, but has no data, rerunning coreg should repopulate it)
 <img alt="alt" src="_images/ts_no_such_table_db_check.jpg" /></p>
+</div>
+<div class="section" id="bad-object-header-error">
+<h3>bad object header error<a class="headerlink" href="#bad-object-header-error" title="Permalink to this headline">¶</a></h3>
+<p><img alt="alt" src="_images/ts_no_such_table_db_error.jpg" />
+This means that at least one brdf file is corrupted. This often happens if errors are not caught at the download stage and are run through brdf. Note the year for which the error applies and clean all download and brdf files for that year using <code class="docutils literal notranslate"><span class="pre">eostac_clean_removeFromDB.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">tuyau_clean</span></code> (see <a class="reference internal" href="Cleaning_files.html#cleaning"><span class="std std-ref">cleaning_files</span></a>). Then rerun download, brdf, and coreg for that year and retry the ts.</p>
 </div>
 </div>
 </div>

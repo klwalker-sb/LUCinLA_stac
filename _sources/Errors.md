@@ -28,3 +28,7 @@ To fix this error, delete the corrupted `'processing.info'` file. If brdfs have 
 This means that the tuyau.db file either does not exist or is corrupted.
 First make sure that you entered the intended cell number when running (including the 1,000 place -- it is easy to accidentally run 4923 instead of 3929, for example). Next, make sure that coreg has been run. Lastly, make sure the tuyau.db file exists and has data (if it exists, but has no data, rerunning coreg should repopulate it)
 ![alt](/Images/errors/ts_no_such_table_db_check.jpg)
+
+#### bad object header error
+![alt](/Images/errors/ts_no_such_table_db_error.jpg)
+This means that at least one brdf file is corrupted. This often happens if errors are not caught at the download stage and are run through brdf. Note the year for which the error applies and clean all download and brdf files for that year using `eostac_clean_removeFromDB.sh` or `tuyau_clean` (see [cleaning_files](cleaning)). Then rerun download, brdf, and coreg for that year and retry the ts.

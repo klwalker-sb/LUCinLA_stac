@@ -391,6 +391,11 @@
      Step 6: classify surface to produce map
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#step-7-mosaic-into-map">
+     Step 7: Mosaic into map
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -415,53 +420,87 @@
 <ol class="simple">
 <li><p><em><strong>spectral-index stats (<code class="docutils literal notranslate"><span class="pre">si_vars</span></code>)</strong></em>: Summary statistics and phenological variables for the modelling year generated from smoothed time-series data for each selected spectral image</p></li>
 <li><p><em><strong>singleton variables (<code class="docutils literal notranslate"><span class="pre">singleton_vars</span></code>)</strong></em>: Ancillary raster datasets covering the full AOI for a single point in time (can be constant or annual, but do not provide time-series data within a given year.)</p></li>
-<li><p><em><strong>segmentation variables (<code class="docutils literal notranslate"><span class="pre">poly_vars</span></code>)</strong></em>: Outputs from segmentation model, which, unlike singleton_vars, are already parsed by cell, but like singleton_vars, do not have a time-series element.</p></li>
+<li><p><em><strong>segmentation variables (<code class="docutils literal notranslate"><span class="pre">poly_vars</span></code>)</strong></em>: Outputs from segmentation model (or other object-extraction method), which, unlike singleton_vars, are already parsed by cell, but like singleton_vars, do not have a time-series element.</p></li>
 </ol>
+<p>Choose a unique <em><strong><code class="docutils literal notranslate"><span class="pre">feature_model</span></code></strong></em> name for the desired combination of features</p>
+<p>Feature models are stored in the dictionary (<code class="docutils literal notranslate"><span class="pre">feat_mod_dict</span></code>) at “/home/downspout-cel/paraguay_lc/Feature_Models.json”.
+This allows quick lookup by name of the feature set (spec_indices, si_vars, singleton_vars, and poly_vars) and the full band sequence of the resulting stack (in case the internal band names get stripped).</p>
 <div class="section" id="spectral-index-variables">
 <h4>spectral-index variables<a class="headerlink" href="#spectral-index-variables" title="Permalink to this headline">¶</a></h4>
 <p>Spectral-index stats contain both an index component and a statistic component. For the index component, see <a class="reference external" href="#veg_indices">vegetation indices</a> for options. The default RF model uses all six indices that we generated smoothed time series for in the pipeline process (evi2, gcvi, wi, kndvi, nbr &amp; ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.</p>
 <p>The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models.</p>
 <p>Variable options:</p>
 <ul class="simple">
-<li><p>Max =</p></li>
-<li><p>Min =</p></li>
-<li><p>(finishing this…)</p></li>
+<li><p><strong>Max</strong> = Maximum Value for year</p></li>
+<li><p><strong>Min</strong> = Minimum Value for year</p></li>
+<li><p><strong>Amp</strong> = Amplitude across year = (Max-Min)</p></li>
+<li><p><strong>Avg</strong> = Mean Value for year</p></li>
+<li><p><strong>Std</strong> = Standard Deviation for year</p></li>
+<li><p><strong>CV</strong> =  Coefficient of Variation for year = (1000*Std/Avg)</p></li>
+<li><p><strong>MaxDate</strong> = Day of year of maximum value</p></li>
+<li><p><strong>MinDate</strong> = Day of year of minimum value</p></li>
+<li><p><strong>MaxDateCos</strong> = Cosine of MaxDate(scaled to 360) (so that calendar is cyclical and 31 Jan is a close to 1 Dec as it is to 30 Jan)</p></li>
+<li><p><strong>MinDateCos</strong> = Cosine of MinDate(scaled to 360)</p></li>
+<li><p><strong>Jan</strong> = Value for smoothed time series on 20 Jan</p></li>
+<li><p><strong>Feb</strong> = Value for smoothed time series on 20 Feb</p></li>
+<li><p>… etc.</p></li>
+<li><p><strong>Dec</strong> = Value for smoothed time series on 20 Dec</p></li>
 </ul>
+<p>Note that the year is defined by the parameters <code class="docutils literal notranslate"><span class="pre">start_yr</span></code> and <code class="docutils literal notranslate"><span class="pre">start_mo</span></code>, such that it starts on the first of start_mo of start_yr (so a year can be 1/Jan-31/Dec, 1/Apr-31/Mar, 1/Jun-31/May, etc. to best align with the local crop calendar and avoid splitting the primary cropping cycle)</p>
+<p>New variables can be added within <code class="docutils literal notranslate"><span class="pre">ts_composite.py</span></code> of LUCinSA_helpers.</p>
 </div>
 <div class="section" id="singleton-variables">
 <h4>singleton variables<a class="headerlink" href="#singleton-variables" title="Permalink to this headline">¶</a></h4>
-<p>Currently, the only singleton variable available is <code class="docutils literal notranslate"><span class="pre">forest_strata</span></code>, which provides vegetational ecozones</p>
+<p>Singleton variables are ancillary raster datasets covering the whole area and time period. The only singleton variable currently available is <code class="docutils literal notranslate"><span class="pre">forest_strata</span></code>, which provides vegetational ecozones (“estratos_corregidos2014_6” – TODO: get citation info from Ata).</p>
+<p>A dictionary for singleton variables exists at: “/home/downspout-cel/paraguay_lc/singleton_var_dict.json”
+This contains the name of the variable, path to the dataset, and name of the attribute to use.
+To add another singleton variable, simply add the dataset at the desired location in the shared folder and add the data (manually) to the dictionary.</p>
 </div>
 <div class="section" id="segmentation-variables">
 <h4>segmentation variables<a class="headerlink" href="#segmentation-variables" title="Permalink to this headline">¶</a></h4>
-<p>(in progress…)</p>
+<p>Segmentation variables are outputs and summary variables from the segmentation process (TODO: link to segmentation processing description). Current variables are:</p>
+<ul class="simple">
+<li><p><strong>pred_area</strong> =</p></li>
+<li><p><strong>pred_dist</strong> =</p></li>
+<li><p><strong>pred_ext</strong> =</p></li>
+<li><p><strong>pred_APR</strong> =</p></li>
+<li><p><strong>AvgNovDec_FieldStd</strong> =</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="step-2-make-variable-stack-for-model">
 <h3>Step 2: make variable stack for model<a class="headerlink" href="#step-2-make-variable-stack-for-model" title="Permalink to this headline">¶</a></h3>
-<p>Feature_model
-Run <code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">make_var_stack</span></code> using the configuration in the Bash Script, <code class="docutils literal notranslate"><span class="pre">rf0_raster_var_stack.sh</span></code></p>
+<p>This stacks all variables into a single data stack for each cell, which makes for more efficient calculations (especially at the point of surface-level classification)</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Making a physical variable stack can be computationally expensive (up to 1 GB stored data per cell and 1-2 GB temp data in backup limbo (unless using scratch_dir option). The stack does not need to be physically made if there is an existing stack that contains all of the desired bands. Steps 3 and 5 have option to build a smaller virtual stack based on a larger data stack.</p>
+</div>
+<p>Run <code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">make_var_stack</span></code> using the configuration in the Bash Script, <code class="docutils literal notranslate"><span class="pre">rf0_raster_var_stack.sh</span></code></p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">in_dir</span></code> is the path to the outer ts directory for a cell (i.e. the parent cell folder containing all the ts data)</p></li>
-<li><p>feature_model<code class="docutils literal notranslate"><span class="pre">the</span> <span class="pre">name</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">feature</span> <span class="pre">model</span> <span class="pre">(defining</span> <span class="pre">the</span> <span class="pre">spec_vars,</span> <span class="pre">si_vars,</span> <span class="pre">singleton_vars</span> <span class="pre">and</span> <span class="pre">poly_vars)&gt;</span> <span class="pre">this</span> <span class="pre">is</span> <span class="pre">stored</span> <span class="pre">in</span> <span class="pre">the</span></code>feature_mod_dict`. If the feature model does not already exist, it will be added to the dictionary based on the parameters here. If it already exists, the parameters here will be filled with those already set in the dictionary)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--feature_mod_dict</span></code> is the path to the dictionary containing all feature models</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--spec_indices</span></code> the set of vegetation index to run.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--si_vars</span></code> sets the raster variables for the spec indices. To maintain structure and avoid confusion, the same set of si_vars should be used for all vegetation indices used in the model. (This dataset can be culled at step 4.)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--singleton_vars</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--singleton_var_dict</span></code> is the path to the dictionary defining all singleton layers
-*<code class="docutils literal notranslate"><span class="pre">--poly_vars</span></code>
-These same sets of VIs and SI_VARS should be used to make the variable dataframe in the next step.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--in_dir</span></code> is the path to the main time-series directory (i.e.: “/home/raid-cel/r/downspout-cel/paraguay_lc/stack/grids”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cell_list</span></code> is the list of cells to run. This can be single cell fed from the SBATCH array line or a path to a single .csv file or folder containg .csv files with the list of cells to run (no header). With the later option, the files can then be named numerically and run in an array via the SBATCH line. (examples are given in <code class="docutils literal notranslate"><span class="pre">rf0_raster_var_stack.sh</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--start_yr</span></code> is the year of the mapping period (first year if the cropping calendar spans two years).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--start_mo</span></code> is the first month of the corpping calendar, in numerical form (1 if calendar is Jan-Dec. 6 if calendar is Jun-May)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--feature_model</span></code> is the name of the feature model (defining the spec_vars, si_vars, singleton_vars and poly_vars). this is stored in the * <code class="docutils literal notranslate"><span class="pre">--feature_mod_dict</span></code> is the path to the dictionary containing all feature models. If the feature model does not already exist, it will be added to the dictionary based on the parameters here. If it already exists, the parameters here will be filled with those already set in the dictionary)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--spec_indices</span></code> the set of vegetation index to include (e.g [evi2,wi,gcvi,kndvi,ndmi,nbr] or a smaller subset. If passed from BASH script, needs to be list inside string (e.g: “[var1,var2,var3]”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--si_vars</span></code> sets the raster variables to include for the spec indices. ([max, min, …]) To maintain structure and avoid confusion, the same set of si_vars should be used for all vegetation indices used in the model. (This dataset can be culled at step 4.) If passed from BASH script, needs to be list inside string (e.g: “[var1,var2,var3]”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--singleton_vars</span></code> is the set of singleton rasters to include (e.g. [‘forest_strata’])</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--singleton_var_dict</span></code> is the path to the dictionary defining all singleton layers (e.g. “/home/downspout-cel/paraguay_lc/singleton_var_dict.json”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--poly_vars</span></code> is the list of segmentation variables to include (if passed from BASH script, needs to be list inside string (e.g: “[var1,var2,var3]”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--poly_path</span></code> is the path to the folder containing the segmentation variables (e.g. “/home/downspout-cel/paraguay_lc/Segmentations/RF_feats/”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--scratch_dir</span></code> is an optional path to the scratch directory (to save storage with processing temp files (which may be tied uo in lengthy backup period in time series directory))</p></li>
 </ul>
+<p>These same sets of spec_indices, si_var, singleton_vars, and poly_vars should be used to make the variable dataframe in the next step.</p>
 </div>
 <div class="section" id="step-3-make-variable-dataframe-for-all-sample-points">
 <h3>Step 3: make variable dataframe for all sample points<a class="headerlink" href="#step-3-make-variable-dataframe-for-all-sample-points" title="Permalink to this headline">¶</a></h3>
-<p>To extract the value of each raster variable to each sample point and construct the dataframe used to build the random forest model, run <code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">make_var_dataframe</span></code> via the Bash script: <code class="docutils literal notranslate"><span class="pre">var_dataframe.sh</span></code>.
-The sample data can either be in point or polygon form, depending on whether <code class="docutils literal notranslate"><span class="pre">--Load_samp</span></code> is True.</p>
+<p>To extract the value of each raster variable to each sample point and construct the dataframe used to build the random forest model, run <code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">make_var_dataframe</span></code> via the Bash script: <code class="docutils literal notranslate"><span class="pre">rf1_var_data_frame.sh</span></code>.</p>
+<p>The sample data can either be in point or polygon form, indicated by whether <code class="docutils literal notranslate"><span class="pre">--Load_samp</span></code> is True.</p>
 <ul class="simple">
 <li><p>If points:</p>
 <ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">--load_samp</span></code> is set to True
-*<code class="docutils literal notranslate"><span class="pre">--ptfile</span></code> is used to supply the path to the point file, which needs to be in the form of .csv with and ‘OID_’ column containing unique identifires for each point (as integers) and ‘XCoord’ and ‘YCoord’columns containing the x and y coordinates in the same coordinate system as grid_file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--load_samp</span></code> is set to True</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--ptfile</span></code> is used to supply the path to the point file, which needs to be in the form of .csv with and ‘OID_’ column containing unique identifiers for each point (as integers) and ‘XCoord’ and ‘YCoord’columns containing the x and y coordinates in the same coordinate system as grid_file</p></li>
 </ul>
 </li>
 <li><p>if polygons:</p>
@@ -469,15 +508,24 @@ The sample data can either be in point or polygon form, depending on whether <co
 <li><p><code class="docutils literal notranslate"><span class="pre">--load_samp</span></code> is set to False</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--ground_polys</span></code> is used to supply the path to the polygon file. The polygon file should be a shapefile or geopackage.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--newest</span></code> and <code class="docutils literal notranslate"><span class="pre">--oldest</span></code> can be used to filter polygons to those from a certain year or set of years based on an attribute in the polygon file with any of the following labels: ‘FirstYrObs’,’ObsYr’,’Year’ or ‘Acquired’ (if ‘Acquired, it can be in the form YYYYMMDD). –newest and –oldest can be the same year if only a single year is desired. If no year filter is desired, set –newest and –oldest to 0.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--npts</span></code> sets the number of random points that are drawn from each polygon. The variable data will be extracted to these points, and the output will be a dataframe.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--cells</span></code> indicates the cells within which to search for points/polygons. This can be either a list of unique cell ids or a path to a .csv file containing the list (no header). This helps narrow the search and reduce time, but can be broad – Every cell in the list does not need to contain sample data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--npts</span></code> sets the number of random points that are drawn from each polygon. The variable data will be extracted to these points, and the output will then be a dataframe, as with a point sample.</p></li>
 </ul>
 </li>
+</ul>
+<p>other parameters:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--in_dir</span></code> is the path to the main time-series directory (i.e.: “/home/raid-cel/r/downspout-cel/paraguay_lc/stack/grids”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--out_dir</span></code> is the path to the folder in which to store the output dataframe</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cell_list</span></code> are the cells within which to search for points/polygons. This can be either a list of unique cell ids or a path to a .csv file containing the list (no header). This helps narrow the search and reduce time, but can be broad (if a cell on the list does not contain sample data, it is skipped over).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--grid_file</span></code> is the path to the file containing the geographic info for the</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--feature_model</span></code> is the name of the feature model (the same used in step 2 above, used to find the stored variable stack)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--start_yr</span></code> is the first year of the mapping period (the same used in step 2 above, used here to find the stored variable stack)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--feature_model_dict</span></code>is the path to the dictionary with the feature model, to look up the band order (e.g. “/home/downspout-cel/${COUNTRY}_lc/Feature_Models.json”)</p></li>
 </ul>
 </div>
 <div class="section" id="step-4-choose-sample-model-sample-points-to-use-in-training">
 <h3>Step 4: choose sample model (sample points to use in training)<a class="headerlink" href="#step-4-choose-sample-model-sample-points-to-use-in-training" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Notebook</span> <span class="pre">6a</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Notebook</span> <span class="pre">6b</span></code></p>
 <ul class="simple">
 <li><p>class balance</p></li>
 <li><p>percent test/train</p></li>
@@ -488,30 +536,43 @@ The sample data can either be in point or polygon form, depending on whether <co
 <h3>Step 5: build random forest model<a class="headerlink" href="#step-5-build-random-forest-model" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">rf_model</span></code> uses <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">RandomForestClassifier from scikit-learn</a><span id="id1">[<a class="reference internal" href="bibliography.html#id11">Pedregosa <em>et al.</em>, 2011</a>]</span> to fit a random forest model to the variable dataframe. Prior to fitting the model, 20% of the training data is held out to be used for model inspection in the next step (this is separate from any data held out for final map validation). The final model is saved in the <code class="docutils literal notranslate"><span class="pre">--out_dir</span></code> as {model_name}_RFmod.joblib</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">--df_in</span></code> is the path to the variable dataframe created in Step 3.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--model_name</span></code> is a unique string that will appear in all output names to distinguish between multiple models in configuration testing/optimization.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--df_in</span></code> is the path to the variable dataframe created in Step 3 (and modified in step 4).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--feature_model</span></code> is the same feature model name from steps 2-4 above (used here to create a consistent model name)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sample_model</span></code> is a unique name for the sample model created in step 4 above (used here as part of the model name)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--start_yr</span></code> is the year of the mapping period (used here as the third part of the model name)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--importance_method</span></code> sets how feature importances are to be calculated. If <code class="docutils literal notranslate"><span class="pre">importance_method='Impurity'</span></code>, the default feature importances from the sklearn rf model are returned. If <code class="docutils literal notranslate"><span class="pre">importance_method='Permutation'</span></code>, a permutation test is run to calculate feature importances. As long as <code class="docutils literal notranslate"><span class="pre">importance_method</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">'None'</span></code>, the feature improtances are returned in the <code class="docutils literal notranslate"><span class="pre">--out_dir</span></code> as ‘VarImportance_{model_name}.csv’</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--ran_hold</span></code> is an integer that can be used as a constant seed to hold randomization methods constant between different runs of a given model (for reproducibility). (NOTE: This is not working at the moment; repeated runs of the same model do give different results)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--lut</span></code> points to the lookup table with the numeric and descriptive labels for classes. Our LUT can be referenced (or downloaded) from the main directory of LUCinSA_helpers as <code class="docutils literal notranslate"><span class="pre">LUT.txt</span></code> (an abbreviated copy is provided [here](#LINK THIS) for reference)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--lut</span></code> points to the lookup table with the numeric and descriptive labels for classes. Our LUT can be referenced (or downloaded) from the main directory of LUCinSA_helpers as <code class="docutils literal notranslate"><span class="pre">LUT.txt</span></code> (an abbreviated copy is provided [here](# TODO LINK THIS) for reference)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">--lc_mod</span></code> indicates the classification system to to be used. Our full model <code class="docutils literal notranslate"><span class="pre">Lc_mod='All'</span></code> uses the 25 classes in the <code class="docutils literal notranslate"><span class="pre">LC25</span></code> column of the LUT. (Note that this is the classification system used during model building – more detailed classes can always be regrouped to show less detail following model-building/classification, but not vice-versa.)
-Current classification models are:</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">crop_nocrop</span></code>=<code class="docutils literal notranslate"><span class="pre">LC2</span></code>: a two-class model for crop/nocrop</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">crop_nocrop_medcrop</span></code>=<code class="docutils literal notranslate"><span class="pre">LC3</span></code>: a three class model for crop/nocrop/medcrop,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">crop_nocrop_medcrop_tree</span></code>=<code class="docutils literal notranslate"><span class="pre">LC4</span></code>: a four class model for crop/nocrop/medcrop/tree</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">'veg'</span></code>=<code class="docutils literal notranslate"><span class="pre">LC5</span></code>: a five class model for vegetation type (noveg/lowveg/medveg/highveg/mature)</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cropType</span></code> = <code class="docutils literal notranslate"><span class="pre">LC_crops</span></code>: a model with specific crop classes and nocrop.</p></li>
-<li><p><strong>class models can be added</strong> by adding a column to the LUT and a correspoinding line to the <code class="docutils literal notranslate"><span class="pre">get_class_col</span></code> function in <code class="docutils literal notranslate"><span class="pre">rf.py</span></code>. All unique ids (<code class="docutils literal notranslate"><span class="pre">LC_UNQ</span></code> column) must have a corresponding value in the class column. If a category should be excluded from training (e.g. because it is not specific enough), assigning a value of 99 will cause points from that category to be dropped from the dataframe prior to modelling.</p></li>
+Current classification models are:
+* <strong>crop_nocrop = LC2</strong>: a two-class model for crop/nocrop
+* <strong>crop_nocrop_medcrop = LC3</strong>: a three class model for crop/nocrop/medcrop,
+* <strong>crop_nocrop_medcrop_tree = LC4</strong>: a four class model for crop/nocrop/medcrop/tree
+* <strong>veg’ = LC5</strong>: a five class model for vegetation type (noveg/lowveg/medveg/highveg/mature)
+* <strong>cropType = LC_crops</strong>: a model with specific crop classes and nocrop.
+* <strong>class models can be added</strong> by adding a column to the LUT and a correspoinding line to the <code class="docutils literal notranslate"><span class="pre">get_class_col</span></code> function in <code class="docutils literal notranslate"><span class="pre">rf.py</span></code>. All unique ids (<code class="docutils literal notranslate"><span class="pre">LC_UNQ</span></code> column) must have a corresponding value in the class column. If a category should be excluded from training (e.g. because it is not specific enough), assigning a value of 99 will cause points from that category to be dropped from the dataframe prior to modelling.</p></li>
 </ul>
 </div>
 <div class="section" id="step-5-inspect-optimize-the-model">
 <h3>Step 5: inspect/optimize the model<a class="headerlink" href="#step-5-inspect-optimize-the-model" title="Permalink to this headline">¶</a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">Notebook</span> <span class="pre">6b</span></code>
-When a model is created that is useful as a candidate for a final model or as a comparison case, its configuration can be stored in the dictionary called <code class="docutils literal notranslate"><span class="pre">Feature_Models.json</span></code>. This dictionary currently stores the lists of spec_indices, spec_index_vars, and singleton_vars so that they can be looked up in the future. An example of this dictionary is currently in the same folder as the LUT (in the main directory of LUCinSA_helpers), but should be moved to the shared project directory if multiple users are generating models.</p>
-<p>choose sample_model</p>
+<p><code class="docutils literal notranslate"><span class="pre">Notebook</span> <span class="pre">6c</span></code></p>
 </div>
 <div class="section" id="step-6-classify-surface-to-produce-map">
 <h3>Step 6: classify surface to produce map<a class="headerlink" href="#step-6-classify-surface-to-produce-map" title="Permalink to this headline">¶</a></h3>
 <p>once a model has been selected, a single-year map can be created using <code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">rf_classification</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--in_dir</span></code> is the path to the main time-series directory (i.e.: “/home/raid-cel/r/downspout-cel/paraguay_lc/stack/grids”)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--df_in</span></code> is the path to the variable dataframe created in Step 3 (and modified in step 4)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--feature_model</span></code> is the same feature model name from steps 2-5 above (used here to create a consistent model name)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sample_model</span></code> is a unique name for the sample model from steps 4-5 above (used here as part of the model name)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--start_yr</span></code> is the year of the mapping period (used here as the third part of the model name)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--cell_list</span></code> is the list of cells to run. This can be single cell fed from the SBATCH array line or a path to a single .csv file or folder containg .csv files with the list of cells to run (no header). With the later option, the files can then be named numerically and run in an array via the SBATCH line. (examples are given in <code class="docutils literal notranslate"><span class="pre">rf3_classify_image.sh</span></code>).</p></li>
+<li><p>optinal parametters from step 5 can be included if the rf model has not already been built</p></li>
+<li><p>optional parameters from step 2 can be included if variable stacks should be made for cells without stacks (i.e those that are not part of the sample)</p></li>
+</ul>
+</div>
+<div class="section" id="step-7-mosaic-into-map">
+<h3>Step 7: Mosaic into map<a class="headerlink" href="#step-7-mosaic-into-map" title="Permalink to this headline">¶</a></h3>
 <p>After classifying each desired cell, the cells can be mosaicked together into a single geotiff using: <code class="docutils literal notranslate"><span class="pre">LUCinSA_helpers</span> <span class="pre">mosaic</span></code></p>
 </div>
 </div>

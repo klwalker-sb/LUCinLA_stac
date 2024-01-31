@@ -20,26 +20,41 @@ Spectral-index stats contain both an index component and a statistic component. 
 
 The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models. 
 
-Variable options:
-* **Max** = Maximum Value for year
-* **Min** = Minimum Value for year
-* **Amp** = Amplitude across year = (Max-Min)
-* **Avg** = Mean Value for year
-* **Std** = Standard Deviation for year
-* **CV** =  Coefficient of Variation for year = (1000*Std/Avg)
-* **MaxDate** = Day of year of maximum value
-* **MinDate** = Day of year of minimum value
-* **MaxDateCos** = Cosine of MaxDate(scaled to 360) (so that calendar is cyclical and 31 Jan is a close to 1 Dec as it is to 30 Jan)
-* **MinDateCos** = Cosine of MinDate(scaled to 360)
-
-* **Jan** = Value for smoothed time series on 20 Jan
-* **Feb** = Value for smoothed time series on 20 Feb
-* ... etc.
-* **Dec** = Value for smoothed time series on 20 Dec
-
 Note that the year is defined by the parameters `start_yr` and `start_mo`, such that it starts on the first of start_mo of start_yr (so a year can be 1/Jan-31/Dec, 1/Apr-31/Mar, 1/Jun-31/May, etc. to best align with the local crop calendar and avoid splitting the primary cropping cycle)
 
-New variables can be added within `ts_composite.py` of LUCinSA_helpers.
+wet season and dry season are currently hard-coded as wet = 1/Nov-1/Apr and dry = 1/May-1/Oct for Paraguay.
+Seasonal dates can be changed and new variables can be added within `ts_composite.py` of LUCinSA_helpers.
+:::{note} The final data stack is of type uint16. Any variable added needs to be of the same type or smaller. This means that it needs to contain only non-negaive integers with a max value of 65535. 
+:::
+
+Variable options:
+* **maxv_yr / maxv_wet / maxv_dry** = Maximum Value for year / wet season / dry season (=POS_value)
+* maxd_yr / maxd_wet / maxd_dry = Day of year of maximum value (informational only. Use Maxdc as variable)
+* **maxdc_yr / maxdc_wet / maxdc_dry** = 100 * (Cosine + 1) of MaxDate(*2pi/360) (so that calendar is cyclical and 31 Jan is as close to 1 Dec as it is to 30 Jan)
+* **minv_yr / minv_wet / minv_dry** = Minimum Value for year
+* mind_yr / mind_wet / mind_dry = Day of year of minimum value. (informational only. Use Mindc as variable)
+* **mindc_yr / mindc_wet / mindc_dry** = 100 * (Cosine + 1) of MinDate(*2pi/360) (so that calendar is cyclical and 31 Jan is as close to 1 Dec as it is to 30 Jan)
+* **amp_yr / amp_wet / amp_dry** = Amplitude across year / wet season / dry season = (Max-Min)
+* **avg_yr / avg_wet / avg_dry** = Mean Value for year / wet season / dry season
+* **sd_yr / sd_wet / sd_dry** = Standard Deviation for year / wet season / dry season
+* **cv_yr / cv_wet / cv_dry** =  Coefficient of Variation = (1000 * sd/avg) for yr / wet season / dry season
+
+* **Jan_20** = Value for smoothed time series on 20 Jan
+* **Feb_20** = Value for smoothed time series on 20 Feb
+* ... etc.
+* **Dec_20** = Value for smoothed time series on 20 Dec
+
+pheno_vars:
+* **sosd_wet / sosd_dry** = day of Start of Season, defined as observation closest to the median along the positive slope to the max value
+* **sosv_wet / sosv_dry** = value at Start of Season
+* **eosd_wet / eods_dry** day of End of Season, defined as observation closest to the median along the negative slope from the max value
+* **eosv_wet / eodv_dry** = value at End of season
+* **los_wet / los_dry** Length of Season, defined as the number of days between the Start and End of Season (eos-sos)
+* **rog_wet / rog_dry** Rate of Greenup = (maxv - sosv) / (maxd - sosd)
+* **ros_wet / ros_dry** = Rate of Senescing = (maxv = eosv) / (eosd - maxd)
+
+![alt](/Images/ts_pheno.jpg)
+SOS = (sosd, sosv) EOS = (eosd, eosv), POS = (posd, posv)
 
 ##### singleton variables
 Singleton variables are ancillary raster datasets covering the whole area and time period. The only singleton variable currently available is `forest_strata`, which provides vegetational ecozones ("estratos_corregidos2014_6" -- TODO: get citation info from Ata).
@@ -51,11 +66,11 @@ To add another singleton variable, simply add the dataset at the desired locatio
 ##### segmentation variables
 Segmentation variables are outputs and summary variables from the segmentation process (TODO: link to segmentation processing description). Current variables are:
 
-* **pred_area** =
-* **pred_dist** =
-* **pred_ext** =
-* **pred_APR** =
-* **AvgNovDec_FieldStd** =
+* **pred_area** = Area of field
+* **pred_dist** = Distance from edge of field (inner only)
+* **pred_ext** = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)
+* **pred_APR** = Area to perimeter ratio
+* **AvgNovDec_FieldStd** = Standard deviation for whole field for Nov and Dec (averaged across dates)
 
 ### Step 2: make variable stack for model
 This stacks all variables into a single data stack for each cell, which makes for more efficient calculations (especially at the point of surface-level classification)
@@ -71,10 +86,13 @@ Run `LUCinSA_helpers make_var_stack` using the configuration in the Bash Script,
 * `--feature_model` is the name of the feature model (defining the spec_vars, si_vars, singleton_vars and poly_vars). this is stored in the * `--feature_mod_dict` is the path to the dictionary containing all feature models. If the feature model does not already exist, it will be added to the dictionary based on the parameters here. If it already exists, the parameters here will be filled with those already set in the dictionary)   
 * `--spec_indices` the set of vegetation index to include (e.g \[evi2,wi,gcvi,kndvi,ndmi,nbr] or a smaller subset. If passed from BASH script, needs to be list inside string (e.g: "\[var1,var2,var3]")
 * `--si_vars` sets the raster variables to include for the spec indices. (\[max, min, ...]) To maintain structure and avoid confusion, the same set of si_vars should be used for all vegetation indices used in the model. (This dataset can be culled at step 4.) If passed from BASH script, needs to be list inside string (e.g: "\[var1,var2,var3]")
+* `--pheno_vars` the set of season specific phenological variables to incude (e.g. \[sosd_wet, eosd_wet, los_wet, ...]
+* `--spec_indices_pheno` the set of vegetation indices to get phenological variables for
 * `--singleton_vars` is the set of singleton rasters to include (e.g. \['forest_strata'])
 * `--singleton_var_dict` is the path to the dictionary defining all singleton layers (e.g. "/home/downspout-cel/paraguay_lc/singleton_var_dict.json")
 * `--poly_vars` is the list of segmentation variables to include (if passed from BASH script, needs to be list inside string (e.g: "\[var1,var2,var3]")
 * `--poly_path` is the path to the folder containing the segmentation variables (e.g. "/home/downspout-cel/paraguay_lc/Segmentations/RF_feats/")
+* --`combo_vars` is a list of all components (spec index + si_var) of any remaining variables that have not already been included. This is in case a particular variable should be included for only a single index or subset of indices. (e.g. evi2_cv_year)
 * `--scratch_dir` is an optional path to the scratch directory (to save storage with processing temp files (which may be tied uo in lengthy backup period in time series directory))
 
 These same sets of spec_indices, si_var, singleton_vars, and poly_vars should be used to make the variable dataframe in the next step.

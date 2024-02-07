@@ -6,9 +6,10 @@
 
 ### Step 1: Choose the feature model (variable inputs to use in the model) 
 Three types of features can be used in the model:
-1) ***spectral-index stats (`si_vars`)***: Summary statistics and phenological variables for the modelling year generated from smoothed time-series data for each selected spectral image
-2) ***singleton variables (`singleton_vars`)***: Ancillary raster datasets covering the full AOI for a single point in time (can be constant or annual, but do not provide time-series data within a given year.)
-3) ***segmentation variables (`poly_vars`)***: Outputs from segmentation model (or other object-extraction method), which, unlike singleton_vars, are already parsed by cell, but like singleton_vars, do not have a time-series element.  
+1) ***spectral-index stats (`si_vars`)***: Summary statistics for the modelling year generated from smoothed time-series data for each selected spectral image
+2) **phenological variables (`pheno_vars`)*** Seasonal phenological variables calculated from the smoothed time-series curves for the selected subset of spectral indices (spec_indices_pheno)
+3) ***singleton variables (`singleton_vars`)***: Ancillary raster datasets covering the full AOI for a single point in time (can be constant or annual, but do not provide time-series data within a given year.)
+4) ***segmentation variables (`poly_vars`)***: Outputs from segmentation model (or other object-extraction method), which, unlike singleton_vars, are already parsed by cell, but like singleton_vars, do not have a time-series element.  
 
 Choose a unique ***`feature_model`*** name for the desired combination of features
 
@@ -16,7 +17,7 @@ Feature models are stored in the dictionary (`feat_mod_dict`) at "/home/downspou
 This allows quick lookup by name of the feature set (spec_indices, si_vars, singleton_vars, and poly_vars) and the full band sequence of the resulting stack (in case the internal band names get stripped).
 
 ##### spectral-index variables
-Spectral-index stats contain both an index component and a statistic component. For the index component, see [vegetation indices](#veg_indices) for options. The default RF model uses all six indices that we generated smoothed time series for in the pipeline process (evi2, gcvi, wi, kndvi, nbr & ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.
+Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see [vegetation indices](#veg_indices) for options. The default RF model uses all six indices that we generated smoothed time series for in the pipeline process (evi2, gcvi, wi, kndvi, nbr & ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.
 
 The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models. 
 
@@ -28,7 +29,7 @@ Seasonal dates can be changed and new variables can be added within `ts_composit
 :::
 
 Variable options:
-* **maxv_yr / maxv_wet / maxv_dry** = Maximum Value for year / wet season / dry season (=POS_value)
+* **maxv_yr / maxv_wet / maxv_dry** = Maximum Value for year / wet season / dry season
 * maxd_yr / maxd_wet / maxd_dry = Day of year of maximum value (informational only. Use Maxdc as variable)
 * **maxdc_yr / maxdc_wet / maxdc_dry** = 100 * (Cosine + 1) of MaxDate(*2pi/360) (so that calendar is cyclical and 31 Jan is as close to 1 Dec as it is to 30 Jan)
 * **minv_yr / minv_wet / minv_dry** = Minimum Value for year
@@ -44,17 +45,23 @@ Variable options:
 * ... etc.
 * **Dec_20** = Value for smoothed time series on 20 Dec
 
-pheno_vars:
-* **sosd_wet / sosd_dry** = day of Start of Season, defined as observation closest to the median along the positive slope to the max value
+##### phenological variables
+* **numrot_wet / numrot_dry** = number of planting rotations within the season (number of peaks above a threshold with valleys below a threshold between) 
+* **posd_wet / posd_dry** = day of peak of season. If more than one planting cycle occurs within the season, this is the peak of the first cycle (and thus not necessarily == maxd). See images below.
+* **posv_wet / posv_dry** = value at peak of season. If more than one planting cycle occurs within the season, this is the value at the peak of the first cycle (and thus not necessarily == maxv)
+* **sosd_wet / sosd_dry** = day of Start of Season, defined as the observation below a threshold index value (by default 1000) closest, but to the left of, the pos point
 * **sosv_wet / sosv_dry** = value at Start of Season
-* **eosd_wet / eods_dry** day of End of Season, defined as observation closest to the median along the negative slope from the max value
-* **eosv_wet / eodv_dry** = value at End of season
+* **eosd_wet / eosd_dry** day of End of Season, day of Start of Season, defined as the observation below a threshold index value (by default 1000) closest, but to the right of, the pos point
+* **eosv_wet / eosv_dry** = value at End of season
 * **los_wet / los_dry** Length of Season, defined as the number of days between the Start and End of Season (eos-sos)
 * **rog_wet / rog_dry** Rate of Greenup = (maxv - sosv) / (maxd - sosd)
-* **ros_wet / ros_dry** = Rate of Senescing = (maxv = eosv) / (eosd - maxd)
+* **ros_wet / ros_dry** = Rate of Senescing = (maxv - eosv) / (eosd - maxd)
 
-![alt](/Images/ts_pheno.jpg)
+![alt](/Images/Phenology_soy2.png)
 SOS = (sosd, sosv) EOS = (eosd, eosv), POS = (posd, posv)
+
+| (**problem with using max seasonal value as peak of season when season can contain multiple cropping cycles:      |    :------------------------------------------------------: | :------------------------------------------------------: |
+|   ![alt](/Images/Phenology_soy2_2peak.png)             |  ![alt](/Images/Phenology_soy2_2peak_fixed.png)          | 
 
 ##### singleton variables
 Singleton variables are ancillary raster datasets covering the whole area and time period. The only singleton variable currently available is `forest_strata`, which provides vegetational ecozones ("estratos_corregidos2014_6" -- TODO: get citation info from Ata).
@@ -66,11 +73,12 @@ To add another singleton variable, simply add the dataset at the desired locatio
 ##### segmentation variables
 Segmentation variables are outputs and summary variables from the segmentation process (TODO: link to segmentation processing description). Current variables are:
 
-* **pred_area** = Area of field
+* **pred_area^f** = Area of field
 * **pred_dist** = Distance from edge of field (inner only)
 * **pred_ext** = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)
-* **pred_APR** = Area to perimeter ratio
-* **AvgNovDec_FieldStd** = Standard deviation for whole field for Nov and Dec (averaged across dates)
+* **pred_APR^f** = Area to perimeter ratio 
+* **NovDecGCVI_Std^f** = Standard deviation of gcvi for whole field for Nov and Dec (averaged across dates)
+^f: these are field-level values -- all points within a field are assigned the same value
 
 ### Step 2: make variable stack for model
 This stacks all variables into a single data stack for each cell, which makes for more efficient calculations (especially at the point of surface-level classification)

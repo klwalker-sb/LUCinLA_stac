@@ -60,7 +60,7 @@ Variable options:
 ![alt](/Images/Phenology_soy2.png)
 SOS = (sosd, sosv) EOS = (eosd, eosv), POS = (posd, posv)
 
-| (**problem with using max seasonal value as peak of season when season can contain multiple cropping cycles:      |    :------------------------------------------------------: | :------------------------------------------------------: |
+| (**problem with using max seasonal value as peak of season when season can contain multiple cropping cycles:|     |    |:------------------------------------------------------: | :------------------------------------------------------: |
 |   ![alt](/Images/Phenology_soy2_2peak.png)             |  ![alt](/Images/Phenology_soy2_2peak_fixed.png)          | 
 
 ##### singleton variables

@@ -502,11 +502,11 @@ To add another singleton variable, simply add the dataset at the desired locatio
 <li><p><strong>poly_dist</strong> = Distance from edge of field (inner only)</p></li>
 <li><p><strong>poly_ext</strong> = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)</p></li>
 <li><p><strong>poly_cropbnds</strong> = Likelihood of pixel being on the boundary of a crop field</p></li>
-<li><p><strong>poly_area{% fn 1 %}</strong> = Area of field</p></li>
-<li><p><strong>pred_APR{% fn 1 %}</strong> = Area to perimeter ratio</p></li>
-<li><p><strong>pred_APrEf{% fn 1 %}</strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
-<li><p><strong>NovDecStd{% fn 1 %}</strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
-</p></li>
+<li><p><strong>poly_area<sup>f</sup></strong> = Area of field</p></li>
+<li><p><strong>pred_APR<sup>f</sup></strong> = Area to perimeter ratio</p></li>
+<li><p><strong>pred_APrEf<sup>f</sup></strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
+<li><p><strong>NovDecStd<sup>f</sup></strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
+<sup>f</sup> These are field-level values – all points within a field are assigned the same value</p></li>
 </ul>
 </div>
 </div>

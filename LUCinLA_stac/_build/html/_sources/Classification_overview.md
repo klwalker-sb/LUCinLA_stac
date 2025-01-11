@@ -97,7 +97,7 @@ Segmentation variables are outputs and summary variables from the segmentation p
 * **pred_APR<sup>f</sup>** = Area to perimeter ratio 
 * **pred_APrEf<sup>f</sup>** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
 * **NovDecStd<sup>f</sup>** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
-* **<sup>f</sup>** These are field-level values -- all points within a field are assigned the same value
+* **<sup>f</sup>** These are field-level values. All points within a field are assigned the same value
 
 (sampleMod)=
 ### Sample model (sample points to use in training)

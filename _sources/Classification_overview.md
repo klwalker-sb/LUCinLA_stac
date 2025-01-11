@@ -22,7 +22,7 @@ for example:
 * `CELPyTile8_base4Poly6_bal200mix4_21_LC25_RF_2021` for a 2021 map of all cells in Paraguay Tile 8 using the first model example above
 
 
-(feature_mod)=
+(featureMod)=
 ### Feature model (variable inputs to use in the model) 
 Three types of features can be used in the model:
 1) ***spectral-index stats (`si_vars`)***: Summary statistics for the modelling year generated from smoothed time-series data for each selected spectral image
@@ -36,7 +36,7 @@ Feature models are stored in the dictionary (`feat_mod_dict`) at "/home/downspou
 This allows quick lookup by name of the feature set (spec_indices, si_vars, singleton_vars, and poly_vars) and the full band sequence of the resulting stack (in case the internal band names get stripped).
 
 ##### spectral-index variables
-Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see [vegetation indices](#veg_indices) for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr & ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.
+Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see [vegetation indices](#vegIndices) for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr & ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.
 
 The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models. 
 
@@ -102,7 +102,7 @@ Segmentation variables are outputs and summary variables from the segmentation p
 ^f: these are field-level values -- all points within a field are assigned the same value
 
 
-(sample_mod)=
+(sampleMod)=
 ### Sample model (sample points to use in training)
 * class balance
     * minimum cutoff
@@ -110,7 +110,7 @@ Segmentation variables are outputs and summary variables from the segmentation p
 * percent test/train
 * poly-based augmentation
 
-(class_model)=
+(classMod)=
 ### Schematic model:
 The classification system used during model building -- note that more detailed classes can always be regrouped to show less detail following model-building/classification, but not vice-versa.
 
@@ -129,9 +129,9 @@ Current schematic models are:
 
 **class models can be added** by adding a column to the LUT and a correspoinding line to the `get_class_col` function in `rf.py`. All unique ids (`LC_UNQ` column) must have a corresponding value in the class column. If a category should be excluded from training (e.g. because it is not specific enough), assigning a value of 99 will cause points from that category to be dropped from the dataframe prior to modelling.
 
-(model_arch)=
+(modelArch)=
 ### Model architecture:
-* [single year random forest](#classification_rf)
+* [single year random forest](#classificationRF)
 * multi-year random forest
 * single year gradient boost
 * ...

@@ -1,9 +1,9 @@
-(classification_steps)=
+(classificationSteps)=
 # modelling / classification steps
 ================================================================================================================================
 
 ### Step 1: Choose the feature model (variable inputs to use in the model) 
-see [here](#feature_mod) for description of feature models and options 
+see [here](#featureMod) for description of feature models and options 
 
 ### Step 2: Make variable stack for model
 This stacks all variables into a single data stack for each cell, which makes for more efficient calculations (especially at the point of surface-level classification)
@@ -55,13 +55,13 @@ other parameters:
 
 
 ### Step 4: choose sample model (sample points to use in training)
-Sample models indicate the subset of points to be used for training the model. See [here](#sample_mod) for sample model description and options. To facilitate replication, sample models are stored as .csv files containing the observation data for the selected points. These are stored in `{country}_lc/vector/pts_training/pt_subsets`. 
+Sample models indicate the subset of points to be used for training the model. See [here](#sampleMod) for sample model description and options. To facilitate replication, sample models are stored as .csv files containing the observation data for the selected points. These are stored in `{country}_lc/vector/pts_training/pt_subsets`. 
 
 To create a new sample set:
 see `LUCinSA_helpers Notebook 6b`
 TOOD: copy sample balancing methods from CollectCube
 
-(fixed_ho)=
+(fixedHo)=
 #### Step4b: Separate a fixed holdout from the sample set to se for model optimization
 A fixed holdout set can be used to remove the exact same set of testing points from all sample sets to facilitate model testing and optimization (a separate holdout should already be removed from all data and never seen until the end for the purpose of final model validation). The fixed holdout sets are stored in `/home/downspout-cel/paraguay_lc/vector/pts_calval/fixed_HOs.` Holdout sets need to be generated for each feature model, but should contain the sampe points (with different variable sets in accordance with the feature model) holdout sets have been created in Collect_Cube (TODO: consolidate code). These include:
 * `{feature_model}_HOLDOUT_smallCrop`,
@@ -70,7 +70,7 @@ A fixed holdout set can be used to remove the exact same set of testing points f
 * `{feature_model}_HOLDOUT_medCrop`
 (noteL these can all can be combined as `{feature_model}_HOLDOUT_all` and future steps will parse into the above sets)
 
-(classification_rf)=
+(classificationRf)=
 ## Building a single-year random-forest model from the smoothed time-series:
 
 ### Step 5: build random forest model
@@ -82,14 +82,14 @@ Variable imporatnce and holdout results can also be saved under same model name.
 * `--out_dir` is the directory to which the model will be saved
 * `--feature_model` is the same feature model name from steps 2-4 above (used here to create a consistent model name)
 * `--sample_model` is a unique name for the sample model created in step 4 above (used here as part of the model name)
-* `--lc_mod` is the classification model to be used [see_here](#class_model) (used here to create a consistent model name)
+* `--lc_mod` is the classification model to be used [see_here](#classMod) (used here to create a consistent model name)
 * `--lut` points to the lookup table with the numeric and descriptive labels for classes. Our LUT can be referenced (or downloaded) from the main directory of LUCinSA_helpers as `LUT.txt` (an abbreviated copy is provided [here](# TODO LINK THIS) for reference)  
 * `--train-yrs` is the year or years from which training data are supplied. (can be a single integer or list)
 * `--importance_method` sets how feature importances are to be calculated. If `importance_method='Impurity'`, the default feature importances from the sklearn rf model are returned. If `importance_method='Permutation'`, a permutation test is run to calculate feature importances. As long as `importance_method is not 'None'`, the feature improtances are returned in the `--out_dir` as 'VarImportance_{model_name}.csv' 
 * `--ran_hold` is an integer that can be used as a constant seed to hold randomization methods constant between different runs of a given model (for reproducibility). (NOTE: This is not working at the moment; repeated runs of the same model do give different results)
 * `--thresh` is the threshold for selecting the test set. If using a fixed holdout, set `--thresh = 0`
 Optional parameters:
-* `--fixed_ho` is directory containing fixed holdout sets if to be used. [see here](#fixed_ho) 
+* `--fixed_ho` is directory containing fixed holdout sets if to be used. [see here](#fixedHo) 
 * `--feature_mod_dict` is the dictionary containing the data for each feature model. only use here if the bands in the variable data frame (df_in) do not match the bands for the feature model in the dictionary (which should not be the case if the above steps were followed)
 *`--update_model_dict` set to `True` if the above is relevant
 *`--runnum` can be used to assign a new number to each model for model iteration/optimization

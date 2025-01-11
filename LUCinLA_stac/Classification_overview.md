@@ -95,11 +95,11 @@ Segmentation variables are outputs and summary variables from the segmentation p
 * **poly_dist** = Distance from edge of field (inner only)
 * **poly_ext** = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)
 * **poly_cropbnds** = Likelihood of pixel being on the boundary of a crop field
-* **poly_area{% fn 1 %}** = Area of field
-* **pred_APR{% fn 1 %}** = Area to perimeter ratio 
-* **pred_APrEf{% fn 1 %}** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
-* **NovDecStd{% fn 1 %}** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
-{{ "these are field-level values -- all points within a field are assigned the same value" | fndetail: 1 }}
+* **poly_area<sup>f</sup>** = Area of field
+* **pred_APR<sup>f</sup>** = Area to perimeter ratio 
+* **pred_APrEf<sup>f</sup>** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
+* **NovDecStd<sup>f</sup>** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
+<sup>f</sup> These are field-level values -- all points within a field are assigned the same value
 
 (sampleMod)=
 ### Sample model (sample points to use in training)

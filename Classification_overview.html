@@ -408,10 +408,13 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#featuremod"><span class="std std-ref">feature_model</span></a></p></li>
 <li><p><a class="reference internal" href="#samplemod"><span class="std std-ref">sample_model</span></a></p></li>
-<li><p><span class="xref myst">schematic_model</span></p></li>
-<li><p>training years
-if single year: last 2 digits of year.
-if multi-year: last 2 digits of first year, followed by last 2 digits of last year</p></li>
+<li><p><a class="reference internal" href="#classmod"><span class="std std-ref">schematic_model</span></a></p></li>
+<li><p>training years</p>
+<ul>
+<li><p>if single year: last 2 digits of year.</p></li>
+<li><p>if multi-year: last 2 digits of first year, followed by last 2 digits of last year</p></li>
+</ul>
+</li>
 <li><p><a class="reference internal" href="#modelarch"><span class="std std-ref">model_architecture</span></a></p></li>
 </ul>
 <p>for example:</p>
@@ -499,11 +502,11 @@ To add another singleton variable, simply add the dataset at the desired locatio
 <li><p><strong>poly_dist</strong> = Distance from edge of field (inner only)</p></li>
 <li><p><strong>poly_ext</strong> = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)</p></li>
 <li><p><strong>poly_cropbnds</strong> = Likelihood of pixel being on the boundary of a crop field</p></li>
-<li><p><strong>poly_area^f</strong> = Area of field</p></li>
-<li><p><strong>pred_APR^f</strong> = Area to perimeter ratio</p></li>
-<li><p><strong>pred_APrEf^f</strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
-<li><p><strong>NovDecStd^f</strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
-^f: these are field-level values – all points within a field are assigned the same value</p></li>
+<li><p><strong>poly_area{% fn f %}</strong> = Area of field</p></li>
+<li><p><strong>pred_APR{% fn f %}</strong> = Area to perimeter ratio</p></li>
+<li><p><strong>pred_APrEf{% fn f %}</strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
+<li><p><strong>NovDecStd{% fn f %}</strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
+</p></li>
 </ul>
 </div>
 </div>

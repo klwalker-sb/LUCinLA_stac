@@ -6,10 +6,10 @@
 Medels are named with the following components in order, separated by `_`:
  * [feature_model](featureMod)
  * [sample_model](sampleMod)
- * [schematic_model](classModel)
+ * [schematic_model](classMod)
  * training years
-     if single year: last 2 digits of year.
-     if multi-year: last 2 digits of first year, followed by last 2 digits of last year
+     - if single year: last 2 digits of year.
+     - if multi-year: last 2 digits of first year, followed by last 2 digits of last year
  * [model_architecture](modelArch)
  
 for example: 
@@ -95,12 +95,11 @@ Segmentation variables are outputs and summary variables from the segmentation p
 * **poly_dist** = Distance from edge of field (inner only)
 * **poly_ext** = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)
 * **poly_cropbnds** = Likelihood of pixel being on the boundary of a crop field
-* **poly_area^f** = Area of field
-* **pred_APR^f** = Area to perimeter ratio 
-* **pred_APrEf^f** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
-* **NovDecStd^f** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
-^f: these are field-level values -- all points within a field are assigned the same value
-
+* **poly_area{% fn f %}** = Area of field
+* **pred_APR{% fn f %}** = Area to perimeter ratio 
+* **pred_APrEf{% fn f %}** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
+* **NovDecStd{% fn f %}** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
+{{ "these are field-level values -- all points within a field are assigned the same value" | fndetail: f }}
 
 (sampleMod)=
 ### Sample model (sample points to use in training)

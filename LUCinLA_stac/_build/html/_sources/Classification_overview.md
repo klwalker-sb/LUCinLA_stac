@@ -4,13 +4,13 @@
 
 ## Modelling choices and naming overview:
 Medels are named with the following components in order, separated by `_`:
- * [feature_model](#feature_mod)
- * [sample_model](#sample_mod)
- * [schematic_model](#class_model)
+ * [feature_model](featureMod)
+ * [sample_model](sampleMod)
+ * [schematic_model](classModel)
  * training years
      if single year: last 2 digits of year.
      if multi-year: last 2 digits of first year, followed by last 2 digits of last year
- * [model_architecture](#model_arch)
+ * [model_architecture](modelArch)
  
 for example: 
 * `base4Poly6_bal200mix4_21_LC25_RF` for RF model with 25 classes trained on single year data (2021)
@@ -36,7 +36,7 @@ Feature models are stored in the dictionary (`feat_mod_dict`) at "/home/downspou
 This allows quick lookup by name of the feature set (spec_indices, si_vars, singleton_vars, and poly_vars) and the full band sequence of the resulting stack (in case the internal band names get stripped).
 
 ##### spectral-index variables
-Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see [vegetation indices](#vegIndices) for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr & ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.
+Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see [vegetation indices](vegIndices) for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr & ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.
 
 The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models. 
 
@@ -131,7 +131,7 @@ Current schematic models are:
 
 (modelArch)=
 ### Model architecture:
-* [single year random forest](#classificationRF)
+* [single year random forest](classificationRF)
 * multi-year random forest
 * single year gradient boost
 * ...

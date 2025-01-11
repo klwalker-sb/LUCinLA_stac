@@ -3,7 +3,7 @@
 ================================================================================================================================
 
 ### Step 1: Choose the feature model (variable inputs to use in the model) 
-see [here](#featureMod) for description of feature models and options 
+see [here](featureMod) for description of feature models and options 
 
 ### Step 2: Make variable stack for model
 This stacks all variables into a single data stack for each cell, which makes for more efficient calculations (especially at the point of surface-level classification)
@@ -82,14 +82,14 @@ Variable imporatnce and holdout results can also be saved under same model name.
 * `--out_dir` is the directory to which the model will be saved
 * `--feature_model` is the same feature model name from steps 2-4 above (used here to create a consistent model name)
 * `--sample_model` is a unique name for the sample model created in step 4 above (used here as part of the model name)
-* `--lc_mod` is the classification model to be used [see_here](#classMod) (used here to create a consistent model name)
+* `--lc_mod` is the classification model to be used [see_here](classMod) (used here to create a consistent model name)
 * `--lut` points to the lookup table with the numeric and descriptive labels for classes. Our LUT can be referenced (or downloaded) from the main directory of LUCinSA_helpers as `LUT.txt` (an abbreviated copy is provided [here](# TODO LINK THIS) for reference)  
 * `--train-yrs` is the year or years from which training data are supplied. (can be a single integer or list)
 * `--importance_method` sets how feature importances are to be calculated. If `importance_method='Impurity'`, the default feature importances from the sklearn rf model are returned. If `importance_method='Permutation'`, a permutation test is run to calculate feature importances. As long as `importance_method is not 'None'`, the feature improtances are returned in the `--out_dir` as 'VarImportance_{model_name}.csv' 
 * `--ran_hold` is an integer that can be used as a constant seed to hold randomization methods constant between different runs of a given model (for reproducibility). (NOTE: This is not working at the moment; repeated runs of the same model do give different results)
 * `--thresh` is the threshold for selecting the test set. If using a fixed holdout, set `--thresh = 0`
 Optional parameters:
-* `--fixed_ho` is directory containing fixed holdout sets if to be used. [see here](#fixedHo) 
+* `--fixed_ho` is directory containing fixed holdout sets if to be used. [see here](fixedHo) 
 * `--feature_mod_dict` is the dictionary containing the data for each feature model. only use here if the bands in the variable data frame (df_in) do not match the bands for the feature model in the dictionary (which should not be the case if the above steps were followed)
 *`--update_model_dict` set to `True` if the above is relevant
 *`--runnum` can be used to assign a new number to each model for model iteration/optimization

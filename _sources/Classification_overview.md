@@ -13,8 +13,9 @@ Medels are named with the following components in order, separated by `_`:
  * [model_architecture](modelArch)
  
 for example: 
-- base4Poly6_bal200mix4_21_LC25_RF` for RF model with 25 classes trained on single year data (2021)
+- `base4Poly6_bal200mix4_21_LC25_RF` for RF model with 25 classes trained on single year data (2021)
 - `base4Poly6_bal200mix4_1724_LC8_RF` for RF model with 8 classes trained on multi-year data year (2017-2024)
+
 When an image is classified, the model name is proceeded by a regional identifier and followed by the classification year
 for example:
 - `004080_base4Poly6_bal200mix4_21_LC25_RF_2021` for a 2021 map of cell 004080 using the first model example above

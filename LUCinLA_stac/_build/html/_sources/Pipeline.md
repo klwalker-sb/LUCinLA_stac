@@ -232,7 +232,7 @@ by altering the BASH script as below (change win and end_win to rerun only the w
  * For segmention inputs, we are using evi2, gcvi and wi
  * For final classification, we are using evi2, gcvi, wi, kndvi, nbr & ndmi
 
-(=veg_indices)
+(=vegIndices)
 ### options for vegetation indices:
 Current options for vegetation indices are:
  * evi2 = 2.5 * ( NIR - RED) / ( NIR + 2.4 * RED + 1.0 )

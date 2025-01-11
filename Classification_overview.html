@@ -406,13 +406,13 @@
 <h2>Modelling choices and naming overview:<a class="headerlink" href="#modelling-choices-and-naming-overview" title="Permalink to this headline">¶</a></h2>
 <p>Medels are named with the following components in order, separated by <code class="docutils literal notranslate"><span class="pre">_</span></code>:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="#feature_mod">feature_model</a></p></li>
-<li><p><a class="reference external" href="#sample_mod">sample_model</a></p></li>
-<li><p><a class="reference external" href="#class_model">schematic_model</a></p></li>
+<li><p><a class="reference internal" href="#featuremod"><span class="std std-ref">feature_model</span></a></p></li>
+<li><p><a class="reference internal" href="#samplemod"><span class="std std-ref">sample_model</span></a></p></li>
+<li><p><span class="xref myst">schematic_model</span></p></li>
 <li><p>training years
 if single year: last 2 digits of year.
 if multi-year: last 2 digits of first year, followed by last 2 digits of last year</p></li>
-<li><p><a class="reference external" href="#model_arch">model_architecture</a></p></li>
+<li><p><a class="reference internal" href="#modelarch"><span class="std std-ref">model_architecture</span></a></p></li>
 </ul>
 <p>for example:</p>
 <ul class="simple">
@@ -439,7 +439,7 @@ for example:</p>
 This allows quick lookup by name of the feature set (spec_indices, si_vars, singleton_vars, and poly_vars) and the full band sequence of the resulting stack (in case the internal band names get stripped).</p>
 <div class="section" id="spectral-index-variables">
 <h4>spectral-index variables<a class="headerlink" href="#spectral-index-variables" title="Permalink to this headline">¶</a></h4>
-<p>Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see <a class="reference external" href="#vegIndices">vegetation indices</a> for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr &amp; ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.</p>
+<p>Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see <span class="xref myst">vegetation indices</span> for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr &amp; ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.</p>
 <p>The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models.</p>
 <p>Note that the year is defined by the parameters <code class="docutils literal notranslate"><span class="pre">start_yr</span></code> and <code class="docutils literal notranslate"><span class="pre">start_mo</span></code>, such that it starts on the first of start_mo of start_yr (so a year can be 1/Jan-31/Dec, 1/Apr-31/Mar, 1/Jun-31/May, etc. to best align with the local crop calendar and avoid splitting the primary cropping cycle)</p>
 <p>wet season and dry season are currently hard-coded as wet = 1/Nov-1/Apr and dry = 1/May-1/Oct for Paraguay.
@@ -542,7 +542,7 @@ To add another singleton variable, simply add the dataset at the desired locatio
 <div class="section" id="model-architecture">
 <span id="modelarch"></span><h3>Model architecture:<a class="headerlink" href="#model-architecture" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="#classificationRF">single year random forest</a></p></li>
+<li><p><a class="reference internal" href="Classification_rf.html#classificationrf"><span class="std std-ref">single year random forest</span></a></p></li>
 <li><p>multi-year random forest</p></li>
 <li><p>single year gradient boost</p></li>
 <li><p>…</p></li>

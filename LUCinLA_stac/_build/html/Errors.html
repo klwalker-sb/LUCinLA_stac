@@ -182,8 +182,13 @@
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="Classification_overview.html">
+   classification overview
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="Classification_rf.html">
-   single-year classification
+   modelling / classification steps
   </a>
  </li>
 </ul>
@@ -357,8 +362,18 @@
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bad-object-header-error">
+     bad object header error
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
      out of input error
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#key-error">
+     key error
     </a>
    </li>
   </ul>
@@ -374,7 +389,7 @@
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bad-object-header-error">
+    <a class="reference internal nav-link" href="#id2">
      bad object header error
     </a>
    </li>
@@ -409,6 +424,11 @@ To get around this error, simply delete the corrupted <code class="docutils lite
 </div>
 <div class="section" id="coreg-errors">
 <h2>coreg errors<a class="headerlink" href="#coreg-errors" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="bad-object-header-error">
+<h3>bad object header error<a class="headerlink" href="#bad-object-header-error" title="Permalink to this headline">¶</a></h3>
+<p><img alt="alt" src="Images/crg_bad_object_header.jpg" />
+This means that at least one brdf file is corrupted. This often happens if errors are not caught at the download stage and are run through brdf. Note the year for which the error applies and clean all download and brdf files for that year using <code class="docutils literal notranslate"><span class="pre">eostac_clean_removeFromDB.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">tuyau_clean</span></code> (see <a class="reference internal" href="Cleaning_files.html#cleaning"><span class="std std-ref">cleaning_files</span></a>). Then rerun download and brdf and retry coreg.</p>
+</div>
 <div class="section" id="id1">
 <h3>out of input error<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <p><img alt="alt" src="_images/crg_ran_out_of_input_error.jpg" />
@@ -417,6 +437,11 @@ if you locate the <code class="docutils literal notranslate"><span class="pre">'
 <img alt="alt" src="_images/crg_ran_out_of_input_check.jpg" />
 To fix this error, delete the corrupted <code class="docutils literal notranslate"><span class="pre">'processing.info'</span></code> file. If brdfs have already been run, the best way to build <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> database is to run the <code class="docutils literal notranslate"><span class="pre">reconstruct_db</span></code> (or Notebook 0) from <code class="docutils literal notranslate"><span class="pre">LucinSA_helpers</span></code>. A simpler (but less robust) method is to rerun the download script and the database should be recreated from the existing downloads (this does not work if downloads have already been cleaned).</p>
 </div>
+<div class="section" id="key-error">
+<h3>key error<a class="headerlink" href="#key-error" title="Permalink to this headline">¶</a></h3>
+<p><img alt="alt" src="_images/coreg_keyError.jpg" />
+In this case, the database <code class="docutils literal notranslate"><span class="pre">'processing.info'</span></code> is not finding the correct column, which means that it did not build correctly when created (or somehow got corrupted.) To fix this error, run the <code class="docutils literal notranslate"><span class="pre">reconstruct_db</span></code> (or first few cells of Notebook 0) from <code class="docutils literal notranslate"><span class="pre">LucinSA_helpers</span></code>. DO NOT DELETE THE <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> file unless this first attempt fails – it probably still has useful information that can be retained. If this fails to fix the problem, however, delete the <code class="docutils literal notranslate"><span class="pre">processing.info</span></code> file and recreate it as with the ‘out of input’ error above.</p>
+</div>
 </div>
 <div class="section" id="ts-errors">
 <h2>ts errors<a class="headerlink" href="#ts-errors" title="Permalink to this headline">¶</a></h2>
@@ -424,11 +449,11 @@ To fix this error, delete the corrupted <code class="docutils literal notranslat
 <h3>no such table error<a class="headerlink" href="#no-such-table-error" title="Permalink to this headline">¶</a></h3>
 <p><img alt="alt" src="_images/ts_no_such_table_db_error.jpg" />
 This means that the tuyau.db file either does not exist or is corrupted.
-First make sure that you entered the intended cell number when running (including the 1,000 place – it is easy to accidentally run 4923 instead of 3929, for example). Next, make sure that coreg has been run. Lastly, make sure the tuyau.db file exists and has data (if it exists, but has no data, rerunning coreg should repopulate it)
+First make sure that you entered the intended cell number when running (including the 1,000 place – it is easy to accidentally run 4929 instead of 3929, for example). Next, make sure that coreg has been run. Lastly, make sure the tuyau.db file exists and has data (if it exists, but has no data, rerunning coreg should repopulate it)
 <img alt="alt" src="_images/ts_no_such_table_db_check.jpg" /></p>
 </div>
-<div class="section" id="bad-object-header-error">
-<h3>bad object header error<a class="headerlink" href="#bad-object-header-error" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>bad object header error<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p><img alt="alt" src="_images/ts_no_such_table_db_error.jpg" />
 This means that at least one brdf file is corrupted. This often happens if errors are not caught at the download stage and are run through brdf. Note the year for which the error applies and clean all download and brdf files for that year using <code class="docutils literal notranslate"><span class="pre">eostac_clean_removeFromDB.sh</span></code> or <code class="docutils literal notranslate"><span class="pre">tuyau_clean</span></code> (see <a class="reference internal" href="Cleaning_files.html#cleaning"><span class="std std-ref">cleaning_files</span></a>). Then rerun download, brdf, and coreg for that year and retry the ts.</p>
 </div>

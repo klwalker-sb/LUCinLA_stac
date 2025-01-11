@@ -1,0 +1,606 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>classification overview &#8212; LUCinLA_stac</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="modelling / classification steps" href="Classification_rf.html" />
+    <link rel="prev" title="Using Jupyter Notebook to interact with data on cluster" href="Jupyter_Notebook.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/cover.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">LUCinLA_stac</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
+   Land-Use Change in Latin America (LUCinLA) Computing Guide
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Overview
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="General_framework.html">
+   General framework
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Project_background.html">
+   Project background
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing_overview.html">
+   Processing overview
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Computer setup
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Connecting_to_cluster.html">
+   Connecting to the ERI cluster
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="environment_setup.html">
+   Setting up your remote environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Transfering_files.html">
+   Transfering Files to/from cluster
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Processing
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="Processing.html">
+   Processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Downloading.html">
+   Downloading process
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pre_Pipeline.html">
+   Post-download processing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Pipeline.html">
+   Pipeline process
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Cleaning_files.html">
+   cleaning files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Errors.html">
+   troubleshooting errors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Jupyter_Notebook.html">
+   Using Jupyter Notebook to interact with data on cluster
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Classification
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   classification overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="Classification_rf.html">
+   modelling / classification steps
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  New project configuration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="setting_up_new_project.html">
+   setting up new project
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Computing resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro_to_git.html">
+   Intro to git
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="commandLine_bash.html">
+   command line
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vim.html">
+   Vim
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="slurm.html">
+   Slurm
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="editing_this_guide.html">
+   To edit this guide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="quebracho.html">
+   quebracho
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Cited References
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   cited references
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/Classification_overview.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac/"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://klwalker-sb.github.io/LUCinLA_stac//issues/new?title=Issue%20on%20page%20%2FClassification_overview.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modelling-choices-and-naming-overview">
+   Modelling choices and naming overview:
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-model-variable-inputs-to-use-in-the-model">
+     Feature model (variable inputs to use in the model)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#spectral-index-variables">
+       spectral-index variables
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#phenological-variables">
+       phenological variables
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#singleton-variables">
+       singleton variables
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#segmentation-variables">
+       segmentation variables
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sample-model-sample-points-to-use-in-training">
+     Sample model (sample points to use in training)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#schematic-model">
+     Schematic model:
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-architecture">
+     Model architecture:
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="classification-overview">
+<span id="classification"></span><h1>classification overview<a class="headerlink" href="#classification-overview" title="Permalink to this headline">¶</a></h1>
+<p>================================================================================================================================</p>
+<div class="section" id="modelling-choices-and-naming-overview">
+<h2>Modelling choices and naming overview:<a class="headerlink" href="#modelling-choices-and-naming-overview" title="Permalink to this headline">¶</a></h2>
+<p>Medels are named with the following components in order, separated by <code class="docutils literal notranslate"><span class="pre">_</span></code>:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="#feature_mod">feature_model</a></p></li>
+<li><p><a class="reference external" href="#sample_mod">sample_model</a></p></li>
+<li><p><a class="reference external" href="#class_model">schematic_model</a></p></li>
+<li><p>training years
+if single year: last 2 digits of year.
+if multi-year: last 2 digits of first year, followed by last 2 digits of last year</p></li>
+<li><p><a class="reference external" href="#model_arch">model_architecture</a></p></li>
+</ul>
+<p>for example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">base4Poly6_bal200mix4_21_LC25_RF</span></code> for RF model with 25 classes trained on single year data (2021)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base4Poly6_bal200mix4_1724_LC8_RF</span></code> for RF model with 8 classes trained on multi-year data year (2017-2024)</p></li>
+</ul>
+<p>When an image is classified, the model name is proceeded by a regional identifier and followed by the classification year
+for example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">004080_base4Poly6_bal200mix4_21_LC25_RF_2021</span></code> for a 2021 map of cell 004080 using the first model example above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CELPyTile8_base4Poly6_bal200mix4_21_LC25_RF_2021</span></code> for a 2021 map of all cells in Paraguay Tile 8 using the first model example above</p></li>
+</ul>
+<div class="section" id="feature-model-variable-inputs-to-use-in-the-model">
+<span id="feature-mod"></span><h3>Feature model (variable inputs to use in the model)<a class="headerlink" href="#feature-model-variable-inputs-to-use-in-the-model" title="Permalink to this headline">¶</a></h3>
+<p>Three types of features can be used in the model:</p>
+<ol class="simple">
+<li><p><em><strong>spectral-index stats (<code class="docutils literal notranslate"><span class="pre">si_vars</span></code>)</strong></em>: Summary statistics for the modelling year generated from smoothed time-series data for each selected spectral image</p></li>
+<li><p><strong>phenological variables (<code class="docutils literal notranslate"><span class="pre">pheno_vars</span></code>)</strong>* Seasonal phenological variables calculated from the smoothed time-series curves for the selected subset of spectral indices (spec_indices_pheno)</p></li>
+<li><p><em><strong>singleton variables (<code class="docutils literal notranslate"><span class="pre">singleton_vars</span></code>)</strong></em>: Ancillary raster datasets covering the full AOI for a single point in time (can be constant or annual, but do not provide time-series data within a given year.)</p></li>
+<li><p><em><strong>segmentation variables (<code class="docutils literal notranslate"><span class="pre">poly_vars</span></code>)</strong></em>: Outputs from segmentation model (or other object-extraction method), which, unlike singleton_vars, are already parsed by cell, but like singleton_vars, do not have a time-series element.</p></li>
+</ol>
+<p>Choose a unique <em><strong><code class="docutils literal notranslate"><span class="pre">feature_model</span></code></strong></em> name for the desired combination of features</p>
+<p>Feature models are stored in the dictionary (<code class="docutils literal notranslate"><span class="pre">feat_mod_dict</span></code>) at “/home/downspout-cel/paraguay_lc/Feature_Models.json”.
+This allows quick lookup by name of the feature set (spec_indices, si_vars, singleton_vars, and poly_vars) and the full band sequence of the resulting stack (in case the internal band names get stripped).</p>
+<div class="section" id="spectral-index-variables">
+<h4>spectral-index variables<a class="headerlink" href="#spectral-index-variables" title="Permalink to this headline">¶</a></h4>
+<p>Spectral-index stats and phenological variables contain an index component, a statistic component, and a seasonal component. For the index component, see <a class="reference external" href="#veg_indices">vegetation indices</a> for options. The default RF model uses four indices that we generated smoothed time series for in the pipeline process (gcvi, kndvi, nbr &amp; ndmi). Indices can be readily dropped from new models, but adding new indices will require running the ts pipeline step to generate time series data for the index for all cells involved.</p>
+<p>The statistic component regards how the time-series data for a spectral index are to be summarized into a single value, for example from  summary statistics or phenological variables for the modelling year. The default RF model uses (Max,Min,Amp,Avg,CV,Std,Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec) but variables can readily be dropped or added for new models.</p>
+<p>Note that the year is defined by the parameters <code class="docutils literal notranslate"><span class="pre">start_yr</span></code> and <code class="docutils literal notranslate"><span class="pre">start_mo</span></code>, such that it starts on the first of start_mo of start_yr (so a year can be 1/Jan-31/Dec, 1/Apr-31/Mar, 1/Jun-31/May, etc. to best align with the local crop calendar and avoid splitting the primary cropping cycle)</p>
+<p>wet season and dry season are currently hard-coded as wet = 1/Nov-1/Apr and dry = 1/May-1/Oct for Paraguay.
+Seasonal dates can be changed and new variables can be added within <code class="docutils literal notranslate"><span class="pre">ts_composite.py</span></code> of LUCinSA_helpers.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The final data stack is of type uint16. Any variable added needs to be of the same type or smaller. This means that it needs to contain only non-negaive integers with a max value of 65535.</p>
+</div>
+<p>Variable options:</p>
+<ul class="simple">
+<li><p><strong>maxv_yr / maxv_wet / maxv_dry</strong> = Maximum Value for year / wet season / dry season</p></li>
+<li><p>maxd_yr / maxd_wet / maxd_dry = Day of year of maximum value (informational only. Use Maxdc as variable)</p></li>
+<li><p><strong>maxdc_yr / maxdc_wet / maxdc_dry</strong> = 100 * (Cosine + 1) of MaxDate(*2pi/360) (so that calendar is cyclical and 31 Jan is as close to 1 Dec as it is to 30 Jan)</p></li>
+<li><p><strong>minv_yr / minv_wet / minv_dry</strong> = Minimum Value for year</p></li>
+<li><p>mind_yr / mind_wet / mind_dry = Day of year of minimum value. (informational only. Use Mindc as variable)</p></li>
+<li><p><strong>mindc_yr / mindc_wet / mindc_dry</strong> = 100 * (Cosine + 1) of MinDate(*2pi/360) (so that calendar is cyclical and 31 Jan is as close to 1 Dec as it is to 30 Jan)</p></li>
+<li><p><strong>amp_yr / amp_wet / amp_dry</strong> = Amplitude across year / wet season / dry season = (Max-Min)</p></li>
+<li><p><strong>avg_yr / avg_wet / avg_dry</strong> = Mean Value for year / wet season / dry season</p></li>
+<li><p><strong>sd_yr / sd_wet / sd_dry</strong> = Standard Deviation for year / wet season / dry season</p></li>
+<li><p><strong>cv_yr / cv_wet / cv_dry</strong> =  Coefficient of Variation = (1000 * sd/avg) for yr / wet season / dry season</p></li>
+<li><p><strong>Jan_20</strong> = Value for smoothed time series on 20 Jan</p></li>
+<li><p><strong>Feb_20</strong> = Value for smoothed time series on 20 Feb</p></li>
+<li><p>… etc.</p></li>
+<li><p><strong>Dec_20</strong> = Value for smoothed time series on 20 Dec</p></li>
+</ul>
+</div>
+<div class="section" id="phenological-variables">
+<h4>phenological variables<a class="headerlink" href="#phenological-variables" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>numrot_wet / numrot_dry</strong> = number of planting rotations within the season (number of peaks above a threshold with valleys below a threshold between)</p></li>
+<li><p><strong>posd_wet / posd_dry</strong> = day of peak of season. If more than one planting cycle occurs within the season, this is the peak of the first cycle (and thus not necessarily == maxd). See images below.</p></li>
+<li><p><strong>posv_wet / posv_dry</strong> = value at peak of season. If more than one planting cycle occurs within the season, this is the value at the peak of the first cycle (and thus not necessarily == maxv)</p></li>
+<li><p><strong>sosd_wet / sosd_dry</strong> = day of Start of Season, defined as the observation below a threshold index value (by default 1000) closest, but to the left of, the pos point</p></li>
+<li><p><strong>sosv_wet / sosv_dry</strong> = value at Start of Season</p></li>
+<li><p><strong>eosd_wet / eosd_dry</strong> day of End of Season, day of Start of Season, defined as the observation below a threshold index value (by default 1000) closest, but to the right of, the pos point</p></li>
+<li><p><strong>eosv_wet / eosv_dry</strong> = value at End of season</p></li>
+<li><p><strong>los_wet / los_dry</strong> Length of Season, defined as the number of days between the Start and End of Season (eos-sos)</p></li>
+<li><p><strong>rog_wet / rog_dry</strong> Rate of Greenup = (maxv - sosv) / (maxd - sosd)</p></li>
+<li><p><strong>ros_wet / ros_dry</strong> = Rate of Senescing = (maxv - eosv) / (eosd - maxd)</p></li>
+</ul>
+<p><img alt="alt" src="_images/Phenology_soy2.png" />
+SOS = (sosd, sosv) EOS = (eosd, eosv), POS = (posd, posv)</p>
+<p>| (**problem with using max seasonal value as peak of season when season can contain multiple cropping cycles:|     |    |:——————————————————: | :——————————————————: |
+|   <img alt="alt" src="_images/Phenology_soy2_2peak.png" />             |  <img alt="alt" src="_images/Phenology_soy2_2peak_fixed.png" />          |</p>
+</div>
+<div class="section" id="singleton-variables">
+<h4>singleton variables<a class="headerlink" href="#singleton-variables" title="Permalink to this headline">¶</a></h4>
+<p>Singleton variables are ancillary raster datasets covering the whole area and time period. The only singleton variable currently available is <code class="docutils literal notranslate"><span class="pre">forest_strata</span></code>, which provides vegetational ecozones (“estratos_corregidos2014_6” – TODO: get citation info from Ata).</p>
+<p>A dictionary for singleton variables exists at: “/home/downspout-cel/paraguay_lc/singleton_var_dict.json”
+This contains the name of the variable, path to the dataset, and name of the attribute to use.
+To add another singleton variable, simply add the dataset at the desired location in the shared folder and add the data (manually) to the dictionary.</p>
+</div>
+<div class="section" id="segmentation-variables">
+<h4>segmentation variables<a class="headerlink" href="#segmentation-variables" title="Permalink to this headline">¶</a></h4>
+<p>Segmentation variables are outputs and summary variables from the segmentation process (TODO: link to segmentation processing description). Current variables are:</p>
+<ul class="simple">
+<li><p><strong>poly_dist</strong> = Distance from edge of field (inner only)</p></li>
+<li><p><strong>poly_ext</strong> = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)</p></li>
+<li><p><strong>poly_cropbnds</strong> = Likelihood of pixel being on the boundary of a crop field</p></li>
+<li><p><strong>poly_area^f</strong> = Area of field</p></li>
+<li><p><strong>pred_APR^f</strong> = Area to perimeter ratio</p></li>
+<li><p><strong>pred_APrEf^f</strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
+<li><p><strong>NovDecStd^f</strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
+^f: these are field-level values – all points within a field are assigned the same value</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="sample-model-sample-points-to-use-in-training">
+<span id="sample-mod"></span><h3>Sample model (sample points to use in training)<a class="headerlink" href="#sample-model-sample-points-to-use-in-training" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>class balance</p>
+<ul>
+<li><p>minimum cutoff</p></li>
+<li><p>mixed-class augmentation</p></li>
+</ul>
+</li>
+<li><p>percent test/train</p></li>
+<li><p>poly-based augmentation</p></li>
+</ul>
+</div>
+<div class="section" id="schematic-model">
+<span id="class-model"></span><h3>Schematic model:<a class="headerlink" href="#schematic-model" title="Permalink to this headline">¶</a></h3>
+<p>The classification system used during model building – note that more detailed classes can always be regrouped to show less detail following model-building/classification, but not vice-versa.</p>
+<p>Current schematic models are:</p>
+<ul class="simple">
+<li><p><strong>max = LC32</strong>: uses all possible classes with training data</p></li>
+<li><p><strong>all = LC25</strong>: uses all classes with reasonable size/accuracy in traiing data (some minor crops from LC32 are regrouped)</p></li>
+<li><p><strong>crop_nocrop = LC2</strong>: a two-class model for crop/nocrop</p></li>
+<li><p><strong>crop_nocrop_medcrop = LC3</strong>: a three class model for crop/nocrop/medcrop</p></li>
+<li><p><strong>crop_nocrop_mixcrop = LC3sm</strong>: alternative three class model for crop/nocrop/mixedcrop</p></li>
+<li><p><strong>crop_nocrop_medcrop_tree = LC4</strong>: a four class model for crop/nocrop/medcrop/tree</p></li>
+<li><p><strong>veg = LC5</strong>: a five class model for vegetation type (noveg/lowveg/medveg/highveg/mature)</p></li>
+<li><p><strong>veg_with_crop = LC8</strong>:</p></li>
+<li><p><strong>veg_with_cropType = LC10</strong></p></li>
+<li><p><strong>cropType = LC_crops</strong>: a model with specific crop classes and nocrop
+‘* <strong>single_X</strong>: a binary map using any class in LUT as X</p></li>
+</ul>
+<p><strong>class models can be added</strong> by adding a column to the LUT and a correspoinding line to the <code class="docutils literal notranslate"><span class="pre">get_class_col</span></code> function in <code class="docutils literal notranslate"><span class="pre">rf.py</span></code>. All unique ids (<code class="docutils literal notranslate"><span class="pre">LC_UNQ</span></code> column) must have a corresponding value in the class column. If a category should be excluded from training (e.g. because it is not specific enough), assigning a value of 99 will cause points from that category to be dropped from the dataframe prior to modelling.</p>
+</div>
+<div class="section" id="model-architecture">
+<span id="model-arch"></span><h3>Model architecture:<a class="headerlink" href="#model-architecture" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="#classification_rf">single year random forest</a></p></li>
+<li><p>multi-year random forest</p></li>
+<li><p>single year gradient boost</p></li>
+<li><p>…</p></li>
+</ul>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="Jupyter_Notebook.html" title="previous page">Using Jupyter Notebook to interact with data on cluster</a>
+    <a class='right-next' id="next-link" href="Classification_rf.html" title="next page">modelling / classification steps</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Kendra Walker<br/>
+        
+            &copy; Copyright 2023.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

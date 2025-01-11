@@ -24,6 +24,7 @@ parts:
     - file: Jupyter_Notebook
   - caption: Classification
     chapters:
+    - file: Classification_overview
     - file: Classification_rf
   - caption: New project configuration
     chapters:

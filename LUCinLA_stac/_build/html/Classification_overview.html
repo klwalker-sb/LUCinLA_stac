@@ -503,9 +503,9 @@ To add another singleton variable, simply add the dataset at the desired locatio
 <li><p><strong>poly_ext</strong> = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)</p></li>
 <li><p><strong>poly_cropbnds</strong> = Likelihood of pixel being on the boundary of a crop field</p></li>
 <li><p><strong>poly_area<sup>f</sup></strong> = Area of field</p></li>
-<li><p><strong>pred_APR<sup>f</sup></strong> = Area to perimeter ratio</p></li>
-<li><p><strong>pred_APrEf<sup>f</sup></strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
-<li><p><strong>NovDecStd<sup>f</sup></strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)</p></li>
+<li><p><strong>poly_APR<sup>f</sup></strong> = Area to perimeter ratio</p></li>
+<li><p><strong>poly_APrEf<sup>f</sup></strong> = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)</p></li>
+<li><p><strong>poly_NovDecStd<sup>f</sup></strong> = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)</p></li>
 <li><p><strong><sup>f</sup></strong> These are field-level values. All points within a field are assigned the same value</p></li>
 </ul>
 </div>
@@ -548,7 +548,7 @@ To add another singleton variable, simply add the dataset at the desired locatio
 <li><p><a class="reference internal" href="Classification_rf.html#classificationrf"><span class="std std-ref">single year random forest</span></a></p></li>
 <li><p>multi-year random forest</p></li>
 <li><p>single year gradient boost</p></li>
-<li><p>…</p></li>
+<li><p>conditional random fields</p></li>
 </ul>
 </div>
 </div>

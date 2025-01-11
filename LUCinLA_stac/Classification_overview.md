@@ -95,9 +95,9 @@ Segmentation variables are outputs and summary variables from the segmentation p
 * **poly_ext** = Likelihood of pixel belonging to a crop field (10,000 = very likely. Anything less = less sure)
 * **poly_cropbnds** = Likelihood of pixel being on the boundary of a crop field
 * **poly_area<sup>f</sup>** = Area of field
-* **pred_APR<sup>f</sup>** = Area to perimeter ratio 
-* **pred_APrEf<sup>f</sup>** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
-* **NovDecStd<sup>f</sup>** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
+* **poly_APR<sup>f</sup>** = Area to perimeter ratio 
+* **poly_APrEf<sup>f</sup>** = Efficeincy of area-to-perimiter ratio (the closer to 100, the more the polygon looks like a square. Large numbers suggest that the polygon represents multiple fields that were not fully divided in the segmentation processing.)
+* **poly_NovDecStd<sup>f</sup>** = Standard deviation of GCVI index for whole field for Nov and Dec (averaged across dates)
 * **<sup>f</sup>** These are field-level values. All points within a field are assigned the same value
 
 (sampleMod)=
@@ -132,7 +132,7 @@ Current schematic models are:
 * [single year random forest](classificationRF)
 * multi-year random forest
 * single year gradient boost
-* ...
+* conditional random fields
 
 
  
